@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbo",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
@@ -15,17 +15,18 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@payloadcms/db-sqlite": "beta",
     "@payloadcms/next": "beta",
     "@payloadcms/plugin-cloud": "beta",
     "@payloadcms/richtext-lexical": "beta",
+    "@payloadcms/storage-uploadthing": "beta",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "next": "15.0.0-canary.173",
     "payload": "beta",
     "react": "19.0.0-rc-3edc000d-20240926",
     "react-dom": "19.0.0-rc-3edc000d-20240926",
-    "sharp": "0.32.6",
-    "@payloadcms/db-sqlite": "beta"
+    "sharp": "0.32.6"
   },
   "devDependencies": {
     "@types/node": "^22.5.4",
