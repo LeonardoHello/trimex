@@ -12,5 +12,8 @@ export const Media: CollectionConfig = {
       required: true,
     },
   ],
-  upload: true,
+  upload: {
+    disableLocalStorage: true,
+    adminThumbnail: ({ doc }) => `https://utfs.io/f/${doc._key}`,
+  },
 }
