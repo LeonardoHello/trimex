@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbo",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbopack",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
@@ -15,22 +15,25 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
-    "@payloadcms/db-sqlite": "beta",
-    "@payloadcms/next": "beta",
-    "@payloadcms/plugin-cloud": "beta",
-    "@payloadcms/richtext-lexical": "beta",
-    "@payloadcms/storage-uploadthing": "beta",
+    "@payloadcms/db-sqlite": "^3.0.0-beta.118",
+    "@payloadcms/next": "^3.0.0-beta.118",
+    "@payloadcms/plugin-cloud": "^3.0.0-beta.118",
+    "@payloadcms/richtext-lexical": "^3.0.0-beta.118",
+    "@payloadcms/storage-uploadthing": "^3.0.0-beta.118",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
+    "embla-carousel-autoplay": "^8.3.0",
+    "embla-carousel-class-names": "^8.3.0",
+    "embla-carousel-react": "^8.3.0",
     "graphql": "^16.8.1",
     "lucide-react": "^0.453.0",
-    "next": "15.0.0-canary.173",
-    "payload": "beta",
-    "react": "19.0.0-rc-3edc000d-20240926",
-    "react-dom": "19.0.0-rc-3edc000d-20240926",
+    "next": "15.0.1",
+    "payload": "^3.0.0-beta.118",
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
     "sharp": "0.32.6",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
@@ -40,7 +43,7 @@
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "eslint": "^8",
-    "eslint-config-next": "15.0.0-canary.173",
+    "eslint-config-next": "15.0.1",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
@@ -49,12 +52,6 @@
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "npm:types-react@19.0.0-rc.1",
-      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
-    }
   },
   "overrides": {
     "@types/react": "npm:types-react@19.0.0-rc.1",
