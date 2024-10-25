@@ -35,12 +35,12 @@ export default async function HomePage() {
         </Button>
       </section>
 
-      <section className="flex h-screen flex-col items-center justify-center gap-8 bg-black px-32 py-16">
+      <section className="flex h-screen flex-col items-center justify-center gap-8 overflow-hidden bg-black px-32 py-16">
         <Badge className="bg-primary/30 text-primary">radovi</Badge>
         <GallerySlider />
       </section>
 
-      <section className="flex h-screen flex-col items-start justify-center gap-12 px-32 py-16">
+      <section className="flex h-screen flex-col items-start justify-center gap-12 overflow-hidden px-32 py-16">
         <Badge className="bg-primary/30 text-primary">recenzije</Badge>
         <h2 className="max-w-[25ch] scroll-m-20 text-5xl font-semibold tracking-tight first:mt-0">
           Poslušajte što imaju za reći o našim profesionalnim uslugama.
