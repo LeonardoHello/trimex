@@ -42,7 +42,7 @@ export default function Header() {
           },
         )}
       >
-        <Logo src={isTop ? logo : logoIconOnly} size={isTop ? 114 : 64} />
+        <Logo src={isTop ? logo : logoIconOnly} size={isTop ? 108 : 64} />
 
         <nav className={"flex items-center gap-4 transition-all"}>
           <Button variant={"link"} asChild>
@@ -87,7 +87,9 @@ export default function Header() {
           </Button>
         </nav>
 
-        <Button>Pošaljite upit</Button>
+        <Button size={isTop ? "lg" : "default"} className="transition-all">
+          Pošaljite upit
+        </Button>
       </header>
     </>
   );
