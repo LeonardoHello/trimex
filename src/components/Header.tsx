@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/utils/cn";
+import logoIconOnly from "public/logo-icon-only.svg";
+import logo from "public/logo.svg";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
 
@@ -34,21 +36,15 @@ export default function Header() {
       <div ref={targetRef} className="absolute left-0 top-0 bg-transparent" />
       <header
         className={cn(
-          "fixed z-10 flex w-screen items-center justify-between px-16 py-8 transition-all",
+          "fixed z-10 flex max-h-32 w-screen items-center justify-between px-16 py-8 transition-all",
           {
             "border-b bg-background/60 py-2 backdrop-blur-sm": !isTop,
           },
         )}
       >
-        <Link href={"/"}>
-          <Logo />
-        </Link>
+        <Logo src={isTop ? logo : logoIconOnly} size={isTop ? 96 : 64} />
 
-        <nav
-          className={cn("flex items-center gap-4 transition-all", {
-            "gap-8": isTop,
-          })}
-        >
+        <nav className={"flex items-center gap-4 transition-all"}>
           <Button variant={"link"} asChild>
             <Link
               href={"/"}
