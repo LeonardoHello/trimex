@@ -34,9 +34,9 @@ export default function Header() {
       <div ref={targetRef} className="absolute left-0 top-0 bg-transparent" />
       <header
         className={cn(
-          "fixed z-10 flex w-screen items-center justify-between px-16 py-8 transition-all duration-200",
+          "fixed z-10 flex w-screen items-center justify-between px-16 py-8 transition-all",
           {
-            "border-b bg-background/30 py-2 backdrop-blur": !isTop,
+            "border-b bg-background/60 py-2 backdrop-blur-sm": !isTop,
           },
         )}
       >
@@ -44,11 +44,15 @@ export default function Header() {
           <Logo />
         </Link>
 
-        <nav className={"flex items-center gap-4"}>
+        <nav
+          className={cn("flex items-center gap-4 transition-all", {
+            "gap-8": isTop,
+          })}
+        >
           <Button variant={"link"} asChild>
             <Link
               href={"/"}
-              className={cn("text-secondary-foreground", {
+              className={cn("text-primary-foreground", {
                 underline: pathname === "/",
               })}
             >
@@ -58,7 +62,7 @@ export default function Header() {
           <Button variant={"link"} asChild>
             <Link
               href={"/cjenik"}
-              className={cn("text-secondary-foreground", {
+              className={cn("text-primary-foreground", {
                 underline: pathname === "/cjenik",
               })}
             >
@@ -68,7 +72,7 @@ export default function Header() {
           <Button variant={"link"} asChild>
             <Link
               href={"/radovi"}
-              className={cn("text-secondary-foreground", {
+              className={cn("text-primary-foreground", {
                 underline: pathname === "/radovi",
               })}
             >
@@ -78,7 +82,7 @@ export default function Header() {
           <Button variant={"link"} asChild>
             <Link
               href={"/kontakt"}
-              className={cn("text-secondary-foreground", {
+              className={cn("text-primary-foreground", {
                 underline: pathname === "/kontakt",
               })}
             >
@@ -87,12 +91,7 @@ export default function Header() {
           </Button>
         </nav>
 
-        <Button
-          variant={isTop ? "secondary" : "default"}
-          className="transition-all duration-200"
-        >
-          Pošaljite upit
-        </Button>
+        <Button>Pošaljite upit</Button>
       </header>
     </>
   );

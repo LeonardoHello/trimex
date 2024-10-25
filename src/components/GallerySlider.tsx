@@ -14,7 +14,7 @@ import pic1 from "public/imageOne.jpg";
 import pic3 from "public/imageThree.jpg";
 import pic2 from "public/imageTwo.jpg";
 
-export default function Slider() {
+export default function GallerySlider() {
   return (
     <Carousel
       opts={{
@@ -34,7 +34,7 @@ export default function Slider() {
         {[pic1, pic2, pic3, pic4].map((_, index) => (
           <CarouselItem
             key={index}
-            className="relative mx-4 h-[30rem] opacity-30 transition-opacity duration-300 md:basis-2/3 lg:basis-1/3"
+            className="relative mx-4 h-[28rem] opacity-30 transition-opacity duration-300 md:basis-2/3 lg:basis-1/3"
           >
             <Image
               src={_}
