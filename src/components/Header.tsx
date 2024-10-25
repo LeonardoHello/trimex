@@ -42,7 +42,7 @@ export default function Header() {
           },
         )}
       >
-        <Logo src={isTop ? logo : logoIconOnly} size={isTop ? 96 : 64} />
+        <Logo src={isTop ? logo : logoIconOnly} size={isTop ? 114 : 64} />
 
         <nav className={"flex items-center gap-4 transition-all"}>
           <Button variant={"link"} asChild>
