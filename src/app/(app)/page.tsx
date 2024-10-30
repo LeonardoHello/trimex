@@ -22,7 +22,7 @@ export default async function HomePage() {
         Your browser does not support the video tag.
       </video>
 
-      <section className="flex h-[calc(100vh+4rem)] flex-col items-center justify-center gap-6 px-4 py-16 sm:items-start sm:px-16 lg:px-32">
+      <section className="flex h-[calc(100vh+4rem)] flex-col items-center justify-center gap-6 px-4 py-12 sm:items-start sm:px-8 md:p-16 lg:px-32 lg:py-20">
         <Badge className="bg-primary/30 text-primary">spreman vam pomoći</Badge>
         <h1 className="max-w-[15ch] scroll-m-20 text-center text-5xl font-extrabold tracking-tight sm:text-start lg:text-6xl">
           Vaš partner za uređenje okućnice
@@ -104,18 +104,18 @@ export default async function HomePage() {
         </div>
       </section> */}
 
-      <section className="flex h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-black px-4 py-16 sm:px-16 lg:px-32">
+      <section className="flex h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-black px-4 py-12 sm:px-8 md:p-16 lg:px-32 lg:py-20">
         <Badge className="bg-primary/30 text-primary">radovi</Badge>
-        <h2 className="mb-4 max-w-[20ch] scroll-m-20 text-center text-4xl font-semibold tracking-tight lg:text-5xl">
+        <h2 className="mb-4 max-w-[18ch] scroll-m-20 text-center text-4xl font-semibold tracking-tight lg:text-5xl">
           Pogledajte naše prethodne projekte
         </h2>
 
         <GallerySlider />
       </section>
 
-      <section className="flex h-screen flex-col items-start justify-center gap-6 overflow-hidden px-4 py-16 sm:px-16 lg:px-32">
+      <section className="flex h-screen flex-col items-start justify-center gap-6 overflow-hidden px-4 py-12 sm:px-8 md:p-16 lg:px-32 lg:py-20">
         <Badge className="bg-primary/30 text-primary">recenzije</Badge>
-        <h2 className="mb-4 max-w-[25ch] scroll-m-20 text-4xl font-semibold tracking-tight lg:text-5xl">
+        <h2 className="mb-4 max-w-[20ch] scroll-m-20 text-4xl font-semibold tracking-tight lg:text-5xl">
           Poslušajte što imaju za reći o našim uslugama.
         </h2>
 

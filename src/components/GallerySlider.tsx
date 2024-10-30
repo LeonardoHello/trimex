@@ -22,11 +22,11 @@ export default function GallerySlider() {
       opts={{
         align: "center",
         loop: true,
-        inViewThreshold: 0.8,
+        inViewThreshold: 0.99,
       }}
       plugins={[
-        Autoplay({ delay: 4000 }),
-        classNames({ inView: "opacity-95" }),
+        Autoplay({ delay: 3000 }),
+        classNames({ inView: "carousel-in-view" }),
       ]}
       className="w-full"
     >
@@ -34,7 +34,7 @@ export default function GallerySlider() {
         {pics.map((pic, index) => (
           <CarouselItem
             key={index}
-            className="relative mx-4 aspect-video max-h-96 opacity-40 transition-opacity duration-500 md:basis-2/3 xl:basis-1/2"
+            className="relative mx-4 aspect-square max-h-80 opacity-35 transition-opacity duration-500 md:aspect-video md:basis-2/3 xl:basis-1/2"
           >
             <Image
               src={pic}

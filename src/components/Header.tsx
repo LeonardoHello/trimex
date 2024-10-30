@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/utils/cn";
+import { Menu } from "lucide-react";
 import logoIconOnly from "public/logo-icon-only.svg";
 import logo from "public/logo.svg";
 import Logo from "./Logo";
@@ -44,7 +45,7 @@ export default function Header() {
       >
         <Logo src={isTop ? logo : logoIconOnly} size={isTop ? 108 : 64} />
 
-        <nav className="hidden items-center gap-4 transition-all md:flex">
+        <nav className="hidden items-center gap-4 md:flex">
           <Button variant={"link"} asChild>
             <Link
               href={"/"}
@@ -95,16 +96,7 @@ export default function Header() {
         </Button>
 
         <Button variant={"ghost"} size={"icon"} className="md:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            fill="currentColor"
-          >
-            <path fill="none" d="M0 0h24v24H0z"></path>
-            <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
-          </svg>
+          <Menu />
         </Button>
       </header>
     </>
