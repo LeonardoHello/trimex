@@ -1,20 +1,15 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
-export default function Logo({
-  src,
-  size,
-}: {
-  src: string | StaticImport;
-  size: number;
-}) {
+import { cn } from "@/utils/cn";
+
+export default function Logo({ isTop }: { isTop: boolean }) {
   return (
     <Image
-      src={src}
-      alt="website logo"
-      width={size}
-      height={size}
-      className="self-start transition-all"
+      src={isTop ? "/logo.svg" : "/logo-icon-only.svg"}
+      alt="Trimex logo"
+      width={64}
+      height={64}
+      className={cn("self-start transition-all", isTop ? "size-28" : "size-14")}
     />
   );
 }
