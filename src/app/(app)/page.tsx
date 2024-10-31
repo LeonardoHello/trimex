@@ -10,7 +10,7 @@ import { cn } from "@/utils/cn";
 export default async function HomePage() {
   return (
     <main className="flex grow flex-col">
-      <section className="relative flex min-h-[calc(100vh+4rem)] flex-col items-center justify-center gap-6 px-4 py-12 sm:items-start sm:px-8 md:p-16 lg:px-32 lg:py-20">
+      <section className="relative flex min-h-screen flex-col items-center justify-center gap-6 px-4 py-12 sm:items-start sm:px-8 md:p-16 lg:px-32 lg:py-20">
         {/* Hero section video */}
         <video
           preload="none"
@@ -113,7 +113,7 @@ function Section({
   return (
     <section
       className={cn(
-        "flex min-h-screen flex-col items-start justify-center gap-10 overflow-hidden px-4 py-12 sm:px-8 md:p-16 lg:gap-14 lg:px-32 lg:py-20",
+        "flex min-h-screen flex-col items-start justify-center gap-10 overflow-hidden px-4 py-12 sm:px-8 md:p-16 lg:gap-16 lg:px-32 lg:py-20",
         { "items-center": center },
         className,
       )}

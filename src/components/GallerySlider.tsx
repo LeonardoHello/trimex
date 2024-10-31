@@ -40,6 +40,8 @@ export default function GallerySlider() {
               src={pic}
               alt="gardening"
               fill
+              placeholder="blur"
+              sizes="100%"
               className="rounded-lg object-cover object-center"
             />
           </CarouselItem>
