@@ -10,7 +10,12 @@ import { cn } from "@/utils/cn";
 export default async function HomePage() {
   return (
     <main className="flex grow flex-col">
-      <section className="relative flex min-h-screen flex-col items-center justify-center gap-6 px-4 py-12 sm:items-start sm:px-8 md:p-16 lg:px-32 lg:py-20">
+      <Section
+        badge="spreman vam pomoći"
+        title="Vaš partner za uređenje okućnice"
+        className="relative h-screen min-h-[42rem]"
+        hero
+      >
         {/* Hero section video */}
         <video
           preload="none"
@@ -24,24 +29,21 @@ export default async function HomePage() {
           <source src="/video_only.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <Badge className="bg-primary/30 text-primary">spreman vam pomoći</Badge>
-        <h1 className="max-w-[15ch] scroll-m-20 text-center text-5xl font-extrabold tracking-tight sm:text-start lg:text-6xl">
-          Vaš partner za uređenje okućnice
-        </h1>
-        <p className="max-w-[50ch] text-center leading-7 sm:text-start">
+
+        <p className="max-w-[50ch] leading-7">
           Od košnje trave do montaže namještaja, pružam profesionalne usluge za
           vaš dom i vrt.
         </p>
+
         <Button size={"lg"} className="text-base">
           Pošaljite upit
         </Button>
-      </section>
+      </Section>
 
       <Section
         badge="usluge"
         title="Istražite našu sveobuhvatnu ponudu profesionalnih usluga."
-        className="bg-black bg-gradient-to-b from-background"
-        center
+        className="bg-black md:items-center md:text-center"
       >
         <div className="grid place-items-center gap-x-8 gap-y-12 self-stretch md:grid-cols-2 xl:grid-cols-3">
           <GridItem
@@ -81,8 +83,7 @@ export default async function HomePage() {
       <Section
         badge="radovi"
         title="Pogledajte naše prethodne projekte."
-        className="bg-gradient-to-b from-black to-background"
-        center
+        className="bg-foreground text-background md:items-center md:text-center"
       >
         <GallerySlider />
       </Section>
@@ -101,33 +102,35 @@ function Section({
   children,
   badge,
   title,
+  hero,
   className,
-  center,
 }: {
   children: React.ReactNode;
   badge: string;
   title: string;
+  hero?: boolean;
   className?: string;
-  center?: boolean;
 }) {
   return (
     <section
       className={cn(
-        "flex min-h-screen flex-col items-start justify-center gap-10 overflow-hidden px-4 py-12 sm:px-8 md:p-16 lg:gap-16 lg:px-32 lg:py-20",
-        { "items-center": center },
+        "flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden px-4 py-14 text-center sm:px-8 md:items-start md:p-16 md:text-left lg:px-32 lg:py-20",
         className,
       )}
     >
-      <div
-        className={cn("flex flex-col items-start justify-start gap-4", {
-          "items-center text-center": center,
-        })}
-      >
-        <Badge className="bg-primary/30 text-primary">{badge}</Badge>
-        <h2 className="max-w-[26ch] scroll-m-20 text-4xl font-semibold tracking-tight lg:text-5xl">
+      <Badge className="bg-primary/30 text-primary">{badge}</Badge>
+
+      {hero && (
+        <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">
+          {title}
+        </h1>
+      )}
+
+      {!hero && (
+        <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           {title}
         </h2>
-      </div>
+      )}
 
       {children}
     </section>
@@ -147,10 +150,15 @@ function GridItem({
 }) {
   return (
     <div className="flex max-w-80 flex-col items-center gap-4 text-center">
-      <Icon name={iconName} className="size-12 text-primary-foreground" />
+      <Icon
+        name={iconName}
+        className="size-10 text-primary-foreground md:size-12"
+      />
+
       <h3 className="scroll-m-20 text-2xl font-semibold capitalize tracking-tight">
         {title}
       </h3>
+
       <p className="leading-7">{paragraph}</p>
     </div>
   );
