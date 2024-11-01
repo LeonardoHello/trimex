@@ -44,7 +44,7 @@ export default function Header() {
       >
         <Logo isTop={isTop} />
 
-        <nav className="hidden items-center gap-2 md:flex lg:gap-4">
+        <nav className="hidden items-center gap-4 lg:flex lg:gap-4">
           <Button variant={"link"} asChild>
             <Link
               href={"/"}
@@ -89,14 +89,14 @@ export default function Header() {
 
         <Button
           size={isTop ? "lg" : "default"}
-          className={cn("hidden transition-all md:inline-flex", {
+          className={cn("hidden transition-all lg:inline-flex", {
             "text-base": isTop,
           })}
         >
           Pošaljite upit
         </Button>
 
-        <Button variant={"ghost"} size={"icon"} className="md:hidden">
+        <Button variant={"ghost"} size={"icon"} className="lg:hidden">
           <Menu />
         </Button>
       </header>
