@@ -20,7 +20,7 @@ export default function SliderReview() {
             />
 
             <p className="font line-clamp-3 min-w-full text-center italic leading-7 lg:text-lg">
-              {_.review}
+              &quot;{_.review}&quot;
             </p>
 
             <div className="flex items-center justify-center gap-2">
@@ -28,7 +28,7 @@ export default function SliderReview() {
                 <AvatarImage src={_.avatar} />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <div className="flex flex-col items-start text-sm lg:text-base">
+              <div className="flex flex-col items-start text-left text-sm lg:text-base">
                 <div className="line-clamp-2">
                   {_.first_name} {_.last_name}
                 </div>
