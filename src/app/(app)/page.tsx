@@ -1,8 +1,8 @@
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
-import GallerySlider from "@/components/GallerySlider";
 import Icon from "@/components/Icon";
-import ReviewSlider from "@/components/ReviewSlider";
+import SliderGallery from "@/components/SliderGallery";
+import SliderReview from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/utils/cn";
@@ -85,14 +85,14 @@ export default async function HomePage() {
         title="Pogledajte naše prethodne projekte."
         className="bg-foreground text-background md:items-center md:text-center"
       >
-        <GallerySlider />
+        <SliderGallery />
       </Section>
 
       <Section
         badge="recenzije"
         title="Poslušajte što imaju za reći o našim uslugama."
       >
-        <ReviewSlider />
+        <SliderReview />
       </Section>
     </main>
   );

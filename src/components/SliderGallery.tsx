@@ -1,35 +1,17 @@
-"use client";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import classNames from "embla-carousel-class-names";
 import Image from "next/image";
 
+import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import pic4 from "public/imageFour.jpg";
 import pic1 from "public/imageOne.jpg";
 import pic3 from "public/imageThree.jpg";
 import pic2 from "public/imageTwo.jpg";
+import Slider from "./Slider";
 
-export default function GallerySlider() {
+export default function SliderGallery() {
   const pics = [pic1, pic2, pic3, pic4];
 
   return (
-    <Carousel
-      opts={{
-        align: "center",
-        loop: true,
-        inViewThreshold: 0.8,
-      }}
-      plugins={[
-        Autoplay({ delay: 2000 }),
-        classNames({ inView: "carousel-in-view" }),
-      ]}
-      className="w-full"
-    >
+    <Slider>
       <CarouselContent>
         {pics.map((pic, index) => (
           <CarouselItem
@@ -47,6 +29,6 @@ export default function GallerySlider() {
           </CarouselItem>
         ))}
       </CarouselContent>
-    </Carousel>
+    </Slider>
   );
 }
