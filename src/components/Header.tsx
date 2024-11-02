@@ -9,97 +9,93 @@ import { cn } from "@/utils/cn";
 import { Menu } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
+import PulsatingButton from "./ui/pulsating-button";
 
 export default function Header() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const [isTop, setIsTop] = useState(true);
   const pathname = usePathname();
 
+  const prevScrollPosRef = useRef<number>(0);
+  const [navbarVisibility, setNavbarVisibility] = useState(true);
+
   useEffect(() => {
-    if (!targetRef.current) return;
+    function onScroll() {
+      const scrollPos = window.scrollY;
 
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
+      if (scrollPos === 0) {
+        setNavbarVisibility(true);
+      } else if (prevScrollPosRef.current > scrollPos) {
+        setNavbarVisibility(true);
+      } else {
+        setNavbarVisibility(false);
+      }
 
-      setIsTop(entry.isIntersecting);
-    });
+      prevScrollPosRef.current = window.scrollY;
+    }
 
-    observer.observe(targetRef.current);
+    window.addEventListener("scroll", onScroll);
 
     return () => {
-      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
   return (
-    <>
-      <div ref={targetRef} className="absolute left-0 top-0 bg-transparent" />
-      <header
-        className={cn(
-          "fixed z-10 flex max-h-32 w-screen items-center justify-between p-8 transition-all sm:px-16",
-          {
-            "border-b bg-background/30 px-6 py-2 backdrop-blur": !isTop,
-          },
-        )}
-      >
-        <Logo isTop={isTop} />
+    <header
+      className={cn(
+        "fixed -top-16 z-10 flex h-16 items-center justify-center gap-12 self-center rounded-full border bg-background/30 px-8 py-2 backdrop-blur transition-all",
+        {
+          "top-4": navbarVisibility,
+        },
+      )}
+    >
+      <Logo />
 
-        <nav className="hidden items-center gap-4 lg:flex lg:gap-4">
-          <Button variant={"link"} asChild>
-            <Link
-              href={"/"}
-              className={cn("text-primary-foreground", {
-                underline: pathname === "/",
-              })}
-            >
-              Home
-            </Link>
-          </Button>
-          <Button variant={"link"} asChild>
-            <Link
-              href={"/cjenik"}
-              className={cn("text-primary-foreground", {
-                underline: pathname === "/cjenik",
-              })}
-            >
-              Cjenik
-            </Link>
-          </Button>
-          <Button variant={"link"} asChild>
-            <Link
-              href={"/radovi"}
-              className={cn("text-primary-foreground", {
-                underline: pathname === "/radovi",
-              })}
-            >
-              Radovi
-            </Link>
-          </Button>
-          <Button variant={"link"} asChild>
-            <Link
-              href={"/kontakt"}
-              className={cn("text-primary-foreground", {
-                underline: pathname === "/kontakt",
-              })}
-            >
-              Kontakt
-            </Link>
-          </Button>
-        </nav>
-
+      <nav className="hidden items-center lg:flex">
         <Button
-          size={isTop ? "lg" : "default"}
-          className={cn("hidden transition-all lg:inline-flex", {
-            "text-base": isTop,
+          variant={"link"}
+          className={cn({
+            underline: pathname === "/",
           })}
+          asChild
         >
-          Pošaljite upit
+          <Link href={"/"}>Home</Link>
         </Button>
+        <Button
+          variant={"link"}
+          className={cn({
+            underline: pathname === "/cjenik",
+          })}
+          asChild
+        >
+          <Link href={"/cjenik"}>Cjenik</Link>
+        </Button>
+        <Button
+          variant={"link"}
+          className={cn({
+            underline: pathname === "/radovi",
+          })}
+          asChild
+        >
+          <Link href={"/radovi"}>Radovi</Link>
+        </Button>
+        <Button
+          variant={"link"}
+          className={cn({
+            underline: pathname === "/kontakt",
+          })}
+          asChild
+        >
+          <Link href={"/kontakt"}>Kontakt</Link>
+        </Button>
+      </nav>
 
-        <Button variant={"ghost"} size={"icon"} className="lg:hidden">
-          <Menu />
-        </Button>
-      </header>
-    </>
+      <PulsatingButton className="hidden lg:flex">
+        Pošaljite upit
+      </PulsatingButton>
+
+      <Button variant={"ghost"} size={"icon"} className="lg:hidden">
+        <Menu />
+      </Button>
+    </header>
   );
 }
