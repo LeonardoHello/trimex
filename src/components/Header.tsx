@@ -52,37 +52,25 @@ export default function Header() {
 
       <nav className="hidden items-center lg:flex">
         <Button
-          variant={"link"}
-          className={cn({
-            underline: pathname === "/",
-          })}
+          variant={pathname === "/" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/"}>Home</Link>
         </Button>
         <Button
-          variant={"link"}
-          className={cn({
-            underline: pathname === "/cjenik",
-          })}
+          variant={pathname === "/cjenik" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/cjenik"}>Cjenik</Link>
         </Button>
         <Button
-          variant={"link"}
-          className={cn({
-            underline: pathname === "/radovi",
-          })}
+          variant={pathname === "/radovi" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/radovi"}>Radovi</Link>
         </Button>
         <Button
-          variant={"link"}
-          className={cn({
-            underline: pathname === "/kontakt",
-          })}
+          variant={pathname === "/kontakt" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/kontakt"}>Kontakt</Link>
