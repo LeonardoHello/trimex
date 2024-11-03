@@ -1,10 +1,10 @@
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
 import Icon from "@/components/Icon";
-import SliderGallery from "@/components/SliderGallery";
-import SliderReview from "@/components/SliderReview";
+import GallerySlider from "@/components/SliderGallery";
+import ReviewSlider from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { cn } from "@/utils/cn";
 
 export default async function HomePage() {
@@ -13,7 +13,7 @@ export default async function HomePage() {
       <Section
         badge="spreman vam pomoći"
         title="Vaš partner za uređenje okućnice"
-        className="relative h-screen min-h-[42rem]"
+        className="relative min-h-[calc(100vh-4rem)]"
         hero
       >
         {/* Hero section video */}
@@ -23,7 +23,7 @@ export default async function HomePage() {
           muted
           loop
           playsInline
-          className="pointer-events-none absolute left-0 top-0 -z-10 h-full w-screen bg-transparent object-cover object-bottom brightness-50"
+          className="pointer-events-none absolute -top-16 left-0 -z-10 h-[calc(100%+4rem)] w-screen object-cover object-bottom brightness-50"
           aria-label="guy mowing the lawn"
         >
           <source src="/video_only.mp4" type="video/mp4" />
@@ -35,15 +35,15 @@ export default async function HomePage() {
           vaš dom i vrt.
         </p>
 
-        <Button size={"lg"} className="text-base">
-          Pošaljite upit
-        </Button>
+        <RainbowButton className="bg-foreground/90 text-primary-foreground active:scale-95">
+          pošaljite upit
+        </RainbowButton>
       </Section>
 
       <Section
         badge="usluge"
         title="Istražite našu sveobuhvatnu ponudu profesionalnih usluga."
-        className="bg-black md:items-center md:text-center"
+        className="md:items-center md:text-center"
       >
         <div className="grid place-items-center gap-x-8 gap-y-12 self-stretch md:grid-cols-2 xl:grid-cols-3">
           <GridItem
@@ -83,16 +83,17 @@ export default async function HomePage() {
       <Section
         badge="radovi"
         title="Pogledajte naše prethodne projekte."
-        className="bg-foreground text-background md:items-center md:text-center"
+        className="overflow-hidden bg-foreground text-background md:items-center md:text-center"
       >
-        <SliderGallery />
+        <GallerySlider />
       </Section>
 
       <Section
         badge="recenzije"
         title="Poslušajte što imaju za reći o našim uslugama."
+        className="overflow-hidden"
       >
-        <SliderReview />
+        <ReviewSlider />
       </Section>
     </main>
   );
@@ -114,7 +115,7 @@ function Section({
   return (
     <section
       className={cn(
-        "flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden px-4 py-14 text-center sm:px-8 md:items-start md:p-16 md:text-left lg:px-32 lg:py-20",
+        "flex min-h-screen flex-col items-center justify-center gap-4 px-4 py-14 text-center sm:px-8 md:items-start md:p-16 md:text-left lg:px-32 lg:py-20",
         className,
       )}
     >
@@ -149,17 +150,14 @@ function GridItem({
   iconName: IconNames;
 }) {
   return (
-    <div className="flex max-w-80 flex-col items-center gap-4 text-center">
-      <Icon
-        name={iconName}
-        className="size-10 text-primary-foreground md:size-12"
-      />
+    <div className="flex max-w-80 flex-col items-center gap-4 self-start text-center">
+      <Icon name={iconName} className="size-10 md:size-12" />
 
       <h3 className="scroll-m-20 text-2xl font-semibold capitalize tracking-tight">
         {title}
       </h3>
 
-      <p className="leading-7">{paragraph}</p>
+      <p className="text-sm font-light leading-7">{paragraph}</p>
     </div>
   );
 }

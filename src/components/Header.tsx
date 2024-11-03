@@ -2,34 +2,29 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/utils/cn";
 
 import { Menu } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
-import PulsatingButton from "./ui/pulsating-button";
+import { RainbowButton } from "./ui/rainbow-button";
 
 export default function Header() {
   const pathname = usePathname();
 
-  const prevScrollPosRef = useRef<number>(0);
-  const [navbarVisibility, setNavbarVisibility] = useState(true);
+  const [isTop, setIsTop] = useState(true);
 
   useEffect(() => {
     function onScroll() {
       const scrollPos = window.scrollY;
 
       if (scrollPos === 0) {
-        setNavbarVisibility(true);
-      } else if (prevScrollPosRef.current > scrollPos) {
-        setNavbarVisibility(true);
+        setIsTop(true);
       } else {
-        setNavbarVisibility(false);
+        setIsTop(false);
       }
-
-      prevScrollPosRef.current = window.scrollY;
     }
 
     window.addEventListener("scroll", onScroll);
@@ -42,46 +37,102 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed -top-16 z-10 flex h-16 items-center justify-center gap-12 self-center rounded-full border bg-background/30 px-8 py-2 backdrop-blur transition-all",
+        "sticky top-0 z-10 flex max-h-16 items-center justify-between gap-12 px-8 py-2 transition-all duration-300 lg:px-12",
         {
-          "top-4": navbarVisibility,
+          "border-b bg-background/60 backdrop-blur lg:border-b-0 lg:bg-transparent lg:backdrop-blur-none":
+            !isTop,
         },
       )}
     >
-      <Logo />
+      <Logo isTop={isTop} />
 
-      <nav className="hidden items-center lg:flex">
+      <nav
+        className={cn(
+          "relative top-0 hidden items-center gap-1 rounded-full p-1 transition-all duration-300 lg:flex",
+          {
+            "bg-background/60 backdrop-blur": !isTop,
+          },
+        )}
+      >
         <Button
-          variant={pathname === "/" ? "linkHover1" : "linkHover2"}
+          variant={"ghost"}
+          className={cn(
+            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
+            {
+              "bg-primary/30 text-primary": pathname === "/",
+            },
+          )}
           asChild
         >
           <Link href={"/"}>Home</Link>
         </Button>
         <Button
-          variant={pathname === "/cjenik" ? "linkHover1" : "linkHover2"}
+          variant={"ghost"}
+          className={cn(
+            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
+            {
+              "bg-primary/30 text-primary": pathname === "/cjenik",
+            },
+          )}
           asChild
         >
           <Link href={"/cjenik"}>Cjenik</Link>
         </Button>
         <Button
-          variant={pathname === "/radovi" ? "linkHover1" : "linkHover2"}
+          variant={"ghost"}
+          className={cn(
+            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
+            {
+              "bg-primary/30 text-primary": pathname === "/radovi",
+            },
+          )}
           asChild
         >
           <Link href={"/radovi"}>Radovi</Link>
         </Button>
         <Button
-          variant={pathname === "/kontakt" ? "linkHover1" : "linkHover2"}
+          variant={"ghost"}
+          className={cn(
+            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
+            {
+              "bg-primary/30 text-primary": pathname === "/kontakt",
+            },
+          )}
           asChild
         >
           <Link href={"/kontakt"}>Kontakt</Link>
         </Button>
+
+        <div
+          className={cn(
+            "max-w-0 self-center overflow-hidden transition-all duration-300",
+            {
+              "max-w-96": !isTop,
+            },
+          )}
+        >
+          <RainbowButton className="h-full whitespace-nowrap rounded-full bg-foreground/90 text-sm text-primary-foreground active:scale-95">
+            pošaljite upit
+          </RainbowButton>
+        </div>
       </nav>
 
-      <PulsatingButton className="hidden lg:flex">
-        Pošaljite upit
-      </PulsatingButton>
+      <RainbowButton
+        className={cn(
+          "-top-10 hidden w-44 bg-foreground/90 text-primary-foreground opacity-0 blur transition-all duration-300 active:scale-95 lg:inline-flex",
+          {
+            "top-0 opacity-100 blur-none": isTop,
+          },
+        )}
+      >
+        pošaljite upit
+      </RainbowButton>
 
-      <Button variant={"ghost"} size={"icon"} className="lg:hidden">
+      <Button
+        variant={"ghost"}
+        size={"icon"}
+        className="hover:bg-primary/30 lg:hidden"
+      >
         <Menu />
       </Button>
     </header>
