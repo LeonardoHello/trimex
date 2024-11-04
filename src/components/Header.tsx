@@ -14,7 +14,7 @@ import { RainbowButton } from "./ui/rainbow-button";
 export default function Header() {
   const pathname = usePathname();
 
-  const [isTop, setIsTop] = useState(true);
+  const [isTop, setIsTop] = useState(false);
 
   useEffect(() => {
     function onScroll() {
@@ -37,7 +37,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-10 flex max-h-16 items-center justify-between gap-12 px-8 py-2 transition-all duration-300 lg:px-12",
+        "transition-color sticky top-0 z-10 flex h-16 items-center justify-between gap-12 px-8 py-2 duration-300 lg:px-12",
         {
           "border-b bg-background/60 backdrop-blur lg:border-b-0 lg:bg-transparent lg:backdrop-blur-none":
             !isTop,
@@ -133,7 +133,7 @@ export default function Header() {
         size={"icon"}
         className="hover:bg-primary/30 lg:hidden"
       >
-        <Menu />
+        <Menu className="size-6" />
       </Button>
     </header>
   );
