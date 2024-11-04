@@ -14,9 +14,15 @@ import { RainbowButton } from "./ui/rainbow-button";
 export default function Header() {
   const pathname = usePathname();
 
-  const [isTop, setIsTop] = useState(false);
+  const [isTop, setIsTop] = useState(true);
 
   useEffect(() => {
+    if (window.scrollY === 0) {
+      setIsTop(true);
+    } else {
+      setIsTop(false);
+    }
+
     function onScroll() {
       const scrollPos = window.scrollY;
 
