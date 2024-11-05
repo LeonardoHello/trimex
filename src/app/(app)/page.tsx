@@ -13,7 +13,7 @@ export default async function HomePage() {
       <Section
         badge="spreman vam pomoći"
         title="Vaš partner za uređenje okućnice"
-        className="relative min-h-[calc(100vh-4rem)]"
+        className="relative !pt-28 lg:!pt-44"
         hero
       >
         {/* Hero section video */}
@@ -23,7 +23,7 @@ export default async function HomePage() {
           muted
           loop
           playsInline
-          className="pointer-events-none absolute -top-16 left-0 -z-10 h-[calc(100%+4rem)] w-screen object-cover object-bottom brightness-50"
+          className="pointer-events-none absolute left-0 top-0 -z-10 h-full w-screen object-cover object-bottom brightness-50"
           aria-label="guy mowing the lawn"
         >
           <source src="/video_only.mp4" type="video/mp4" />
@@ -91,7 +91,7 @@ export default async function HomePage() {
       <Section
         badge="recenzije"
         title="Poslušajte što imaju za reći o našim uslugama."
-        className="overflow-hidden"
+        className="overflow-hidden bg-secondary text-secondary-foreground"
       >
         <ReviewSlider />
       </Section>
@@ -119,7 +119,7 @@ function Section({
         className,
       )}
     >
-      <Badge className="bg-primary/30 text-primary">{badge}</Badge>
+      <Badge className="bg-primary/20 text-primary">{badge}</Badge>
 
       {hero && (
         <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">

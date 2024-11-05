@@ -43,9 +43,9 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "transition-color sticky top-0 z-10 flex h-16 items-center justify-between gap-12 px-8 py-2 duration-300 lg:px-12",
+        "fixed top-0 z-10 flex w-screen items-center justify-between gap-12 px-8 py-2 lg:items-start lg:px-12 lg:py-6",
         {
-          "border-b bg-background/60 backdrop-blur lg:border-b-0 lg:bg-transparent lg:backdrop-blur-none":
+          "transition-color border-b bg-background/80 backdrop-blur duration-300 lg:border-b-0 lg:bg-transparent lg:backdrop-blur-none":
             !isTop,
         },
       )}
@@ -54,56 +54,32 @@ export default function Header() {
 
       <nav
         className={cn(
-          "relative top-0 hidden items-center gap-1 rounded-full p-1 transition-all duration-300 lg:flex",
+          "relative top-0 hidden items-center rounded-full p-1 pl-2 transition-all duration-300 lg:flex",
           {
-            "bg-background/60 backdrop-blur": !isTop,
+            "bg-background/80 backdrop-blur": !isTop,
           },
         )}
       >
         <Button
-          variant={"ghost"}
-          className={cn(
-            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
-            {
-              "bg-primary/30 text-primary": pathname === "/",
-            },
-          )}
+          variant={pathname === "/" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/"}>Home</Link>
         </Button>
         <Button
-          variant={"ghost"}
-          className={cn(
-            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
-            {
-              "bg-primary/30 text-primary": pathname === "/cjenik",
-            },
-          )}
+          variant={pathname === "/cjenik" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/cjenik"}>Cjenik</Link>
         </Button>
         <Button
-          variant={"ghost"}
-          className={cn(
-            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
-            {
-              "bg-primary/30 text-primary": pathname === "/radovi",
-            },
-          )}
+          variant={pathname === "/radovi" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/radovi"}>Radovi</Link>
         </Button>
         <Button
-          variant={"ghost"}
-          className={cn(
-            "hover:bg-inherit/80 h-full rounded-full hover:text-primary",
-            {
-              "bg-primary/30 text-primary": pathname === "/kontakt",
-            },
-          )}
+          variant={pathname === "/kontakt" ? "linkHover1" : "linkHover2"}
           asChild
         >
           <Link href={"/kontakt"}>Kontakt</Link>
@@ -137,7 +113,7 @@ export default function Header() {
       <Button
         variant={"ghost"}
         size={"icon"}
-        className="hover:bg-primary/30 lg:hidden"
+        className="hover:bg-primary/20 lg:hidden"
       >
         <Menu className="size-6" />
       </Button>
