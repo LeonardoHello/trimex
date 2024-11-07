@@ -2,19 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/utils/cn";
 
 import { Menu } from "lucide-react";
 import Logo from "./Logo";
+import LogoIcon from "./LogoIcon";
 import { Button } from "./ui/button";
-import { RainbowButton } from "./ui/rainbow-button";
+import PulsatingButton from "./ui/pulsating-button";
 
 export default function Header() {
   const pathname = usePathname();
 
+  const prevScrollPos = useRef(0);
   const [isTop, setIsTop] = useState(true);
+  const [displayHeader, setDisplayHeader] = useState(true);
 
   useEffect(() => {
     if (window.scrollY === 0) {
@@ -28,9 +31,15 @@ export default function Header() {
 
       if (scrollPos === 0) {
         setIsTop(true);
+      } else if (prevScrollPos.current > scrollPos) {
+        setDisplayHeader(true);
+        setIsTop(false);
       } else {
+        setDisplayHeader(false);
         setIsTop(false);
       }
+
+      prevScrollPos.current = window.scrollY;
     }
 
     window.addEventListener("scroll", onScroll);
@@ -43,23 +52,34 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-10 flex w-screen items-center justify-between gap-12 px-8 py-2 lg:items-start lg:px-12 lg:py-6",
+        "fixed top-0 z-20 flex h-24 w-screen items-center justify-between gap-12 px-8 py-2 transition-all duration-300 lg:px-12",
         {
-          "transition-color border-b bg-background/80 backdrop-blur duration-300 lg:border-b-0 lg:bg-transparent lg:backdrop-blur-none":
-            !isTop,
+          "h-16 bg-background/80 ring-1 ring-background backdrop-blur": !isTop,
+          "-top-16": !displayHeader,
         },
       )}
     >
-      <Logo isTop={isTop} />
+      <div className="relative flex w-40 self-stretch transition-all">
+        <Logo
+          className={cn(
+            "absolute left-0 top-0 size-36 self-start fill-foreground transition-all duration-300",
+            {
+              "-top-20 opacity-0 blur": !isTop,
+            },
+          )}
+        />
 
-      <nav
-        className={cn(
-          "relative top-0 hidden items-center rounded-full p-1 pl-2 transition-all duration-300 lg:flex",
-          {
-            "bg-background/80 backdrop-blur": !isTop,
-          },
-        )}
-      >
+        <LogoIcon
+          className={cn(
+            "duraiton-300 absolute -left-20 top-0 size-16 self-center fill-foreground opacity-0 blur transition-all duration-300",
+            {
+              "left-0 opacity-100 blur-none": !isTop,
+            },
+          )}
+        />
+      </div>
+
+      <nav className="hidden items-center lg:flex">
         <Button
           variant={pathname === "/" ? "linkHover1" : "linkHover2"}
           asChild
@@ -84,31 +104,14 @@ export default function Header() {
         >
           <Link href={"/kontakt"}>Kontakt</Link>
         </Button>
-
-        <div
-          className={cn(
-            "max-w-0 self-center overflow-hidden transition-all duration-300",
-            {
-              "max-w-96": !isTop,
-            },
-          )}
-        >
-          <RainbowButton className="h-full whitespace-nowrap rounded-full bg-foreground/90 text-sm text-primary-foreground active:scale-95">
-            pošaljite upit
-          </RainbowButton>
-        </div>
       </nav>
 
-      <RainbowButton
-        className={cn(
-          "-top-10 hidden w-44 bg-foreground/90 text-primary-foreground opacity-0 blur transition-all duration-300 active:scale-95 lg:inline-flex",
-          {
-            "top-0 opacity-100 blur-none": isTop,
-          },
-        )}
+      <PulsatingButton
+        className="hidden w-40 text-nowrap bg-primary px-8 text-primary-foreground transition-all duration-300 active:scale-95 lg:flex"
+        pulseColor="hsl(var(--primary))"
       >
         pošaljite upit
-      </RainbowButton>
+      </PulsatingButton>
 
       <Button
         variant={"ghost"}
