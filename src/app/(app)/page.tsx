@@ -4,7 +4,7 @@ import Icon from "@/components/Icon";
 import GallerySlider from "@/components/SliderGallery";
 import ReviewSlider from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
-import { RainbowButton } from "@/components/ui/rainbow-button";
+import PulsatingButton from "@/components/ui/pulsating-button";
 import { cn } from "@/utils/cn";
 
 export default async function HomePage() {
@@ -13,7 +13,7 @@ export default async function HomePage() {
       <Section
         badge="spreman vam pomoći"
         title="Vaš partner za uređenje okućnice"
-        className="relative !pt-28 lg:!pt-44"
+        className="relative !pt-44"
         hero
       >
         {/* Hero section video */}
@@ -23,7 +23,7 @@ export default async function HomePage() {
           muted
           loop
           playsInline
-          className="pointer-events-none absolute left-0 top-0 -z-10 h-full w-screen object-cover object-bottom brightness-50"
+          className="pointer-events-none absolute inset-0 -z-10 h-full w-screen object-cover object-bottom brightness-50"
           aria-label="guy mowing the lawn"
         >
           <source src="/video_only.mp4" type="video/mp4" />
@@ -35,15 +35,18 @@ export default async function HomePage() {
           vaš dom i vrt.
         </p>
 
-        <RainbowButton className="bg-foreground/90 text-primary-foreground active:scale-95">
-          pošaljite upit
-        </RainbowButton>
+        <PulsatingButton
+          className="bg-primary px-8 text-primary-foreground active:scale-95"
+          pulseColor="hsl(var(--primary))"
+        >
+          Pošaljite upit
+        </PulsatingButton>
       </Section>
 
       <Section
         badge="usluge"
         title="Istražite našu sveobuhvatnu ponudu profesionalnih usluga."
-        className="md:items-center md:text-center"
+        className="text bg-[url('/texture-light.svg')] md:items-center md:text-center"
       >
         <div className="grid place-items-center gap-x-8 gap-y-12 self-stretch md:grid-cols-2 xl:grid-cols-3">
           <GridItem
@@ -83,7 +86,7 @@ export default async function HomePage() {
       <Section
         badge="radovi"
         title="Pogledajte naše prethodne projekte."
-        className="overflow-hidden bg-foreground text-background md:items-center md:text-center"
+        className="overflow-hidden bg-foreground bg-[url('/texture.svg')] text-background md:items-center md:text-center"
       >
         <GallerySlider />
       </Section>
@@ -91,7 +94,7 @@ export default async function HomePage() {
       <Section
         badge="recenzije"
         title="Poslušajte što imaju za reći o našim uslugama."
-        className="overflow-hidden bg-secondary text-secondary-foreground"
+        className="overflow-hidden bg-secondary bg-[url('/texture-light.svg')] text-secondary-foreground"
       >
         <ReviewSlider />
       </Section>
@@ -119,7 +122,7 @@ function Section({
         className,
       )}
     >
-      <Badge className="bg-primary/20 text-primary">{badge}</Badge>
+      <Badge className="bg-primary/30 text-primary">{badge}</Badge>
 
       {hero && (
         <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">
