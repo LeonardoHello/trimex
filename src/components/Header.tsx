@@ -107,10 +107,10 @@ export default function Header() {
       </nav>
 
       <PulsatingButton
-        className="hidden w-40 text-nowrap bg-primary px-8 text-primary-foreground transition-all duration-300 active:scale-95 lg:flex"
+        className="hidden w-40 text-nowrap bg-primary px-8 text-primary-foreground active:scale-95 lg:flex"
         pulseColor="hsl(var(--primary))"
       >
-        pošaljite upit
+        Pošaljite upit
       </PulsatingButton>
 
       <Button
