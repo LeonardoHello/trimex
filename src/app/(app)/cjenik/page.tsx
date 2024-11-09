@@ -9,10 +9,10 @@ export default function PricesPage() {
     <main className="flex flex-col bg-[url('/topography.svg')]">
       <Section className="to min-h-fit items-center bg-gradient-to-b from-transparent from-90% to-background !pt-48 text-center">
         <Badge className="-mb-2 bg-primary/30 text-primary">pricing</Badge>
-        <h1 className="max-w-[12ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+        <h1 className="max-w-[16ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
           Detaljan cjenik naših usluga
         </h1>
-        <p className="max-w-[48ch] text-lg leading-7 text-muted-foreground">
+        <p className="max-w-[48ch] leading-7 text-muted-foreground lg:text-lg">
           Istražite naše pristupačne cijene za sve usluge kojima ćemo vašu
           okućnicu učiniti lijepim i urednim.
         </p>
@@ -21,40 +21,6 @@ export default function PricesPage() {
       <Section className="bg-background lg:pt-12">
         <Pricing />
       </Section>
-      {/* <Section className="bg-background">
-        <div className="relative -top-40 flex grow flex-wrap items-center justify-center gap-8">
-          <Price
-            title="uređenje vrtova"
-            description="Everything you need to start selling."
-            price={60}
-            className="bg-foreground text-background"
-          />
-          <Price
-            title="košenje"
-            description="Everything you need to start selling."
-            price={60}
-            className="ring ring-primary/60"
-          />
-          <Price
-            title="čišćenje vanjskih površina"
-            description="Everything you need to start selling."
-            price={60}
-            className="ring ring-primary/60"
-          />
-          <Price
-            title="montaža namještaja"
-            description="Everything you need to start selling."
-            price={60}
-            className="ring ring-primary/60"
-          />
-          <Price
-            title="pressure-washing"
-            description="Everything you need to start selling."
-            price={60}
-            className="ring ring-primary/60"
-          />
-        </div>
-      </Section> */}
     </main>
   );
 }
