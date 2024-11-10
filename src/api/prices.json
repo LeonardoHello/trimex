@@ -59,5 +59,21 @@
     "monthlyPrice": 8000,
     "yearlyPrice": 80000,
     "isMostPopular": false
+  },
+  {
+    "id": "price_7",
+    "name": "Ultimate",
+    "description": "The ultimate plan with all features for industry leaders",
+    "features": [
+      "Bespoke AI development",
+      "White-glove support",
+      "Unlimited projects",
+      "Priority access to new AI tools",
+      "Custom integrations",
+      "Highest data security and compliance"
+    ],
+    "monthlyPrice": 8000,
+    "yearlyPrice": 80000,
+    "isMostPopular": false
   }
 ]
