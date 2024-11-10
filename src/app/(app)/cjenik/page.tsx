@@ -11,7 +11,7 @@ export default function PricesPage() {
         <h1 className="max-w-[16ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
           Detaljan cjenik naših usluga
         </h1>
-        <p className="max-w-[48ch] leading-7 text-muted-foreground lg:text-lg">
+        <p className="max-w-[48ch] leading-7 text-muted-foreground">
           Istražite naše pristupačne cijene za sve usluge kojima ćemo vašu
           okućnicu učiniti lijepim i urednim.
         </p>

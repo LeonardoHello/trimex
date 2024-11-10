@@ -6,6 +6,7 @@ import ReviewSlider from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { cn } from "@/utils/cn";
+import Link from "next/link";
 
 export default async function HomePage() {
   return (
@@ -35,12 +36,14 @@ export default async function HomePage() {
           vaš dom i vrt.
         </p>
 
-        <PulsatingButton
-          className="bg-primary px-8 text-primary-foreground active:scale-95"
-          pulseColor="hsl(var(--primary))"
-        >
-          Pošaljite upit
-        </PulsatingButton>
+        <Link href={"/kontakt"}>
+          <PulsatingButton
+            className="bg-primary px-8 text-primary-foreground active:scale-95"
+            pulseColor="hsl(var(--primary))"
+          >
+            Pošaljite upit
+          </PulsatingButton>
+        </Link>
       </Section>
 
       <Section

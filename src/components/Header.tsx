@@ -106,12 +106,14 @@ export default function Header() {
         </Button>
       </nav>
 
-      <PulsatingButton
-        className="hidden w-40 text-nowrap bg-primary px-8 text-primary-foreground active:scale-95 lg:flex"
-        pulseColor="hsl(var(--primary))"
-      >
-        Pošaljite upit
-      </PulsatingButton>
+      <Link href={`/kontakt`}>
+        <PulsatingButton
+          className="hidden w-40 text-nowrap bg-primary px-8 text-primary-foreground active:scale-95 lg:flex"
+          pulseColor="hsl(var(--primary))"
+        >
+          Pošaljite upit
+        </PulsatingButton>
+      </Link>
 
       <Button
         variant={"ghost"}

@@ -2,6 +2,7 @@ import { CheckIcon } from "@radix-ui/react-icons";
 
 import type prices from "@/api/prices.json";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const toHumanPrice = (price: number, decimals: number = 2) => {
   return Number(price / 100).toFixed(decimals);
@@ -22,9 +23,11 @@ export default function Price({ price }: { price: (typeof prices)[number] }) {
         </div>
       </div>
 
-      <Button className="group relative w-full transform-gpu gap-2 overflow-hidden text-lg font-medium tracking-tighter ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2">
-        <p>Pošaljite upit</p>
-      </Button>
+      <Link href={"/kontakt"}>
+        <Button className="group relative w-full transform-gpu gap-2 overflow-hidden text-lg font-medium tracking-tighter ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2">
+          <p>Pošaljite upit</p>
+        </Button>
+      </Link>
 
       <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-500/30 to-neutral-200/0" />
       {price.features && price.features.length > 0 && (
