@@ -16,8 +16,8 @@
     --secondary-foreground: 115 65% 28%; /* Green for contrast */
     --muted: 60 10% 90%; /* Soft, muted pastel green */
     --muted-foreground: 120 12% 35%; /* Dark muted green */
-    --accent: 24 75% 60%; /* Softer warm tone (orange) */
-    --accent-foreground: 0 0% 98%; /* White for contrast */
+    --accent: 30 60% 45%; /* Warm, muted orange-brown, like a fallen leaf */
+    --accent-foreground: 0 0% 98%; /* Light color for contrast */
     --destructive: 0 84.2% 60.2%; /* Red for destructive actions */
     --destructive-foreground: 0 0% 98%; /* Light color for text */
     --border: 120 12% 80%; /* Light gray-green */
@@ -43,14 +43,14 @@
     --card-foreground: 120 35% 90%; /* Light text */
     --popover: 120 20% 10%; /* Same as background */
     --popover-foreground: 120 35% 90%; /* Light text */
-    --primary: 115 60% 35%; /* Dark foliage green */
+    --primary: 115 60% 35%; /* Dark foliage green #2d8f24 */
     --primary-foreground: 60 5% 95%; /* Light cream */
     --secondary: 120 15% 25%; /* Muted olive green */
     --secondary-foreground: 120 35% 90%; /* Light text */
     --muted: 120 12% 20%; /* Dark muted green */
     --muted-foreground: 120 15% 60%; /* Softer green for contrast */
-    --accent: 30 60% 40%; /* Softer warm accent color */
-    --accent-foreground: 60 5% 95%; /* Light cream */
+    --accent: 30 55% 40%; /* Darker, muted autumn orange for dark mode #9e662e */
+    --accent-foreground: 0 0% 95%; /* Light contrast color */
     --destructive: 0 62.8% 30.6%; /* Dark red */
     --destructive-foreground: 0 85.7% 97.3%; /* Light color */
     --border: 120 15% 20%; /* Dark border */
