@@ -3,7 +3,7 @@ import Price from "@/components/Price";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
 
-export default function PricesPage() {
+export default function CjenikPage() {
   return (
     <main className="flex flex-col bg-[url('/topography.svg')]">
       <Section className="to min-h-fit items-center bg-gradient-to-b from-transparent from-90% to-background !pt-48 text-center">

@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { FocusCards } from "@/components/ui/focus-cards";
 import { cn } from "@/utils/cn";
-
 import photo1 from "public/photo-1.jpg";
 import photo2 from "public/photo-2.jpg";
 import photo3 from "public/photo-3.jpg";
@@ -36,7 +35,7 @@ const cards = [
   },
 ];
 
-export default function ProjectsPage() {
+export default function RadoviPage() {
   return (
     <main className="autumn flex flex-col bg-[url('/autumn-light.svg')]">
       <Section className="to min-h-fit items-center bg-gradient-to-b from-transparent from-90% to-background !pt-48 text-center">
@@ -51,7 +50,9 @@ export default function ProjectsPage() {
       </Section>
 
       <Section className="bg-background lg:pt-12">
-        <FocusCards cards={cards} />
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <FocusCards cards={cards} />
+        </div>
       </Section>
     </main>
   );
