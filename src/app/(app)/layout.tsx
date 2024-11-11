@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import Header from "@/components/Header";
+
+import { Footer } from "@/components/Footer";
+import Modal from "@/components/Modal";
 import "./global.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,8 +17,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -24,6 +29,8 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
+        {modal}
       </body>
     </html>
   );
