@@ -132,13 +132,13 @@ export default function Header() {
             <Menu className="size-6" />
           </Button>
         </SheetTrigger>
-        <SheetContent className="bg-[url('public/leaf-light.svg')]">
+        <SheetContent className="bg-[url('/leaf-light.svg')]">
           <SheetHeader>
             <SheetTitle>Navigation</SheetTitle>
-            {/* <SheetDescription className="">
+            <SheetDescription className="sr-only">
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
-            </SheetDescription> */}
+            </SheetDescription>
           </SheetHeader>
 
           <nav className="mt-6 flex flex-col gap-2">
