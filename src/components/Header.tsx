@@ -1,12 +1,19 @@
 "use client";
 
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/utils/cn";
-
-import { Menu } from "lucide-react";
 import Logo from "./Logo";
 import LogoIcon from "./LogoIcon";
 import { Button } from "./ui/button";
@@ -115,13 +122,81 @@ export default function Header() {
         </PulsatingButton>
       </Link>
 
-      <Button
-        variant={"ghost"}
-        size={"icon"}
-        className="hover:bg-primary/20 lg:hidden"
-      >
-        <Menu className="size-6" />
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button
+            variant={"ghost"}
+            size={"icon"}
+            className="hover:bg-accent/20 lg:hidden"
+          >
+            <Menu className="size-6" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent className="bg-[url('public/leaf-light.svg')]">
+          <SheetHeader>
+            <SheetTitle>Navigation</SheetTitle>
+            {/* <SheetDescription className="">
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </SheetDescription> */}
+          </SheetHeader>
+
+          <nav className="mt-6 flex flex-col gap-2">
+            <li className="list-none bg-background">
+              <Button
+                asChild
+                variant={"outline"}
+                className={cn("justify-start hover:bg-accent/20", {
+                  "bg-primary": pathname === "/",
+                })}
+              >
+                <Link href={"/"} className="w-full">
+                  Home
+                </Link>
+              </Button>
+            </li>
+            <li className="list-none bg-background">
+              <Button
+                asChild
+                variant={"outline"}
+                className={cn("justify-start hover:bg-accent/20", {
+                  "bg-primary": pathname === "/cjenik",
+                })}
+              >
+                <Link href={"/cjenik"} className="w-full">
+                  Cjenik
+                </Link>
+              </Button>
+            </li>
+            <li className="list-none bg-background">
+              <Button
+                asChild
+                variant={"outline"}
+                className={cn("justify-start hover:bg-accent/20", {
+                  "bg-primary": pathname === "/radovi",
+                })}
+              >
+                <Link href={"/radovi"} className="w-full">
+                  Radovi
+                </Link>
+              </Button>
+            </li>
+            <li className="list-none bg-background">
+              <Button
+                asChild
+                variant={"outline"}
+                className={cn("justify-start hover:bg-accent/20", {
+                  "bg-primary": pathname === "/kontakt",
+                })}
+              >
+                <Link href={"/kontakt"} className="w-full">
+                  Kontak
+                </Link>
+              </Button>
+            </li>
+          </nav>
+        </SheetContent>
+      </Sheet>
     </header>
   );
 }
