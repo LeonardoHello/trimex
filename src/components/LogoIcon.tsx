@@ -5,11 +5,11 @@ export default function LogoIcon(props: React.SVGProps<SVGSVGElement>) {
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
       width="313.000000pt"
-      height="300.000000pt"
-      viewBox="0 0 313.000000 326.000000"
+      height="240.000000pt"
+      viewBox="0 0 313.000000 110.000000"
       preserveAspectRatio="xMidYMid meet"
     >
-      <g transform="translate(0.000000,391.000000) scale(0.100000,-0.100000)">
+      <g transform="translate(0.000000,322.000000) scale(0.100000,-0.100000)">
         <path
           d="M1416 3819 c-254 -33 -489 -149 -694 -343 -115 -108 -227 -288 -283
 -452 -43 -128 -45 -124 57 -124 86 0 86 0 80 24 -7 30 15 49 77 66 40 11 65
