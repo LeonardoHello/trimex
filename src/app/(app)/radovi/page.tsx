@@ -62,7 +62,7 @@ const cards = [
 export default function RadoviPage() {
   return (
     <main className="flex flex-col bg-[url('/autumn-light.svg')]">
-      <Section className="items-center bg-gradient-to-b from-transparent from-60% to-background !pb-32 !pt-48 text-center">
+      <Section className="items-center bg-gradient-to-b from-transparent from-60% to-background !pb-32 !pt-44 text-center">
         <Badge className="-mb-2 bg-accent/30 text-accent">radovi</Badge>
         <h1 className="max-w-[18ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
           Naši dosadašnji radovi i uspješni projekti

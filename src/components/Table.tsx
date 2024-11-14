@@ -66,8 +66,8 @@ export function TableDemo() {
             <TableHead
               key={header}
               className={cn("capitalize", {
-                "w-[200px]": index === 0,
-                "w-[600px] min-w-[300px]": index === 1,
+                "w-[250px]": index === 0,
+                "w-[500px] min-w-[300px]": index === 1,
               })}
             >
               {header}
