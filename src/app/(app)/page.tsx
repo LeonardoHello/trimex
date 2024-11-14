@@ -49,7 +49,7 @@ export default async function HomePage() {
       <Section
         badge="usluge"
         title="Istražite našu sveobuhvatnu ponudu profesionalnih usluga."
-        className="text bg-[url('/texture-light.svg')] md:items-center md:text-center"
+        className="text bg-black bg-[url('/texture-light.svg')] md:items-center md:text-center"
       >
         <div className="grid place-items-center gap-x-8 gap-y-12 self-stretch md:grid-cols-2 xl:grid-cols-3">
           <GridItem
@@ -97,7 +97,7 @@ export default async function HomePage() {
       <Section
         badge="recenzije"
         title="Poslušajte što imaju za reći o našim uslugama."
-        className="overflow-hidden bg-secondary bg-[url('/texture-light.svg')] text-secondary-foreground"
+        className="overflow-hidden bg-[url('/texture-light.svg')]"
       >
         <ReviewSlider />
       </Section>

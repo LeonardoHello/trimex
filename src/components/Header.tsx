@@ -69,7 +69,7 @@ export default function Header() {
       <div className="relative flex w-40 self-stretch transition-all">
         <Logo
           className={cn(
-            "absolute left-0 top-0 size-36 self-start fill-foreground transition-all duration-300",
+            "absolute left-0 top-0 h-36 w-28 self-start fill-foreground transition-all duration-300",
             {
               "-top-20 opacity-0 blur": !isTop,
             },
@@ -78,7 +78,7 @@ export default function Header() {
 
         <LogoIcon
           className={cn(
-            "duraiton-300 absolute -left-20 top-0 size-16 self-center fill-foreground opacity-0 blur transition-all duration-300",
+            "duraiton-300 absolute -left-20 top-0 h-12 w-16 self-center fill-foreground opacity-0 blur transition-all duration-300",
             {
               "left-0 opacity-100 blur-none": !isTop,
             },
@@ -132,10 +132,11 @@ export default function Header() {
             <Menu className="size-6" />
           </Button>
         </SheetTrigger>
-        <SheetContent className="bg-[url('/leaf-light.svg')]">
+        <SheetContent>
           <SheetHeader>
             <SheetTitle>Navigation</SheetTitle>
             <SheetDescription className="sr-only">
+              {/* TODO */}
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
             </SheetDescription>

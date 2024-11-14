@@ -37,8 +37,8 @@ const cards = [
 
 export default function RadoviPage() {
   return (
-    <main className="autumn flex flex-col bg-[url('/autumn-light.svg')]">
-      <Section className="to min-h-fit items-center bg-gradient-to-b from-transparent from-90% to-background !pt-48 text-center">
+    <main className="flex flex-col bg-[url('/autumn-light.svg')]">
+      <Section className="items-center bg-gradient-to-b from-transparent from-60% to-background !pb-40 !pt-48 text-center">
         <Badge className="-mb-2 bg-accent/30 text-accent">radovi</Badge>
         <h1 className="max-w-[18ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
           Naši dosadašnji radovi i uspješni projekti
@@ -49,7 +49,7 @@ export default function RadoviPage() {
         </p>
       </Section>
 
-      <Section className="bg-background lg:pt-12">
+      <Section className="bg-background lg:pt-0">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <FocusCards cards={cards} />
         </div>
@@ -68,7 +68,7 @@ function Section({
   return (
     <section
       className={cn(
-        "md:p-18 flex min-h-screen flex-col justify-center gap-4 px-6 py-14 sm:px-8 lg:px-32 lg:py-20",
+        "md:p-18 flex flex-col justify-center gap-4 px-6 py-14 sm:px-8 lg:px-32 lg:py-20",
         className,
       )}
     >
