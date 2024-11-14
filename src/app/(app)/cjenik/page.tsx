@@ -6,7 +6,7 @@ export default function CjenikPage() {
   return (
     <main className="flex flex-col bg-[url('/topography.svg')]">
       <Section className="items-center bg-gradient-to-b from-transparent from-60% to-background !pb-32 !pt-44 text-center">
-        <Badge className="-mb-2 bg-primary/30 text-primary">pricing</Badge>
+        <Badge className="-mb-2 bg-primary/30 text-primary">cjenik</Badge>
         <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
           Detaljan cjenik naših usluga
         </h1>

@@ -49,7 +49,7 @@ export default async function HomePage() {
       <Section
         badge="usluge"
         title="Istražite našu sveobuhvatnu ponudu profesionalnih usluga."
-        className="text bg-black bg-[url('/texture-light.svg')] md:items-center md:text-center"
+        className="bg-black bg-[url('/texture-light.svg')] md:items-center md:text-center"
       >
         <div className="grid place-items-center gap-x-8 gap-y-12 self-stretch md:grid-cols-2 xl:grid-cols-3">
           <GridItem
