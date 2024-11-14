@@ -1,18 +1,18 @@
 "use client";
 
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { cn } from "@/utils/cn";
 import Logo from "./Logo";
 import LogoIcon from "./LogoIcon";
@@ -122,82 +122,84 @@ export default function Header() {
         </PulsatingButton>
       </Link>
 
-      <Sheet>
-        <SheetTrigger asChild>
+      <Drawer>
+        <DrawerTrigger asChild>
           <Button
             variant={"ghost"}
             size={"icon"}
-            className="hover:bg-accent/20 lg:hidden"
+            className="hover:bg-primary/20 lg:hidden"
           >
             <Menu className="size-6" />
           </Button>
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Navigation</SheetTitle>
-            <SheetDescription className="sr-only">
-              {/* TODO */}
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </SheetDescription>
-          </SheetHeader>
-
-          <nav className="mt-6 flex flex-col gap-2">
-            <li className="list-none bg-background">
-              <Button
-                asChild
-                variant={"outline"}
-                className={cn("justify-start hover:bg-accent/20", {
-                  "bg-primary": pathname === "/",
-                })}
-              >
-                <Link href={"/"} className="w-full">
-                  Home
-                </Link>
-              </Button>
-            </li>
-            <li className="list-none bg-background">
-              <Button
-                asChild
-                variant={"outline"}
-                className={cn("justify-start hover:bg-accent/20", {
-                  "bg-primary": pathname === "/cjenik",
-                })}
-              >
-                <Link href={"/cjenik"} className="w-full">
-                  Cjenik
-                </Link>
-              </Button>
-            </li>
-            <li className="list-none bg-background">
-              <Button
-                asChild
-                variant={"outline"}
-                className={cn("justify-start hover:bg-accent/20", {
-                  "bg-primary": pathname === "/radovi",
-                })}
-              >
-                <Link href={"/radovi"} className="w-full">
-                  Radovi
-                </Link>
-              </Button>
-            </li>
-            <li className="list-none bg-background">
-              <Button
-                asChild
-                variant={"outline"}
-                className={cn("justify-start hover:bg-accent/20", {
-                  "bg-primary": pathname === "/kontakt",
-                })}
-              >
-                <Link href={"/kontakt"} className="w-full">
-                  Kontak
-                </Link>
-              </Button>
-            </li>
-          </nav>
-        </SheetContent>
-      </Sheet>
+        </DrawerTrigger>
+        <DrawerContent className="mb-10">
+          <div className="mx-auto w-full max-w-sm">
+            <DrawerHeader>
+              <DrawerTitle>Navigacija</DrawerTitle>
+              <DrawerDescription className="sr-only">
+                Istražite naše profesionalne usluge vrtlarstva, od uređenja
+                vrtova do čišćenja vanjskih površina. Ovdje možete pronaći sve
+                što je potrebno za održavanje vašeg vanjskog prostora urednim i
+                lijepim.
+              </DrawerDescription>
+            </DrawerHeader>
+            <nav className="mt-6 flex flex-col gap-2">
+              <li className="list-none bg-background">
+                <Button
+                  asChild
+                  variant={"outline"}
+                  className={cn("hover:bg-primary/20", {
+                    "bg-primary": pathname === "/",
+                  })}
+                >
+                  <Link href={"/"} className="w-full">
+                    Home
+                  </Link>
+                </Button>
+              </li>
+              <li className="list-none bg-background">
+                <Button
+                  asChild
+                  variant={"outline"}
+                  className={cn("hover:bg-primary/20", {
+                    "bg-primary": pathname === "/cjenik",
+                  })}
+                >
+                  <Link href={"/cjenik"} className="w-full">
+                    Cjenik
+                  </Link>
+                </Button>
+              </li>
+              <li className="list-none bg-background">
+                <Button
+                  asChild
+                  variant={"outline"}
+                  className={cn("hover:bg-primary/20", {
+                    "bg-primary": pathname === "/radovi",
+                  })}
+                >
+                  <Link href={"/radovi"} className="w-full">
+                    Radovi
+                  </Link>
+                </Button>
+              </li>
+              <li className="list-none bg-background">
+                <Button
+                  asChild
+                  variant={"outline"}
+                  className={cn("hover:bg-primary/20", {
+                    "bg-primary": pathname === "/kontakt",
+                  })}
+                >
+                  <Link href={"/kontakt"} className="w-full">
+                    Kontak
+                  </Link>
+                </Button>
+              </li>
+            </nav>
+          </div>
+        </DrawerContent>
+      </Drawer>
     </header>
   );
 }
