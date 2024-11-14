@@ -51,9 +51,9 @@ const links: Link[] = [
 
 export function Footer() {
   return (
-    <footer className="flex flex-col gap-y-5 rounded-lg bg-black px-7 py-5 md:px-10">
+    <footer className="flex flex-col gap-y-5 bg-black px-7 py-5 md:px-10">
       <div className="flex items-center justify-between">
-        <LogoIcon className="size-16 fill-foreground" />
+        <LogoIcon className="h-16 w-auto fill-foreground" />
 
         <div className="flex gap-x-2">
           {icons.map((icon, index) => (
