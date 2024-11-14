@@ -59,7 +59,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-20 flex h-24 w-screen items-center justify-between gap-12 px-8 py-2 transition-all duration-300 lg:px-12",
+        "fixed top-0 z-40 flex h-24 w-screen items-center justify-between gap-12 px-8 py-2 transition-all duration-300 lg:px-12",
         {
           "h-16 bg-background/80 ring-1 ring-background backdrop-blur": !isTop,
           "-top-16": !displayHeader,
