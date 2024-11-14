@@ -72,7 +72,7 @@ export default async function HomePage() {
           />
           <GridItem
             iconName="wrench"
-            title="montaža namještaja"
+            title="montaža i demontaža namještaja"
             paragraph="Montaža namještaja može biti izazovna, ali mi smo ovdje da
               preuzmemo sav stres na sebe."
           />
@@ -82,6 +82,11 @@ export default async function HomePage() {
             paragraph="Naša usluga pranja pod pritiskom uklanja prljavštinu, mrlje,
               plijesan i druge nečistoće s tvrdih površina poput betona,
               pločnika i zidova."
+          />
+          <GridItem
+            iconName="axe"
+            title="rušenje manjih drveća, pomoćnih objekata"
+            paragraph="Naša usluga rušenja obuhvaća sigurno uklanjanje manjih stabala i pomoćnih objekata u vašem dvorištu ili vrtu s posebnom pažnjom prema okolini."
           />
         </div>
       </Section>
