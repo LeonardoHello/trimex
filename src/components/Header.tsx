@@ -132,7 +132,7 @@ export default function Header() {
             <Menu className="size-6" />
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="mb-10">
+        <DrawerContent className="p-6 pt-0">
           <div className="mx-auto w-full max-w-sm">
             <DrawerHeader>
               <DrawerTitle>Navigacija</DrawerTitle>
