@@ -43,7 +43,7 @@ type Link = {
 };
 
 const links: Link[] = [
-  { text: "Home", url: "/home" },
+  { text: "Home", url: "/" },
   { text: "Cjenik", url: "/cjenik" },
   { text: "Radovi", url: "/radovi" },
   { text: "Kontakt", url: "/kontakt" },
