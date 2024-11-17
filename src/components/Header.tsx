@@ -27,6 +27,7 @@ export default function Header() {
   const [displayHeader, setDisplayHeader] = useState(true);
 
   useEffect(() => {
+    // u slučaju refresh page-a
     if (window.scrollY === 0) {
       setIsTop(true);
     } else {
@@ -37,6 +38,7 @@ export default function Header() {
       const scrollPos = window.scrollY;
 
       if (scrollPos === 0) {
+        setDisplayHeader(true);
         setIsTop(true);
       } else if (prevScrollPos.current > scrollPos) {
         setDisplayHeader(true);
