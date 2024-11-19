@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function KontaktPage() {
   return (
     <main className="flex flex-col bg-[url('/wiggle.svg')]">
-      <Section className="items-center bg-gradient-to-b from-transparent from-60% to-background !pb-32 !pt-44 text-center">
+      <Section className="items-center bg-gradient-to-b from-transparent from-60% to-background !pb-32 !pt-20 text-center">
         <Badge className="-mb-2 bg-blue-500/30 text-blue-500">kontakt</Badge>
         <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
           Javite nam se

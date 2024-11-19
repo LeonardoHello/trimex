@@ -14,7 +14,7 @@ export default async function HomePage() {
       <Section
         badge="spreman vam pomoći"
         title="Vaš partner za uređenje okućnice"
-        className="relative !pt-44"
+        className="relative !pt-20"
         hero
       >
         {/* Hero section video */}

@@ -1,21 +1,14 @@
 "use client";
 
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/utils/cn";
-import Logo from "./Logo";
 import LogoIcon from "./LogoIcon";
+import LogoText from "./LogoText";
+import MenuSheet from "./MenuSheet";
 import { Button } from "./ui/button";
 import PulsatingButton from "./ui/pulsating-button";
 
@@ -38,14 +31,14 @@ export default function Header() {
       const scrollPos = window.scrollY;
 
       if (scrollPos === 0) {
-        setDisplayHeader(true);
         setIsTop(true);
-      } else if (prevScrollPos.current > scrollPos) {
         setDisplayHeader(true);
+      } else if (prevScrollPos.current > scrollPos) {
         setIsTop(false);
+        setDisplayHeader(true);
       } else {
-        setDisplayHeader(false);
         setIsTop(false);
+        setDisplayHeader(false);
       }
 
       prevScrollPos.current = window.scrollY;
@@ -61,32 +54,20 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-40 flex h-24 w-screen items-center justify-between gap-12 px-8 py-2 transition-all duration-300 lg:px-12",
+        "fixed top-0 z-40 flex h-14 w-screen items-center justify-between gap-3 px-6 py-2 transition-all duration-300 lg:h-16 lg:px-12",
         {
-          "h-16 bg-background/80 ring-1 ring-background backdrop-blur": !isTop,
-          "-top-16": !displayHeader,
+          "bg-background/80 ring-1 ring-border/80 backdrop-blur": !isTop,
+          "pointer-events-none -top-14 lg:-top-16": !displayHeader,
         },
       )}
     >
-      <div className="relative flex w-40 self-stretch transition-all">
-        <Logo
-          className={cn(
-            "absolute left-0 top-0 h-36 w-28 self-start fill-foreground transition-all duration-300",
-            {
-              "-top-20 opacity-0 blur": !isTop,
-            },
-          )}
-        />
-
-        <LogoIcon
-          className={cn(
-            "duraiton-300 absolute -left-20 top-0 h-12 w-16 self-center fill-foreground opacity-0 blur transition-all duration-300",
-            {
-              "left-0 opacity-100 blur-none": !isTop,
-            },
-          )}
-        />
-      </div>
+      <Link
+        href={"/"}
+        className="flex items-center justify-start gap-0.5 self-stretch fill-foreground"
+      >
+        <LogoIcon className="h-full w-auto transition-all duration-300" />
+        <LogoText className="h-2/3 w-auto transition-all duration-300" />
+      </Link>
 
       <nav className="hidden items-center lg:flex">
         <Button
@@ -124,84 +105,15 @@ export default function Header() {
         </PulsatingButton>
       </Link>
 
-      <Drawer>
-        <DrawerTrigger asChild>
-          <Button
-            variant={"ghost"}
-            size={"icon"}
-            className="hover:bg-primary/20 lg:hidden"
-          >
-            <Menu className="size-6" />
-          </Button>
-        </DrawerTrigger>
-        <DrawerContent className="p-6 pt-0">
-          <div className="mx-auto w-full max-w-sm">
-            <DrawerHeader>
-              <DrawerTitle>Navigacija</DrawerTitle>
-              <DrawerDescription className="sr-only">
-                Istražite naše profesionalne usluge vrtlarstva, od uređenja
-                vrtova do čišćenja vanjskih površina. Ovdje možete pronaći sve
-                što je potrebno za održavanje vašeg vanjskog prostora urednim i
-                lijepim.
-              </DrawerDescription>
-            </DrawerHeader>
-            <nav className="mt-6 flex flex-col gap-2">
-              <li className="list-none bg-background">
-                <Button
-                  asChild
-                  variant={"outline"}
-                  className={cn("hover:bg-primary/20", {
-                    "bg-primary": pathname === "/",
-                  })}
-                >
-                  <Link href={"/"} className="w-full">
-                    Home
-                  </Link>
-                </Button>
-              </li>
-              <li className="list-none bg-background">
-                <Button
-                  asChild
-                  variant={"outline"}
-                  className={cn("hover:bg-primary/20", {
-                    "bg-primary": pathname === "/cjenik",
-                  })}
-                >
-                  <Link href={"/cjenik"} className="w-full">
-                    Cjenik
-                  </Link>
-                </Button>
-              </li>
-              <li className="list-none bg-background">
-                <Button
-                  asChild
-                  variant={"outline"}
-                  className={cn("hover:bg-primary/20", {
-                    "bg-primary": pathname === "/radovi",
-                  })}
-                >
-                  <Link href={"/radovi"} className="w-full">
-                    Radovi
-                  </Link>
-                </Button>
-              </li>
-              <li className="list-none bg-background">
-                <Button
-                  asChild
-                  variant={"outline"}
-                  className={cn("hover:bg-primary/20", {
-                    "bg-primary": pathname === "/kontakt",
-                  })}
-                >
-                  <Link href={"/kontakt"} className="w-full">
-                    Kontak
-                  </Link>
-                </Button>
-              </li>
-            </nav>
-          </div>
-        </DrawerContent>
-      </Drawer>
+      <MenuSheet pathname={pathname}>
+        <Button
+          variant={"ghost"}
+          size={"icon"}
+          className="hover:bg-primary/20 lg:hidden"
+        >
+          <Menu className="size-6" />
+        </Button>
+      </MenuSheet>
     </header>
   );
 }
