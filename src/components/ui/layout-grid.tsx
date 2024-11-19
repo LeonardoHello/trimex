@@ -38,39 +38,39 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   };
 
   return (
-    <div className="relative grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
       {cards.map((card, i) => (
-        <div key={i} className={cn("h-32 md:h-48", card.className)}>
-          <motion.div
-            // @ts-expect-error
-            onClick={() => handleClick(card)}
-            className={cn(
-              card.className,
-              "relative h-full w-full cursor-pointer overflow-hidden rounded-xl",
-              selected?.id === card.id
-                ? "fixed inset-0 z-50 m-auto flex h-1/2 w-5/6 cursor-default flex-col flex-wrap items-center justify-center rounded-lg sm:w-2/3 lg:w-1/2"
-                : lastSelected?.id === card.id
-                  ? "z-10"
-                  : "",
-            )}
-            layoutId={`card-${card.id}`}
+        <div key={i} className={cn(card.className, "h-32 md:h-48")}>
+          <div
+            onClick={handleOutsideClick}
+            className={cn("z-50 size-full transition-colors duration-300", {
+              "fixed inset-0 place-content-center overflow-y-scroll bg-background/60 px-4 py-20":
+                selected?.id === card.id,
+            })}
           >
-            {selected?.id === card.id && <SelectedCard selected={selected} />}
-            <ImageComponent card={card} />
-          </motion.div>
+            <motion.div
+              // @ts-expect-error
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClick(card);
+              }}
+              className={cn(
+                card.className,
+                "relative size-full cursor-pointer overflow-hidden rounded-xl",
+                selected?.id === card.id
+                  ? "mx-auto flex h-96 max-w-4xl cursor-default flex-col flex-wrap items-center justify-center rounded-lg md:h-[450px]"
+                  : lastSelected?.id === card.id
+                    ? "z-10"
+                    : "",
+              )}
+              layoutId={`card-${card.id}`}
+            >
+              {selected?.id === card.id && <SelectedCard selected={selected} />}
+              <ImageComponent card={card} />
+            </motion.div>
+          </div>
         </div>
       ))}
-      <motion.div
-        // @ts-expect-error
-        onClick={handleOutsideClick}
-        className={cn(
-          "fixed inset-0 z-40 h-screen w-screen bg-background opacity-0",
-          selected?.id ? "pointer-events-auto" : "pointer-events-none",
-        )}
-        animate={{
-          opacity: selected?.id ? 0.8 : 0,
-        }}
-      />
     </div>
   );
 };
@@ -102,7 +102,7 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
           opacity: 0,
         }}
         animate={{
-          opacity: 0.6,
+          opacity: 0.5,
         }}
         // @ts-expect-error
         className="absolute inset-0 z-10 h-full w-full bg-black opacity-60"
@@ -129,13 +129,8 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
         className="relative z-[70] px-8 pb-4"
       >
         <div>
-          <p className="text-xl font-bold text-white md:text-4xl">
-            {selected?.title}
-          </p>
-          <p className="text-base font-normal text-white"></p>
-          <p className="my-4 max-w-lg text-base font-normal text-neutral-200">
-            {selected?.description}
-          </p>
+          <p className="text-2xl font-bold md:text-4xl">{selected?.title}</p>
+          <p className="my-4 max-w-lg">{selected?.description}</p>
         </div>
       </motion.div>
     </div>
