@@ -130,7 +130,9 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
       >
         <div>
           <p className="text-2xl font-bold md:text-4xl">{selected?.title}</p>
-          <p className="my-4 max-w-lg">{selected?.description}</p>
+          <p className="my-4 max-w-lg text-foreground/80">
+            {selected?.description}
+          </p>
         </div>
       </motion.div>
     </div>
