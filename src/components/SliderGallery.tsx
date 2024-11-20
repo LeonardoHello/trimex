@@ -1,10 +1,11 @@
 import Image from "next/image";
 
-import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import pic4 from "public/imageFour.jpg";
 import pic1 from "public/imageOne.jpg";
 import pic3 from "public/imageThree.jpg";
 import pic2 from "public/imageTwo.jpg";
+
+import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Slider from "./Slider";
 
 export default function SliderGallery() {

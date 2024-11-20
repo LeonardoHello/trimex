@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
 import Icon from "@/components/Icon";
@@ -6,7 +8,6 @@ import ReviewSlider from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { cn } from "@/utils/cn";
-import Link from "next/link";
 
 export default async function HomePage() {
   return (

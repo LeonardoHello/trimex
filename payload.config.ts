@@ -9,8 +9,8 @@ import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
-import { Users } from "@/collections/Users";
 import { Media } from "@/collections/Media";
+import { Users } from "@/collections/Users";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

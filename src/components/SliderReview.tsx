@@ -1,6 +1,5 @@
-import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
-
 import reviews from "@/api/reviews.json";
+import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Icon from "./Icon";
 import Slider from "./Slider";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";

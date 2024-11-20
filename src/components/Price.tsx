@@ -1,8 +1,9 @@
+import Link from "next/link";
+
 import { CheckIcon } from "@radix-ui/react-icons";
 
 import type prices from "@/api/prices.json";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export const toHumanPrice = (price: number, decimals: number = 2) => {
   return Number(price / 100).toFixed(decimals);

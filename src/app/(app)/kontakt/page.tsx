@@ -1,8 +1,10 @@
+import Link from "next/link";
+
+import dynamicIconImports from "lucide-react/dynamicIconImports";
+
 import Icon from "@/components/Icon";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
-import dynamicIconImports from "lucide-react/dynamicIconImports";
-import Link from "next/link";
 
 export default function KontaktPage() {
   return (

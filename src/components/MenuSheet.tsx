@@ -1,5 +1,8 @@
-import { Axe, Gem, House, Phone } from "lucide-react";
 import React from "react";
+
+import Link from "next/link";
+
+import { Axe, Gem, House, Phone } from "lucide-react";
 
 import {
   Sheet,
@@ -10,7 +13,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/utils/cn";
-import Link from "next/link";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
 

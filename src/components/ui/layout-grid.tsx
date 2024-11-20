@@ -1,11 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
-import { cn } from "@/utils/cn";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
+
+import { motion } from "framer-motion";
+
+import { cn } from "@/utils/cn";
 
 type Card = {
   id: number;

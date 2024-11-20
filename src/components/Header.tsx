@@ -1,9 +1,11 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+
+import { Menu } from "lucide-react";
 
 import { cn } from "@/utils/cn";
 import LogoIcon from "./LogoIcon";

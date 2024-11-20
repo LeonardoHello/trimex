@@ -1,8 +1,9 @@
 "use client";
 
-import { Carousel } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import classNames from "embla-carousel-class-names";
+
+import { Carousel } from "@/components/ui/carousel";
 
 export default function Slider({ children }: { children: React.ReactNode }) {
   return (

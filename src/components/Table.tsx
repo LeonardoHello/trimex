@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   Table,
   TableBody,
@@ -8,7 +10,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/utils/cn";
-import Link from "next/link";
 import { Button } from "./ui/button";
 
 const usluge = [
