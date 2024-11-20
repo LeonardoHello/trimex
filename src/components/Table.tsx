@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
-import PulsatingButton from "./ui/pulsating-button";
+import { Button } from "./ui/button";
 
 const usluge = [
   "Uređenje vrtova",
@@ -89,22 +89,15 @@ export function TableDemo() {
             <TableCell align="right">
               {service.dostupnost && (
                 <Link href={"/kontakt"}>
-                  <PulsatingButton
-                    className="whitespace-nowrap bg-primary px-8 text-primary-foreground active:scale-95"
-                    pulseColor="hsl(var(--primary))"
-                    duration="5s"
-                  >
+                  <Button className="whitespace-nowrap px-8 active:scale-95">
                     Pošaljite upit
-                  </PulsatingButton>
+                  </Button>
                 </Link>
               )}
               {!service.dostupnost && (
-                <PulsatingButton
-                  className="whitespace-nowrap bg-muted px-8 text-muted-foreground active:scale-95"
-                  duration="0s"
-                >
+                <Button className="whitespace-nowrap bg-muted px-8 text-muted-foreground active:scale-95">
                   Pošaljite upit
-                </PulsatingButton>
+                </Button>
               )}
             </TableCell>
           </TableRow>
