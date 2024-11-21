@@ -45,7 +45,7 @@ export default function MenuSheet({
               variant={"ghost"}
               size={"lg"}
               className={cn(
-                "grow justify-start gap-4 self-center px-4 hover:bg-transparent hover:text-muted-foreground",
+                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
                 {
                   "bg-primary/30 text-foreground hover:bg-primary/30":
                     pathname === "/",
@@ -63,7 +63,7 @@ export default function MenuSheet({
               variant={"ghost"}
               size={"lg"}
               className={cn(
-                "grow justify-start gap-4 self-center px-4 hover:bg-transparent hover:text-muted-foreground",
+                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
                 {
                   "bg-primary/30 text-foreground hover:bg-primary/30":
                     pathname === "/cjenik",
@@ -81,7 +81,7 @@ export default function MenuSheet({
               variant={"ghost"}
               size={"lg"}
               className={cn(
-                "grow justify-start gap-4 self-center px-4 hover:bg-transparent hover:text-muted-foreground",
+                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
                 {
                   "bg-primary/30 text-foreground hover:bg-primary/30":
                     pathname === "/radovi",
@@ -99,7 +99,7 @@ export default function MenuSheet({
               variant={"ghost"}
               size={"lg"}
               className={cn(
-                "grow justify-start gap-4 self-center px-4 hover:bg-transparent hover:text-muted-foreground",
+                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
                 {
                   "bg-primary/30 text-foreground hover:bg-primary/30":
                     pathname === "/kontakt",
