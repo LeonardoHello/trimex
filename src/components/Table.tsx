@@ -1,5 +1,10 @@
-import Link from "next/link";
+import { Info } from "lucide-react";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Table,
   TableBody,
@@ -9,97 +14,77 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { cn } from "@/utils/cn";
-import { Button } from "./ui/button";
-
-const usluge = [
-  "Uređenje vrtova",
-  "Košenje",
-  "Čišćenje vanjskih površina",
-  "Montaža i demontaža namještaja",
-  "Pressure-Washing",
-] as const;
 
 const services = [
   {
-    usluga: "Uređenje vrtova",
-    opis: "Naša usluga uređenja vrtova obuhvaća sve što je potrebno kako bi vaš vanjski prostor bio pravi raj.",
-    dostupnost: true,
-    cijena: 250,
+    service: "Basic Plan",
+    description:
+      "Essential features for small businesses, including customer management, basic reporting, and up to 1,000 transactions per month. Ideal for startups and sole proprietors looking to streamline their operations.",
+    price: "€99.99",
+    status: "Popular",
   },
   {
-    usluga: "Košenje",
-    opis: "Osigurajte da vaša travnata površina uvijek izgleda uredno i zdravo uz našu profesionalnu uslugu košenja.",
-    dostupnost: true,
-    cijena: 150,
+    service: "Pro Plan",
+    description:
+      "Advanced features for growing businesses, including API access, advanced analytics, priority support, and up to 10,000 transactions per month. Perfect for small to medium-sized businesses aiming to scale their operations efficiently.",
+    price: "€199.99",
+    status: "Recommended",
   },
   {
-    usluga: "Čišćenje vanjskih površina",
-    opis: "Nudimo temeljito čišćenje vanjskih površina kao što su terase, staze, prilazi i dvorišta.",
-    dostupnost: false,
-    cijena: 350,
+    service: "Enterprise Plan",
+    description:
+      "Custom solutions for large organizations, featuring unlimited transactions, dedicated account manager, custom integrations, and advanced security features. Tailored for corporations and large-scale operations requiring robust, scalable solutions.",
+    price: "€499.99",
+    status: "Enterprise",
   },
   {
-    usluga: "Montaža i demontaža namještaja",
-    opis: "Montaža namještaja može biti izazovna, ali mi smo ovdje da preuzmemo sav stres na sebe.",
-    dostupnost: true,
-    cijena: 450,
+    service: "Starter Pack",
+    description:
+      "Get started with our basic toolkit, including essential business tools, simple invoicing, and basic customer management. Designed for freelancers and new businesses just beginning their journey.",
+    price: "€49.99",
+    status: "New",
   },
   {
-    usluga: "Pressure-Washing",
-    opis: "Naša usluga pranja pod pritiskom uklanja prljavštinu, mrlje, plijesan i druge nečistoće s tvrdih površina poput betona, pločnika i zidova.",
-    dostupnost: false,
-    cijena: 550,
+    service: "Analytics Add-on",
+    description:
+      "In-depth data analysis and reporting add-on, providing advanced insights, custom dashboards, and predictive analytics. Enhance your decision-making process with powerful data visualization and trend analysis tools.",
+    price: "€149.99",
+    status: "Add-on",
   },
 ];
 
 export function TableDemo() {
-  const headers = Object.keys(services[0]).filter(
-    (header) => header !== "dostupnost",
-  );
-
   return (
     <Table>
-      <TableCaption>Detaljna lista naših usluga.</TableCaption>
+      <TableCaption>
+        Our comprehensive service offerings and pricing.
+      </TableCaption>
       <TableHeader>
-        <TableRow>
-          {headers.map((header, index) => (
-            <TableHead
-              key={header}
-              className={cn("capitalize", {
-                "w-[250px]": index === 0,
-                "w-[500px] min-w-[300px]": index === 1,
-              })}
-            >
-              {header}
-            </TableHead>
-          ))}
-          <TableHead className="sr-only">Call to action</TableHead>
+        <TableRow className="hover:bg-inherit">
+          <TableHead>Service</TableHead>
+          <TableHead className="hidden md:table-cell">Description</TableHead>
+          <TableHead className="text-right">Price</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {services.map((service) => (
-          <TableRow
-            key={service.usluga}
-            aria-disabled={!service.dostupnost}
-            className={cn({ "opacity-40": !service.dostupnost })}
-          >
-            <TableCell className="font-medium">{service.usluga}</TableCell>
-            <TableCell>{service.opis}</TableCell>
-            <TableCell>€{service.cijena}</TableCell>
-            <TableCell align="right">
-              {service.dostupnost && (
-                <Link href={"/kontakt"}>
-                  <Button className="whitespace-nowrap px-8 active:scale-95">
-                    Pošaljite upit
-                  </Button>
-                </Link>
-              )}
-              {!service.dostupnost && (
-                <Button className="whitespace-nowrap bg-muted px-8 text-muted-foreground active:scale-95">
-                  Pošaljite upit
-                </Button>
-              )}
+          <TableRow key={service.service}>
+            <TableCell className="font-medium text-foreground">
+              {service.service}
+            </TableCell>
+            <TableCell className="hidden md:table-cell">
+              <p className="max-w-prose">{service.description}</p>
+            </TableCell>
+            <TableCell className="text-right">{service.price}</TableCell>
+            <TableCell className="w-[50px] md:hidden">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Info />
+                </PopoverTrigger>
+                <PopoverContent>
+                  <p className="max-w-prose">{service.description}</p>
+                </PopoverContent>
+              </Popover>
             </TableCell>
           </TableRow>
         ))}
