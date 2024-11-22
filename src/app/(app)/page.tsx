@@ -14,9 +14,7 @@ export default async function HomePage() {
     <main className="flex grow flex-col">
       <Section
         badge="spreman vam pomoći"
-        title="Vaš partner za uređenje okućnice"
-        className="relative !pt-20"
-        hero
+        className="relative !pt-20 text-background"
       >
         {/* Hero section video */}
         <video
@@ -31,6 +29,10 @@ export default async function HomePage() {
           <source src="/video_only.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+
+        <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">
+          Vaš partner za uređenje okućnice
+        </h1>
 
         <p className="max-w-[50ch] leading-7">
           Od košnje trave do montaže namještaja, pružam profesionalne usluge za
@@ -49,9 +51,11 @@ export default async function HomePage() {
 
       <Section
         badge="usluge"
-        title="Istražite našu sveobuhvatnu ponudu profesionalnih usluga."
-        className="bg-black bg-[url('/texture-light.svg')] md:items-center md:text-center"
+        className="bg-[url('/texture-light.svg')] md:items-center md:text-center"
       >
+        <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
+          Istražite našu sveobuhvatnu ponudu profesionalnih usluga.
+        </h2>
         <div className="grid place-items-center gap-x-8 gap-y-12 self-stretch md:grid-cols-2 xl:grid-cols-3">
           <GridItem
             iconName="sprout"
@@ -94,17 +98,21 @@ export default async function HomePage() {
 
       <Section
         badge="radovi"
-        title="Pogledajte naše prethodne projekte."
         className="overflow-hidden bg-foreground bg-[url('/texture.svg')] text-background md:items-center md:text-center"
       >
+        <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
+          Pogledajte naše prethodne projekte.
+        </h2>
         <GallerySlider />
       </Section>
 
       <Section
         badge="recenzije"
-        title="Poslušajte što imaju za reći o našim uslugama."
         className="overflow-hidden bg-[url('/texture-light.svg')]"
       >
+        <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
+          Poslušajte što imaju za reći o našim uslugama.
+        </h2>
         <ReviewSlider />
       </Section>
     </main>
@@ -114,14 +122,12 @@ export default async function HomePage() {
 function Section({
   children,
   badge,
-  title,
-  hero,
+
   className,
 }: {
   children: React.ReactNode;
   badge: string;
-  title: string;
-  hero?: boolean;
+
   className?: string;
 }) {
   return (
@@ -132,18 +138,6 @@ function Section({
       )}
     >
       <Badge className="bg-primary/30 text-primary">{badge}</Badge>
-
-      {hero && (
-        <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">
-          {title}
-        </h1>
-      )}
-
-      {!hero && (
-        <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
-          {title}
-        </h2>
-      )}
 
       {children}
     </section>

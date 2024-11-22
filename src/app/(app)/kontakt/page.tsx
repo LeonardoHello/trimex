@@ -3,16 +3,17 @@ import Link from "next/link";
 import dynamicIconImports from "lucide-react/dynamicIconImports";
 
 import Icon from "@/components/Icon";
+import { ProfileForm } from "@/components/ProfileForm";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
 
 export default function KontaktPage() {
   return (
     <main className="flex flex-col bg-[url('/wiggle.svg')]">
-      <Section className="items-center bg-gradient-to-b from-transparent from-60% to-background !pb-32 !pt-20 text-center">
-        <Badge className="-mb-2 bg-blue-500/30 text-blue-500">kontakt</Badge>
+      <Section className="min-h-[75vh] items-center bg-gradient-to-b from-transparent from-60% to-background !py-20 text-center">
+        <Badge className="-mb-2 bg-primary/30 text-primary">kontakt</Badge>
         <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-          Javite nam se
+          Naše kontakt informacije
         </h1>
         <p className="max-w-[50ch] leading-7 text-muted-foreground">
           Za sva pitanja i upite oko usluga možete nas kontaktirati na navedeni
@@ -20,37 +21,37 @@ export default function KontaktPage() {
         </p>
       </Section>
 
-      <Section className="bg-background !pt-0 md:items-center md:text-center">
-        <div className="flex flex-wrap items-start justify-center gap-x-8 gap-y-12 self-stretch">
-          <GridItem
-            iconName="mail"
-            title="Emailajte nas:"
-            paragraph="Pošaljite nam e-poštu za općenite upite, uključujući mogućnosti marketinga i partnerstva."
-          >
+      <Section className="bg-background !pt-0">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-12 self-stretch">
+          <GridItem iconName="mail" title="Emailajte nas:">
             <Link
               href={"mailto:studiorevive.os@gmail.com"}
-              className="font-semibold text-blue-500 hover:underline"
+              className="font-medium text-primary hover:underline"
             >
               studiorevive.os@gmail.com
             </Link>
           </GridItem>
-          <GridItem
-            iconName="phone"
-            title="Nazovite nas:"
-            paragraph="Nazovite nas da razgovaramo s članom našeg tima. Uvijek nam je drago pomoći."
-          >
-            <p className="font-semibold text-blue-500">+(385) 91 954 1432</p>
+          <GridItem iconName="phone" title="Nazovite nas:">
+            <p className="font-medium text-primary">+(385) 91 954 1432</p>
           </GridItem>
-          <GridItem
-            iconName="map-pin"
-            title="Adresa:"
-            paragraph="Posjetite nas na našoj adresi za sve informacije o našim uslugama ili se jednostavno javite za konzultacije uživo."
-          >
-            <p className="font-semibold text-blue-500">
+          <GridItem iconName="map-pin" title="Adresa:">
+            <p className="font-medium text-primary">
               Ilirska 25, Osijek, Hrvatska
             </p>
           </GridItem>
         </div>
+      </Section>
+
+      <Section
+        id="upit"
+        className="min-h-screen items-center bg-background text-center"
+      >
+        <Badge className="bg-primary/30 text-primary">upit</Badge>
+        <h2 className="mb-12 max-w-[20ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
+          Pošaljite nam email za općenite upite
+        </h2>
+
+        <ProfileForm />
       </Section>
     </main>
   );
@@ -59,14 +60,13 @@ export default function KontaktPage() {
 function Section({
   children,
   className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+  ...props
+}: React.ComponentProps<"section">) {
   return (
     <section
+      {...props}
       className={cn(
-        "md:p-18 flex flex-col justify-center gap-4 px-6 py-14 sm:px-8 lg:px-32 lg:py-20",
+        "flex flex-col justify-center gap-4 px-6 py-16 sm:px-8 md:p-16 lg:px-32 lg:py-20",
         className,
       )}
     >
@@ -80,24 +80,21 @@ type IconNames = keyof typeof dynamicIconImports;
 function GridItem({
   children,
   title,
-  paragraph,
   iconName,
 }: {
   children: React.ReactNode;
   title: string;
-  paragraph: string;
   iconName: IconNames;
 }) {
   return (
-    <div className="flex grow flex-col items-center gap-3 text-center">
-      <Icon
-        name={iconName}
-        className="size-14 rounded-md bg-card p-4 md:size-16"
-      />
-      <h3 className="scroll-m-20 text-xl font-semibold capitalize tracking-tight">
-        {title}
-      </h3>
-      <p className="max-w-[40ch] text-sm font-light leading-7">{paragraph}</p>
+    <div className="flex w-[250px] grow flex-col items-center justify-center gap-3 text-center">
+      <div className="rounded-full bg-primary/10 p-8">
+        <Icon
+          name={iconName}
+          className="size-8 stroke-[1.4] text-foreground md:size-10"
+        />
+      </div>
+      <h3 className="scroll-m-20 font-bold tracking-tight">{title}</h3>
       {children}
     </div>
   );
