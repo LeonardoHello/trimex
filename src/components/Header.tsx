@@ -6,19 +6,21 @@ import { usePathname } from "next/navigation";
 
 import { Menu } from "lucide-react";
 
+import useHydration from "@/hooks/useHydration";
 import { cn } from "@/utils/cn";
-import LogoIcon from "./LogoIcon";
-import LogoText from "./LogoText";
+import LogoHorizontal from "./LogoHorizontal";
 import MenuSheet from "./MenuSheet";
 import { Button } from "./ui/button";
 import PulsatingButton from "./ui/pulsating-button";
 
 export default function Header() {
-  const pathname = usePathname();
-
-  const prevScrollPos = useRef(0);
   const [isTop, setIsTop] = useState(true);
   const [displayHeader, setDisplayHeader] = useState(true);
+  const prevScrollPos = useRef(0);
+
+  const pathname = usePathname();
+
+  const hydrated = useHydration();
 
   useEffect(() => {
     // u slučaju refresh page-a
@@ -62,17 +64,14 @@ export default function Header() {
         },
       )}
     >
-      <Link
-        href={"/"}
-        className={cn(
-          "flex items-center justify-start gap-0.5 self-stretch fill-foreground",
-          {
-            "fill-background": pathname === "/" && isTop,
-          },
+      <Link href={"/"} className="flex self-stretch">
+        {hydrated && (
+          <LogoHorizontal
+            className={cn("h-full w-auto fill-foreground", {
+              "fill-background": pathname === "/" && isTop,
+            })}
+          />
         )}
-      >
-        <LogoIcon className="h-full w-auto fill-inherit transition-all duration-300" />
-        <LogoText className="h-2/3 w-auto fill-inherit transition-all duration-300" />
       </Link>
 
       <nav className="hidden items-center lg:flex">
@@ -129,7 +128,11 @@ export default function Header() {
           size={"icon"}
           className="hover:bg-primary/20 lg:hidden"
         >
-          <Menu className="size-6" />
+          <Menu
+            className={cn("size-6", {
+              "text-background": pathname === "/" && isTop,
+            })}
+          />
         </Button>
       </MenuSheet>
     </header>

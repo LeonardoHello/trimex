@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import LogoIcon from "./LogoIcon";
+import LogoHorizontal from "./LogoHorizontal";
 
 interface Icon {
   icon: React.JSX.Element;
@@ -52,9 +52,9 @@ const links: Link[] = [
 
 export function Footer() {
   return (
-    <footer className="flex flex-col gap-y-5 bg-foreground px-7 py-5 text-background md:px-10">
+    <footer className="flex flex-col gap-y-5 bg-black px-7 py-5 text-background md:px-10">
       <div className="flex items-center justify-between">
-        <LogoIcon className="h-16 w-auto fill-background" />
+        <LogoHorizontal className="h-12 w-auto fill-background" />
 
         <div className="flex gap-x-2">
           {icons.map((icon, index) => (
