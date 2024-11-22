@@ -39,7 +39,7 @@ export default async function HomePage() {
           vaš dom i vrt.
         </p>
 
-        <Link href={"/kontakt"}>
+        <Link href={"/kontakt#upit"}>
           <PulsatingButton
             className="bg-primary px-8 text-primary-foreground active:scale-95"
             pulseColor="hsl(var(--primary))"

@@ -87,7 +87,7 @@ function GridItem({
   iconName: IconNames;
 }) {
   return (
-    <div className="flex w-[250px] grow flex-col items-center justify-center gap-3 text-center">
+    <div className="flex w-[300px] flex-col items-center justify-center gap-3 text-center">
       <div className="rounded-full bg-primary/10 p-8">
         <Icon
           name={iconName}

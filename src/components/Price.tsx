@@ -24,7 +24,7 @@ export default function Price({ price }: { price: (typeof prices)[number] }) {
         </div>
       </div>
 
-      <Link href={"/kontakt"}>
+      <Link href={"/kontakt#upit"}>
         <Button className="group relative w-full transform-gpu gap-2 overflow-hidden text-lg font-medium tracking-tighter ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2">
           <p>Pošaljite upit</p>
         </Button>
