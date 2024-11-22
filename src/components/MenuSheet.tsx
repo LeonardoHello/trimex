@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import { Axe, Gem, House, Phone } from "lucide-react";
+import { Axe, House, Phone, Tag } from "lucide-react";
 
 import {
   Sheet,
@@ -71,7 +71,7 @@ export default function MenuSheet({
               )}
             >
               <Link href={"/cjenik"}>
-                <Gem /> Cjenik
+                <Tag /> Cjenik
               </Link>
             </Button>
           </li>

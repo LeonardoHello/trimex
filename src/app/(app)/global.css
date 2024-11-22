@@ -74,7 +74,7 @@
     @apply border-border;
   }
   body {
-    @apply dark bg-background text-foreground;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -83,11 +83,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary/80;
+  @apply rounded-sm bg-foreground;
 }
 
 .carousel-in-view {

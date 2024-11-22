@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
@@ -40,13 +39,13 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 text-background md:grid-cols-3">
       {cards.map((card, i) => (
         <div key={i} className={cn(card.className, "h-32 md:h-48")}>
           <div
             onClick={handleOutsideClick}
             className={cn("z-50 size-full transition-colors duration-300", {
-              "fixed inset-0 place-content-center overflow-y-scroll bg-background/60 px-4 py-20":
+              "fixed inset-0 place-content-center overflow-y-scroll bg-black/60 px-4 py-20":
                 selected?.id === card.id,
             })}
           >
@@ -104,7 +103,7 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
           opacity: 0,
         }}
         animate={{
-          opacity: 0.5,
+          opacity: 0.4,
         }}
         // @ts-expect-error
         className="absolute inset-0 z-10 h-full w-full bg-black opacity-60"
@@ -132,7 +131,7 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
       >
         <div>
           <p className="text-2xl font-bold md:text-4xl">{selected?.title}</p>
-          <p className="my-4 max-w-lg text-foreground/80">
+          <p className="my-4 max-w-lg text-background/80">
             {selected?.description}
           </p>
         </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -59,46 +58,63 @@ export default function Header() {
         "fixed top-0 z-40 flex h-14 w-screen items-center justify-between gap-3 px-6 py-2 transition-all duration-300 lg:h-16 lg:px-12",
         {
           "bg-background/80 ring-1 ring-border/80 backdrop-blur": !isTop,
-          "pointer-events-none -top-14 lg:-top-16": !displayHeader,
+          "pointer-events-none -top-16 lg:-top-20": !displayHeader,
         },
       )}
     >
       <Link
         href={"/"}
-        className="flex items-center justify-start gap-0.5 self-stretch fill-foreground"
+        className={cn(
+          "flex items-center justify-start gap-0.5 self-stretch fill-foreground",
+          {
+            "fill-background": pathname === "/" && isTop,
+          },
+        )}
       >
-        <LogoIcon className="h-full w-auto transition-all duration-300" />
-        <LogoText className="h-2/3 w-auto transition-all duration-300" />
+        <LogoIcon className="h-full w-auto fill-inherit transition-all duration-300" />
+        <LogoText className="h-2/3 w-auto fill-inherit transition-all duration-300" />
       </Link>
 
       <nav className="hidden items-center lg:flex">
         <Button
           variant={pathname === "/" ? "linkHover1" : "linkHover2"}
+          className={cn({
+            "text-background after:bg-background": pathname === "/" && isTop,
+          })}
           asChild
         >
           <Link href={"/"}>Home</Link>
         </Button>
         <Button
           variant={pathname === "/cjenik" ? "linkHover1" : "linkHover2"}
+          className={cn({
+            "text-background after:bg-background": pathname === "/" && isTop,
+          })}
           asChild
         >
           <Link href={"/cjenik"}>Cjenik</Link>
         </Button>
         <Button
           variant={pathname === "/radovi" ? "linkHover1" : "linkHover2"}
+          className={cn({
+            "text-background after:bg-background": pathname === "/" && isTop,
+          })}
           asChild
         >
           <Link href={"/radovi"}>Radovi</Link>
         </Button>
         <Button
           variant={pathname === "/kontakt" ? "linkHover1" : "linkHover2"}
+          className={cn({
+            "text-background after:bg-background": pathname === "/" && isTop,
+          })}
           asChild
         >
           <Link href={"/kontakt"}>Kontakt</Link>
         </Button>
       </nav>
 
-      <Link href={`/kontakt`}>
+      <Link href={"/kontakt#upit"}>
         <PulsatingButton
           className="hidden w-40 text-nowrap bg-primary px-8 text-primary-foreground active:scale-95 lg:flex"
           pulseColor="hsl(var(--primary))"
