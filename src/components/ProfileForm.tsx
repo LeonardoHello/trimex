@@ -59,7 +59,7 @@ export function ProfileForm() {
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="col-span-2 sm:col-span-1">
                 <FormLabel className="capitalize">
                   ime <span className="text-destructive">*</span>
                 </FormLabel>
@@ -75,7 +75,7 @@ export function ProfileForm() {
             control={form.control}
             name="phone"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="col-span-2 sm:col-span-1">
                 <FormLabel className="capitalize">mobitel</FormLabel>
                 <FormControl>
                   <Input {...field} />

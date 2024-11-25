@@ -1,6 +1,11 @@
+import Link from "next/link";
+
 export default function LogoHorizontal(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <div className="flex items-center justify-start gap-0.5 self-stretch">
+    <Link
+      href={"/"}
+      className="flex items-center justify-start gap-0.5 self-stretch"
+    >
       <svg
         {...props}
         version="1.0"
@@ -210,6 +215,6 @@ c31 0 73 -4 93 -9 l37 -8 5 71 c3 39 4 72 2 74 -1 1 -14 -2 -29 -8 -15 -5 -59
           />
         </g>
       </svg>
-    </div>
+    </Link>
   );
 }

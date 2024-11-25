@@ -1,5 +1,4 @@
 import React from "react";
-
 import Link from "next/link";
 
 import { Axe, House, Phone, Tag } from "lucide-react";
@@ -15,6 +14,7 @@ import {
 import { cn } from "@/utils/cn";
 import Logo from "./Logo";
 import { Button } from "./ui/button";
+import { RainbowButton } from "./ui/rainbow-button";
 
 export default function MenuSheet({
   children,
@@ -112,6 +112,12 @@ export default function MenuSheet({
             </Button>
           </li>
         </nav>
+
+        <Link href={"/kontakt#upit"} className="mt-auto">
+          <RainbowButton className="w-full bg-foreground text-background active:scale-95">
+            Pošaljite upit
+          </RainbowButton>
+        </Link>
       </SheetContent>
     </Sheet>
   );

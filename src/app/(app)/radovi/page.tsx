@@ -62,19 +62,21 @@ const cards = [
 
 export default function RadoviPage() {
   return (
-    <main className="flex flex-col bg-[url('/autumn-light.svg')]">
-      <Section className="min-h-[75vh] items-center bg-gradient-to-b from-transparent from-60% to-background !py-20 text-center">
-        <Badge className="-mb-2 bg-accent/30 text-accent">radovi</Badge>
-        <h1 className="max-w-[18ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-          Naši dosadašnji radovi i uspješni projekti
-        </h1>
-        <p className="max-w-[48ch] leading-7 text-muted-foreground">
-          Pogledajte naše dosadašnje projekte i uvjerite se kako možemo
-          transformirati vaš vanjski prostor u lijepo održavanu oazu.
-        </p>
-      </Section>
+    <main className="flex flex-col">
+      <div className="bg-[url('/autumn.svg')]">
+        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-secondary/5 from-60% to-background !py-20 text-center lg:min-h-[75vh]">
+          <Badge className="-mb-2 bg-secondary/30 text-secondary">radovi</Badge>
+          <h1 className="max-w-[18ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+            Naši dosadašnji radovi i uspješni projekti
+          </h1>
+          <p className="max-w-[48ch] leading-7 text-secondary">
+            Pogledajte naše dosadašnje projekte i uvjerite se kako možemo
+            transformirati vaš vanjski prostor u lijepo održavanu oazu.
+          </p>
+        </Section>
+      </div>
 
-      <Section className="bg-background !pt-0">
+      <Section className="!pt-0">
         <LayoutGrid cards={cards} />
       </Section>
     </main>

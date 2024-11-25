@@ -11,7 +11,7 @@ export default function SliderReview() {
         {reviews.map((review, index) => (
           <CarouselItem
             key={index}
-            className="relative mx-4 flex flex-col items-center justify-between gap-8 rounded-lg bg-card p-6 text-card-foreground opacity-35 transition-opacity duration-500 sm:px-12 sm:py-8 lg:basis-4/5 lg:gap-10 xl:basis-2/3"
+            className="relative mx-4 flex flex-col items-center justify-between gap-8 rounded-lg bg-white p-6 text-black opacity-35 transition-opacity duration-500 sm:px-12 sm:py-8 lg:basis-4/5 lg:gap-10 xl:basis-2/3"
           >
             <Icon
               name="quote"

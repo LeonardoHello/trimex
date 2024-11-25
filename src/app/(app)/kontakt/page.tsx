@@ -9,20 +9,22 @@ import { cn } from "@/utils/cn";
 
 export default function KontaktPage() {
   return (
-    <main className="flex flex-col bg-[url('/wiggle.svg')]">
-      <Section className="min-h-[75vh] items-center bg-gradient-to-b from-transparent from-60% to-background !py-20 text-center">
-        <Badge className="-mb-2 bg-primary/30 text-primary">kontakt</Badge>
-        <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-          Naše kontakt informacije
-        </h1>
-        <p className="max-w-[50ch] leading-7 text-muted-foreground">
-          Za sva pitanja i upite oko usluga možete nas kontaktirati na navedeni
-          broj, odgovaramo odmah!
-        </p>
-      </Section>
+    <main className="flex flex-col">
+      <div className="bg-[url('/bank-note.svg')]">
+        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-accent/5 from-60% to-background !py-20 text-center lg:min-h-[75vh]">
+          <Badge className="-mb-2 bg-accent/30 text-accent">kontakt</Badge>
+          <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+            Naše kontakt informacije
+          </h1>
+          <p className="max-w-[50ch] leading-7 text-accent">
+            Za sva pitanja i upite oko usluga možete nas kontaktirati na
+            navedeni broj, odgovaramo odmah!
+          </p>
+        </Section>
+      </div>
 
-      <Section className="bg-background !pt-0">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-12 self-stretch">
+      <Section className="!pt-0">
+        <div className="flex flex-col items-center justify-center gap-x-8 gap-y-12 self-stretch md:flex-row">
           <GridItem iconName="mail" title="Emailajte nas:">
             <Link
               href={"mailto:studiorevive.os@gmail.com"}
@@ -46,7 +48,6 @@ export default function KontaktPage() {
         id="upit"
         className="min-h-screen items-center bg-background text-center"
       >
-        <Badge className="bg-primary/30 text-primary">upit</Badge>
         <h2 className="mb-12 max-w-[20ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           Pošaljite nam email za općenite upite
         </h2>
@@ -87,8 +88,8 @@ function GridItem({
   iconName: IconNames;
 }) {
   return (
-    <div className="flex w-[300px] flex-col items-center justify-center gap-3 text-center">
-      <div className="rounded-full bg-primary/10 p-8">
+    <div className="flex w-[250px] flex-col items-center justify-center gap-3 text-center">
+      <div className="rounded-full bg-accent/10 p-8">
         <Icon
           name={iconName}
           className="size-8 stroke-[1.4] text-foreground md:size-10"

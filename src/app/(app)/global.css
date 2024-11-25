@@ -4,68 +4,63 @@
 
 @layer base {
   :root {
-    --background: 120 24% 96%; /* Light mint green for a natural background */
-    --foreground: 120 20% 20%; /* Dark green text */
-    --card: 120 27% 98%; /* Very light green for card backgrounds */
-    --card-foreground: 120 25% 15%; /* Darker green text on cards */
-    --popover: 0 0% 100%; /* White for popover backgrounds */
-    --popover-foreground: 120 20% 20%; /* Dark green text */
-    --primary: 115 65% 28%; /* Deep foliage green */
-    --primary-foreground: 60 5% 90%; /* Light cream for contrast */
-    --secondary: 34 28% 74%; /* Earthy beige */
-    --secondary-foreground: 115 65% 28%; /* Green for contrast */
-    --muted: 60 10% 90%; /* Soft, muted pastel green */
-    --muted-foreground: 120 12% 35%; /* Dark muted green */
-    --accent: 30 60% 45%; /* Warm, muted orange-brown, like a fallen leaf */
-    --accent-foreground: 0 0% 98%; /* Light color for contrast */
-    --destructive: 0 84.2% 60.2%; /* Red for destructive actions */
-    --destructive-foreground: 0 0% 98%; /* Light color for text */
-    --border: 120 12% 80%; /* Light gray-green */
-    --input: 120 12% 80%; /* Same as border for consistency */
-    --ring: 115 65% 28%; /* Green to match primary */
+    --background: 120 20% 95%; /* Soft off-white with a greenish tint */
+    --foreground: 240 10% 10%; /* Dark earthy tone */
+    --card: 120 20% 95%; /* Same as background for simplicity */
+    --card-foreground: 240 10% 10%;
+    --popover: 120 20% 95%;
+    --popover-foreground: 240 10% 10%;
+    --primary: 142 55% 42%; /* Leaf green */
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 30 35% 70%; /* Warm light wood */
+    --secondary-foreground: 30 15% 25%;
+    --muted: 240 4.8% 85%; /* Light neutral */
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 197 70% 45%; /* Water blue */
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 70% 50%; /* Strong warning red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 15% 80%; /* Muted green for subtle borders */
+    --input: 120 15% 80%; /* Matches border for consistency */
+    --ring: 142 55% 42%; /* Matches primary */
     --radius: 0.75rem;
-    --chart-1: 123 39% 49%; /* Mid-tone green for charts */
-    --chart-2: 58 51% 36%; /* Darker forest green */
-    --chart-3: 43 65% 60%; /* Softer yellow-green */
-    --chart-4: 30 75% 60%; /* Softer golden color */
-    --chart-5: 15 70% 50%; /* Softer orange */
-    --color-1: 0 100% 63%;
-    --color-2: 270 100% 63%;
-    --color-3: 210 100% 63%;
-    --color-4: 195 100% 63%;
-    --color-5: 90 100% 63%;
+    --chart-1: 142 60% 40%; /* Deep leaf green */
+    --chart-2: 30 40% 60%; /* Wood brown */
+    --chart-3: 197 50% 50%; /* Soft water blue */
+    --chart-4: 43 70% 60%; /* Lime green for accents */
+    --chart-5: 27 80% 70%; /* Fresh grass green */
+    --color-1: 142 55% 42%;
+    --color-2: 142 55% 42%;
+    --color-3: 142 55% 42%;
+    --color-4: 30 35% 70%;
+    --color-5: 197 70% 45%;
   }
 
   .dark {
-    --background: 120 20% 10%; /* Dark forest green */
-    --foreground: 120 35% 90%; /* Light greenish-gray */
-    --card: 120 22% 14%; /* Darker green for cards */
-    --card-foreground: 120 35% 90%; /* Light text */
-    --popover: 120 20% 10%; /* Same as background */
-    --popover-foreground: 120 35% 90%; /* Light text */
-    --primary: 115 60% 35%; /* Dark foliage green #2d8f24 */
-    --primary-foreground: 60 5% 95%; /* Light cream */
-    --secondary: 120 15% 25%; /* Muted olive green */
-    --secondary-foreground: 120 35% 90%; /* Light text */
-    --muted: 120 12% 20%; /* Dark muted green */
-    --muted-foreground: 120 15% 60%; /* Softer green for contrast */
-    --accent: 30 55% 40%; /* Darker, muted autumn orange for dark mode #9e662e */
-    --accent-foreground: 0 0% 95%; /* Light contrast color */
-    --destructive: 0 62.8% 30.6%; /* Dark red */
-    --destructive-foreground: 0 85.7% 97.3%; /* Light color */
-    --border: 120 15% 20%; /* Dark border */
-    --input: 120 15% 20%; /* Same as border */
-    --ring: 115 55% 30%; /* Dark foliage green */
-    --chart-1: 120 38% 50%; /* Mid-tone green */
-    --chart-2: 58 51% 45%; /* Darker forest green */
-    --chart-3: 43 65% 60%; /* Softer yellow-green */
-    --chart-4: 30 75% 50%; /* Softer golden color */
-    --chart-5: 15 65% 45%; /* Softer orange */
-    --color-1: 0 100% 63%;
-    --color-2: 270 100% 63%;
-    --color-3: 210 100% 63%;
-    --color-4: 195 100% 63%;
-    --color-5: 90 100% 63%;
+    --background: 120 25% 10%; /* Deep green-black */
+    --foreground: 0 0% 90%; /* Soft off-white */
+    --card: 120 25% 10%;
+    --card-foreground: 0 0% 90%;
+    --popover: 120 25% 10%;
+    --popover-foreground: 0 0% 90%;
+    --primary: 142 60% 30%; /* Dark leaf green */
+    --primary-foreground: 144.9 70% 10%;
+    --secondary: 30 25% 40%; /* Dark wood */
+    --secondary-foreground: 0 0% 90%;
+    --muted: 120 15% 20%; /* Muted green */
+    --muted-foreground: 120 30% 60%; /* Softer green */
+    --accent: 197 50% 35%; /* Deeper water blue */
+    --accent-foreground: 0 0% 90%;
+    --destructive: 0 50% 35%; /* Deep warning red */
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 120 15% 25%; /* Muted border for dark mode */
+    --input: 120 15% 25%;
+    --ring: 142 60% 30%; /* Matches primary */
+    --chart-1: 142 70% 25%; /* Forest green */
+    --chart-2: 30 30% 35%; /* Dark wood brown */
+    --chart-3: 197 40% 25%; /* Deep water blue */
+    --chart-4: 43 65% 40%; /* Lime green for accents */
+    --chart-5: 27 70% 50%; /* Fresh grass green */
   }
 }
 
@@ -74,16 +69,14 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
-}
 
-::-webkit-scrollbar {
-  @apply h-0 w-1.5 bg-background;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply rounded-sm bg-foreground;
+  @media (prefers-color-scheme: dark) {
+    body {
+      @apply dark;
+    }
+  }
 }
 
 .carousel-in-view {

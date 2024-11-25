@@ -12,10 +12,7 @@ import { cn } from "@/utils/cn";
 export default async function HomePage() {
   return (
     <main className="flex grow flex-col">
-      <Section
-        badge="spreman vam pomoći"
-        className="relative !pt-20 text-background"
-      >
+      <Section badge="dobrodošli" className="relative !pt-20 text-white">
         {/* Hero section video */}
         <video
           preload="none"
@@ -23,7 +20,7 @@ export default async function HomePage() {
           muted
           loop
           playsInline
-          className="pointer-events-none absolute inset-0 -z-10 h-full w-screen object-cover object-bottom brightness-50"
+          className="pointer-events-none absolute inset-0 -z-10 h-full w-screen object-cover object-bottom brightness-[0.65]"
           aria-label="guy mowing the lawn"
         >
           <source src="/video_only.mp4" type="video/mp4" />
@@ -40,10 +37,7 @@ export default async function HomePage() {
         </p>
 
         <Link href={"/kontakt#upit"}>
-          <PulsatingButton
-            className="bg-primary px-8 text-primary-foreground active:scale-95"
-            pulseColor="hsl(var(--primary))"
-          >
+          <PulsatingButton className="px-8 active:scale-95">
             Pošaljite upit
           </PulsatingButton>
         </Link>
@@ -51,7 +45,7 @@ export default async function HomePage() {
 
       <Section
         badge="usluge"
-        className="bg-[url('/texture-light.svg')] md:items-center md:text-center"
+        className="min-h-[80vh] bg-[hsl(120_25%_10%)] bg-[url('/texture.svg')] text-white md:items-center md:text-center"
       >
         <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           Istražite našu sveobuhvatnu ponudu profesionalnih usluga.
@@ -98,7 +92,7 @@ export default async function HomePage() {
 
       <Section
         badge="radovi"
-        className="overflow-hidden bg-foreground bg-[url('/texture.svg')] text-background md:items-center md:text-center"
+        className="min-h-[80vh] overflow-hidden bg-white bg-[url('/texture.svg')] text-[hsl(120_25%_10%)] md:items-center md:text-center"
       >
         <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           Pogledajte naše prethodne projekte.
@@ -106,15 +100,17 @@ export default async function HomePage() {
         <GallerySlider />
       </Section>
 
-      <Section
-        badge="recenzije"
-        className="overflow-hidden bg-[url('/texture-light.svg')]"
-      >
-        <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
-          Poslušajte što imaju za reći o našim uslugama.
-        </h2>
-        <ReviewSlider />
-      </Section>
+      <div className="bg-white">
+        <Section
+          badge="recenzije"
+          className="min-h-[80vh] overflow-hidden bg-primary/40 bg-[url('/texture.svg')] text-white"
+        >
+          <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
+            Poslušajte što imaju za reći o našim uslugama.
+          </h2>
+          <ReviewSlider />
+        </Section>
+      </div>
     </main>
   );
 }
@@ -122,12 +118,10 @@ export default async function HomePage() {
 function Section({
   children,
   badge,
-
   className,
 }: {
   children: React.ReactNode;
   badge: string;
-
   className?: string;
 }) {
   return (
@@ -137,7 +131,9 @@ function Section({
         className,
       )}
     >
-      <Badge className="bg-primary/30 text-primary">{badge}</Badge>
+      <Badge className="bg-[hsl(142_55%_42%/0.3)] text-[hsl(142_55%_42%)]">
+        {badge}
+      </Badge>
 
       {children}
     </section>
@@ -156,8 +152,11 @@ function GridItem({
   iconName: IconNames;
 }) {
   return (
-    <div className="flex max-w-80 flex-col items-center gap-4 self-start text-center">
-      <Icon name={iconName} className="size-10 md:size-12" />
+    <div className="group flex max-w-80 flex-col items-center gap-4 self-start text-center">
+      <Icon
+        name={iconName}
+        className="size-10 transition-colors duration-300 group-hover:text-primary md:size-12"
+      />
 
       <h3 className="scroll-m-20 text-2xl font-semibold capitalize tracking-tight">
         {title}

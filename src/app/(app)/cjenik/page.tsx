@@ -4,19 +4,21 @@ import { cn } from "@/utils/cn";
 
 export default function CjenikPage() {
   return (
-    <main className="flex flex-col bg-[url('/topography.svg')]">
-      <Section className="min-h-[75vh] items-center bg-gradient-to-b from-transparent from-60% to-background !py-20 text-center">
-        <Badge className="-mb-2 bg-primary/30 text-primary">cjenik</Badge>
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-          Cjenik naših usluga
-        </h1>
-        <p className="max-w-[50ch] leading-7 text-muted-foreground">
-          Istražite naše pristupačne cijene za sve usluge kojima ćemo vašu
-          okućnicu učiniti lijepim i urednim.
-        </p>
-      </Section>
+    <main className="flex flex-col">
+      <div className="bg-[url('/leaf.svg')]">
+        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-primary/5 from-60% to-background !py-20 text-center lg:min-h-[75vh]">
+          <Badge className="-mb-2 bg-primary/30 text-primary">cjenik</Badge>
+          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+            Cjenik naših usluga
+          </h1>
+          <p className="max-w-[50ch] leading-7 text-primary">
+            Istražite naše pristupačne cijene za sve usluge kojima ćemo vašu
+            okućnicu učiniti lijepim i urednim.
+          </p>
+        </Section>
+      </div>
 
-      <Section className="bg-background !pt-0">
+      <Section className="!pt-0">
         <TableDemo />
       </Section>
     </main>
