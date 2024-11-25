@@ -39,7 +39,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4 text-background md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
       {cards.map((card, i) => (
         <div key={i} className={cn(card.className, "h-32 md:h-48")}>
           <div
@@ -130,10 +130,10 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
         className="relative z-[70] px-8 pb-4"
       >
         <div>
-          <p className="text-2xl font-bold md:text-4xl">{selected?.title}</p>
-          <p className="my-4 max-w-lg text-background/80">
-            {selected?.description}
+          <p className="text-2xl font-bold text-white md:text-4xl">
+            {selected?.title}
           </p>
+          <p className="my-4 max-w-lg text-white/80">{selected?.description}</p>
         </div>
       </motion.div>
     </div>
