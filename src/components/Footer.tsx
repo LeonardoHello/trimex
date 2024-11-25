@@ -27,7 +27,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="flex flex-col gap-y-5 bg-black px-7 py-5 text-white md:px-10">
+    <footer className="flex flex-col gap-y-5 bg-black px-7 py-5 md:px-10">
       <div className="flex items-center justify-between">
         <LogoHorizontal className="h-12 w-auto fill-white" />
 
@@ -42,7 +42,7 @@ export function Footer() {
           {links.map((link, index) => (
             <li
               key={index}
-              className="text-[15px]/normal font-medium transition-all duration-100 ease-linear hover:opacity-60"
+              className="text-[15px]/normal font-medium text-white transition-opacity ease-linear hover:opacity-60"
             >
               <Link href={link.url}>{link.text}</Link>
             </li>
@@ -60,7 +60,7 @@ export default function Icon({ name, url }: { name: Icon; url: string }) {
   return (
     <Link
       href={url}
-      className="flex h-5 w-5 items-center justify-center transition-all duration-100 ease-linear hover:opacity-60"
+      className="flex h-5 w-5 items-center justify-center transition-opacity ease-linear hover:opacity-60"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
