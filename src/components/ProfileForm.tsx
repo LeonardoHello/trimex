@@ -1,10 +1,14 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { isValidPhoneNumber } from "libphonenumber-js";
+import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
+import { create } from "@/app/action";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,31 +24,44 @@ import { Textarea } from "./ui/textarea";
 const formSchema = z.object({
   name: z.string().min(2, { message: "Molimo da upišete ime." }),
   email: z.string().email({ message: "Molimo da upišete ispravni email." }),
-  phone: z
-    .string()
-    .refine((value) => value === "" || isValidPhoneNumber(value, "HR"), {
-      message: "Molimo da upišete ispravni broj mobitela.",
-    }),
   message: z.string().min(2, { message: "Molimo da upišete poruku." }),
 });
 
+export type FormSchemaType = z.infer<typeof formSchema>;
+
 export function ProfileForm() {
+  const [isLoading, setIsLoading] = useState(false);
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
-      phone: "",
       message: "",
     },
+    disabled: isLoading,
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+
+    try {
+      await create(values);
+      toast.success("USPIJEH!", {
+        description:
+          "Zahvaljujemo na upitu, javiti ćemo vam se u što kraćem roku.",
+        duration: 6000,
+      });
+    } catch (error) {
+      toast.error("GREŠKA!", {
+        description: "Nešto je pošlo u krivu, molimo pokušajte kasnije ponovo.",
+        duration: 6000,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -59,7 +76,7 @@ export function ProfileForm() {
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem className="col-span-2 sm:col-span-1">
+              <FormItem className="col-span-2 lg:col-span-1">
                 <FormLabel className="capitalize">
                   ime <span className="text-destructive">*</span>
                 </FormLabel>
@@ -73,24 +90,9 @@ export function ProfileForm() {
 
           <FormField
             control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem className="col-span-2 sm:col-span-1">
-                <FormLabel className="capitalize">mobitel</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="col-span-2">
+              <FormItem className="col-span-2 lg:col-span-1">
                 <FormLabel className="capitalize">
                   email <span className="text-destructive">*</span>
                 </FormLabel>
@@ -118,8 +120,15 @@ export function ProfileForm() {
             )}
           />
         </div>
-        <Button size={"lg"} type="submit" className="mt-6">
-          Pošaljite upit
+
+        <Button
+          type="submit"
+          size={"lg"}
+          disabled={isLoading}
+          className="mt-6 text-white active:scale-95"
+        >
+          {isLoading && <Loader2 className="animate-spin" />}
+          {form.formState.isSubmitSuccessful ? "Poslano!" : "Pošaljite upit"}
         </Button>
       </form>
     </Form>

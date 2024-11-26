@@ -36,8 +36,8 @@ export default buildConfig({
   }),
   sharp,
   email: resendAdapter({
-    defaultFromAddress: "dev@payloadcms.com",
-    defaultFromName: "Payload CMS",
+    defaultFromAddress: "studiorevive.os@gmail.com",
+    defaultFromName: "Trimex",
     apiKey: process.env.RESEND_API_KEY || "",
   }),
   plugins: [
