@@ -5,8 +5,10 @@ import { Axe, House, Phone, Tag } from "lucide-react";
 
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -26,7 +28,7 @@ export default function MenuSheet({
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent className="flex flex-col gap-5 overflow-y-scroll bg-[url('/texture-light.svg')] px-3">
+      <SheetContent className="flex flex-col gap-5 overflow-y-scroll bg-[url('/texture.svg')] px-3">
         <SheetHeader className="sr-only">
           <SheetTitle>Navigacija</SheetTitle>
           <SheetDescription>
@@ -38,86 +40,101 @@ export default function MenuSheet({
 
         <Logo className="max-h-32 min-h-32 w-auto fill-foreground" />
 
-        <nav className="flex flex-col gap-1.5 self-stretch">
+        <nav className="flex flex-col gap-1 self-stretch">
           <li className="flex list-none">
-            <Button
-              asChild
-              variant={"ghost"}
-              size={"lg"}
-              className={cn(
-                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                {
-                  "bg-primary/30 text-foreground hover:bg-primary/30":
-                    pathname === "/",
-                },
-              )}
-            >
-              <Link href={"/"}>
-                <House /> Home
-              </Link>
-            </Button>
+            <SheetClose asChild>
+              <Button
+                asChild
+                variant={"ghost"}
+                size={"lg"}
+                className={cn(
+                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
+                  {
+                    "bg-primary/30 text-foreground hover:bg-primary/30":
+                      pathname === "/",
+                  },
+                )}
+              >
+                <Link href={"/"}>
+                  <House /> Home
+                </Link>
+              </Button>
+            </SheetClose>
           </li>
+
           <li className="flex list-none">
-            <Button
-              asChild
-              variant={"ghost"}
-              size={"lg"}
-              className={cn(
-                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                {
-                  "bg-primary/30 text-foreground hover:bg-primary/30":
-                    pathname === "/cjenik",
-                },
-              )}
-            >
-              <Link href={"/cjenik"}>
-                <Tag /> Cjenik
-              </Link>
-            </Button>
+            <SheetClose asChild>
+              <Button
+                asChild
+                variant={"ghost"}
+                size={"lg"}
+                className={cn(
+                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
+                  {
+                    "bg-primary/30 text-foreground hover:bg-primary/30":
+                      pathname === "/cjenik",
+                  },
+                )}
+              >
+                <Link href={"/cjenik"}>
+                  <Tag /> Cjenik
+                </Link>
+              </Button>
+            </SheetClose>
           </li>
+
           <li className="flex list-none">
-            <Button
-              asChild
-              variant={"ghost"}
-              size={"lg"}
-              className={cn(
-                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                {
-                  "bg-primary/30 text-foreground hover:bg-primary/30":
-                    pathname === "/radovi",
-                },
-              )}
-            >
-              <Link href={"/radovi"}>
-                <Axe /> Radovi
-              </Link>
-            </Button>
+            <SheetClose asChild>
+              <Button
+                asChild
+                variant={"ghost"}
+                size={"lg"}
+                className={cn(
+                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
+                  {
+                    "bg-primary/30 text-foreground hover:bg-primary/30":
+                      pathname === "/radovi",
+                  },
+                )}
+              >
+                <Link href={"/radovi"}>
+                  <Axe /> Radovi
+                </Link>
+              </Button>
+            </SheetClose>
           </li>
+
           <li className="flex list-none">
-            <Button
-              asChild
-              variant={"ghost"}
-              size={"lg"}
-              className={cn(
-                "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                {
-                  "bg-primary/30 text-foreground hover:bg-primary/30":
-                    pathname === "/kontakt",
-                },
-              )}
-            >
-              <Link href={"/kontakt"}>
-                <Phone /> Kontakt
-              </Link>
-            </Button>
+            <SheetClose asChild>
+              <Button
+                asChild
+                variant={"ghost"}
+                size={"lg"}
+                className={cn(
+                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
+                  {
+                    "bg-primary/30 text-foreground hover:bg-primary/30":
+                      pathname === "/kontakt",
+                  },
+                )}
+              >
+                <Link href={"/kontakt"}>
+                  <Phone /> Kontakt
+                </Link>
+              </Button>
+            </SheetClose>
           </li>
         </nav>
 
-        <Link href={"/kontakt#upit"} className="mt-auto">
-          <RainbowButton className="w-full bg-foreground text-background active:scale-95">
-            Pošaljite upit
-          </RainbowButton>
-        </Link>
+        <SheetFooter className="mt-auto">
+          <SheetClose asChild>
+            <Link href={"/kontakt#upit"} className="grow">
+              <RainbowButton className="w-full bg-foreground text-background active:scale-95">
+                Pošaljite upit
+              </RainbowButton>
+            </Link>
+          </SheetClose>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
