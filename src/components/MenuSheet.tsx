@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/utils/cn";
 import Logo from "./Logo";
+import { ModeToggle } from "./ModeToggle";
 import { Button } from "./ui/button";
 import { RainbowButton } from "./ui/rainbow-button";
 
@@ -126,7 +127,8 @@ export default function MenuSheet({
           </li>
         </nav>
 
-        <SheetFooter className="mt-auto">
+        <SheetFooter className="mt-auto flex-row items-center">
+          <ModeToggle />
           <SheetClose asChild>
             <Link href={"/kontakt#upit"} className="grow">
               <RainbowButton className="w-full bg-foreground text-background active:scale-95">

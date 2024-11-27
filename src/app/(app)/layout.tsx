@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./global.css";
@@ -21,14 +22,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} flex max-h-screen flex-col overflow-y-scroll`}
-      >
-        <Header />
-        {children}
-        <Footer />
-        <Toaster richColors />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} flex flex-col`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Footer />
+          <Toaster richColors />
+        </ThemeProvider>
       </body>
     </html>
   );

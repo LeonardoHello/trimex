@@ -9,7 +9,7 @@
     "<BUILTIN_MODULES>",
     "",
     "^react$",
-    "^next(.*)$",
+    "^(next|next/(.*))$",
     "",
     "<THIRD_PARTY_MODULES>",
     "",

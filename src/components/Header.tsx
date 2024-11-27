@@ -11,6 +11,7 @@ import useHydration from "@/hooks/useHydration";
 import { cn } from "@/utils/cn";
 import LogoHorizontal from "./LogoHorizontal";
 import MenuSheet from "./MenuSheet";
+import { ModeToggle } from "./ModeToggle";
 import { Button } from "./ui/button";
 import { RainbowButton } from "./ui/rainbow-button";
 
@@ -31,8 +32,6 @@ export default function Header() {
   const targetRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
-
-  const hydrated = useHydration();
 
   useEffect(() => {
     if (!targetRef.current) return;
@@ -65,13 +64,11 @@ export default function Header() {
             },
           )}
         >
-          {hydrated && (
-            <LogoHorizontal
-              className={cn("h-full w-auto fill-foreground", {
-                "lg:fill-[hsl(120_20%_95%)]": isHomePage,
-              })}
-            />
-          )}
+          <LogoHorizontal
+            className={cn("h-full w-auto fill-foreground", {
+              "lg:fill-[hsl(120_20%_95%)]": isHomePage,
+            })}
+          />
         </div>
 
         <nav className="hidden items-center overflow-hidden rounded-full bg-background/80 p-1 ring-1 ring-border/60 backdrop-blur lg:flex">
@@ -125,23 +122,29 @@ export default function Header() {
           </Link>
         </nav>
 
-        <Link
-          href={"/kontakt#upit"}
-          className={cn("relative top-0 transition-all duration-200", {
-            "pointer-events-none -top-[72px] blur": !isTop,
-          })}
+        <div
+          className={cn(
+            "relative top-0 hidden items-center gap-3 transition-all duration-200 lg:flex",
+            {
+              "pointer-events-none -top-[72px] blur": !isTop,
+            },
+          )}
         >
-          <RainbowButton
-            className={cn(
-              "hidden w-52 bg-foreground px-8 text-background active:scale-95 lg:flex",
-              {
-                "bg-[hsl(0_0%_90%)] text-[hsl(120_25%_10%)]": isHomePage,
-              },
-            )}
-          >
-            Pošaljite upit
-          </RainbowButton>
-        </Link>
+          <ModeToggle />
+
+          <Link href={"/kontakt#upit"}>
+            <RainbowButton
+              className={cn(
+                "w-52 bg-foreground px-8 text-background active:scale-95",
+                {
+                  "bg-[hsl(0_0%_90%)] text-[hsl(120_25%_10%)]": isHomePage,
+                },
+              )}
+            >
+              Pošaljite upit
+            </RainbowButton>
+          </Link>
+        </div>
 
         <MenuSheet pathname={pathname}>
           <Button
