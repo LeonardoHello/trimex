@@ -58,7 +58,7 @@ export default function Header() {
       <header className="fixed top-0 z-40 flex h-14 w-screen items-center justify-between gap-3 bg-background/80 px-6 py-2 ring-1 ring-border/80 backdrop-blur lg:h-16 lg:bg-transparent lg:px-12 lg:ring-0 lg:backdrop-blur-none">
         <div
           className={cn(
-            "flex w-52 self-stretch lg:relative lg:top-0 lg:transition-all lg:duration-200",
+            "flex self-stretch lg:relative lg:top-0 lg:w-64 lg:transition-all lg:duration-200",
             {
               "lg:pointer-events-none lg:-top-[72px] lg:blur": !isTop,
             },
@@ -124,7 +124,7 @@ export default function Header() {
 
         <div
           className={cn(
-            "relative top-0 hidden items-center gap-3 transition-all duration-200 lg:flex",
+            "relative top-0 hidden w-64 items-center gap-3 transition-all duration-200 lg:flex",
             {
               "pointer-events-none -top-[72px] blur": !isTop,
             },
@@ -132,10 +132,10 @@ export default function Header() {
         >
           <ModeToggle />
 
-          <Link href={"/kontakt#upit"}>
+          <Link href={"/kontakt#upit"} className="grow">
             <RainbowButton
               className={cn(
-                "w-52 bg-foreground px-8 text-background active:scale-95",
+                "w-full bg-foreground px-8 text-background active:scale-95",
                 {
                   "bg-[hsl(0_0%_90%)] text-[hsl(120_25%_10%)]": isHomePage,
                 },
