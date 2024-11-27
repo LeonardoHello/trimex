@@ -4,7 +4,7 @@ import { cn } from "@/utils/cn";
 
 export default function CjenikPage() {
   return (
-    <main className="flex flex-col">
+    <main>
       <div className="bg-[url('/leaf.svg')]">
         <Section className="min-h-[60vh] items-center bg-gradient-to-b from-primary/5 from-60% to-background !py-20 text-center lg:min-h-[75vh]">
           <Badge className="-mb-2 bg-primary/30 text-primary">cjenik</Badge>

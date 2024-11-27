@@ -62,7 +62,7 @@ const cards = [
 
 export default function RadoviPage() {
   return (
-    <main className="flex flex-col">
+    <main>
       <div className="bg-[url('/autumn.svg')]">
         <Section className="min-h-[60vh] items-center bg-gradient-to-b from-secondary/5 from-60% to-background !py-20 text-center lg:min-h-[75vh]">
           <Badge className="-mb-2 bg-secondary/30 text-secondary">radovi</Badge>

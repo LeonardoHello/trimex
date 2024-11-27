@@ -11,7 +11,7 @@ import { cn } from "@/utils/cn";
 
 export default async function HomePage() {
   return (
-    <main className="flex grow flex-col">
+    <main>
       <Section badge="dobrodošli" className="relative !pt-20 text-white">
         {/* Hero section video */}
         <video

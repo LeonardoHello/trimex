@@ -9,7 +9,7 @@ import { cn } from "@/utils/cn";
 
 export default function KontaktPage() {
   return (
-    <main className="flex flex-col">
+    <main>
       <div className="bg-[url('/bank-note.svg')]">
         <Section className="min-h-[60vh] items-center bg-gradient-to-b from-accent/5 from-60% to-background !py-20 text-center lg:min-h-[75vh]">
           <Badge className="-mb-2 bg-accent/30 text-accent">kontakt</Badge>
