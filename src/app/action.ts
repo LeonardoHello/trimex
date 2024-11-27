@@ -6,8 +6,8 @@ import { payload } from "@/utils/payload";
 export async function create(data: FormSchemaType) {
   return payload.sendEmail({
     from: `${data.email} <onboarding@resend.dev>`,
-    to: "studiorevive.os@gmail.com",
-    subject: `Upit - ${data.name}`,
+    to: "leonardo.yakub@gmail.com",
+    subject: "TRIMEX - UPIT",
     reply_to: data.email,
     text: data.message,
   });
