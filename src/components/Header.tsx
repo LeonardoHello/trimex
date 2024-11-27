@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 
-import useHydration from "@/hooks/useHydration";
 import { cn } from "@/utils/cn";
 import LogoHorizontal from "./LogoHorizontal";
 import MenuSheet from "./MenuSheet";
