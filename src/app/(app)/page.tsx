@@ -50,7 +50,7 @@ export default async function HomePage() {
         <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           Istražite našu sveobuhvatnu ponudu profesionalnih usluga.
         </h2>
-        <div className="grid place-items-center gap-x-8 gap-y-12 self-stretch md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid place-items-center gap-4 self-stretch md:grid-cols-2 xl:grid-cols-3">
           <GridItem
             iconName="sprout"
             title="uređenje vrtova"
@@ -152,7 +152,14 @@ function GridItem({
   iconName: IconNames;
 }) {
   return (
-    <div className="group flex max-w-80 flex-col items-center gap-4 self-start text-center">
+    <Link
+      href={{
+        pathname: "/cjenik",
+        query: { usluga: title.replaceAll(" ", "_") },
+        hash: "tablica",
+      }}
+      className="group flex flex-col items-center justify-start gap-4 self-stretch rounded-lg p-8 text-center ring-1 ring-background transition duration-300 hover:ring-ring/60"
+    >
       <Icon
         name={iconName}
         className="size-10 transition-colors duration-300 group-hover:text-primary md:size-12"
@@ -163,6 +170,6 @@ function GridItem({
       </h3>
 
       <p className="text-sm font-light leading-7">{paragraph}</p>
-    </div>
+    </Link>
   );
 }

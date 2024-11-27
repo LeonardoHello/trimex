@@ -11,7 +11,7 @@ export default function KontaktPage() {
   return (
     <main>
       <div className="bg-[url('/bank-note.svg')]">
-        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-accent/5 from-60% to-background !py-20 text-center lg:min-h-[75vh]">
+        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-accent/5 from-60% to-background !pb-0 !pt-20 text-center lg:min-h-[75vh]">
           <Badge className="-mb-2 bg-accent/30 text-accent">kontakt</Badge>
           <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Naše kontakt informacije
@@ -23,7 +23,7 @@ export default function KontaktPage() {
         </Section>
       </div>
 
-      <Section className="!pt-0">
+      <Section>
         <div className="flex flex-col items-center justify-center gap-x-8 gap-y-12 self-stretch md:flex-row">
           <GridItem iconName="mail" title="Emailajte nas:">
             <Link
