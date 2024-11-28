@@ -8,7 +8,7 @@ export default function CjenikPage() {
   return (
     <main>
       <div className="bg-[url('/leaf.svg')]">
-        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-primary/5 from-60% to-background !pb-0 !pt-20 text-center lg:min-h-[75vh]">
+        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-primary/5 from-60% to-background !pt-20 text-center lg:min-h-[75vh]">
           <Badge className="-mb-2 bg-primary/30 text-primary">cjenik</Badge>
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Cjenik naših usluga
@@ -20,7 +20,7 @@ export default function CjenikPage() {
         </Section>
       </div>
 
-      <Section id="tablica">
+      <Section id="tablica" className="!pt-0">
         <Suspense fallback={<p>Loading...</p>}>
           <PriceTable />
         </Suspense>

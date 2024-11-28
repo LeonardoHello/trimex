@@ -64,7 +64,7 @@ export default function RadoviPage() {
   return (
     <main>
       <div className="bg-[url('/autumn.svg')]">
-        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-secondary/5 from-60% to-background !pb-0 !pt-20 text-center lg:min-h-[75vh]">
+        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-secondary/5 from-60% to-background !pt-20 text-center lg:min-h-[75vh]">
           <Badge className="-mb-2 bg-secondary/30 text-secondary">radovi</Badge>
           <h1 className="max-w-[18ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Naši dosadašnji radovi i uspješni projekti
@@ -76,7 +76,7 @@ export default function RadoviPage() {
         </Section>
       </div>
 
-      <Section>
+      <Section className="!pt-0">
         <LayoutGrid cards={cards} />
       </Section>
     </main>

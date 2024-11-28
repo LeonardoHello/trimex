@@ -11,7 +11,7 @@ export default function KontaktPage() {
   return (
     <main>
       <div className="bg-[url('/bank-note.svg')]">
-        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-accent/5 from-60% to-background !pb-0 !pt-20 text-center lg:min-h-[75vh]">
+        <Section className="min-h-[60vh] items-center bg-gradient-to-b from-accent/5 from-60% to-background !pt-20 text-center lg:min-h-[75vh]">
           <Badge className="-mb-2 bg-accent/30 text-accent">kontakt</Badge>
           <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Naše kontakt informacije
@@ -23,7 +23,7 @@ export default function KontaktPage() {
         </Section>
       </div>
 
-      <Section>
+      <Section className="!pt-0">
         <div className="flex flex-col items-center justify-center gap-x-8 gap-y-12 self-stretch md:flex-row">
           <GridItem iconName="mail" title="Emailajte nas:">
             <Link
@@ -46,7 +46,7 @@ export default function KontaktPage() {
 
       <Section
         id="upit"
-        className="min-h-screen items-center bg-background text-center"
+        className="mt-14 min-h-screen items-center bg-background !pt-0 text-center md:mt-16 lg:mt-20"
       >
         <h2 className="mb-12 max-w-[20ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           Pošaljite nam email za općenite upite
@@ -67,7 +67,7 @@ function Section({
     <section
       {...props}
       className={cn(
-        "flex flex-col justify-center gap-4 px-6 py-16 sm:px-8 md:p-16 lg:px-32 lg:py-20",
+        "flex flex-col justify-center gap-4 px-6 py-14 sm:px-8 md:p-16 lg:px-32 lg:py-20",
         className,
       )}
     >

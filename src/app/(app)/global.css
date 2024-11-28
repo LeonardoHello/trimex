@@ -65,6 +65,9 @@
 }
 
 @layer base {
+  html {
+    @apply scroll-p-16 scroll-smooth;
+  }
   * {
     @apply border-border;
   }
