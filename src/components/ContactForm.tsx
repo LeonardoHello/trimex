@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
@@ -29,7 +29,7 @@ const formSchema = z.object({
 
 export type FormSchemaType = z.infer<typeof formSchema>;
 
-export function ProfileForm() {
+export function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   // 1. Define your form.

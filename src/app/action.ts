@@ -1,6 +1,6 @@
 "use server";
 
-import type { FormSchemaType } from "@/components/ProfileForm";
+import type { FormSchemaType } from "@/components/ContactForm";
 import { payload } from "@/utils/payload";
 
 export async function create(data: FormSchemaType) {

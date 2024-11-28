@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import dynamicIconImports from "lucide-react/dynamicIconImports";
 
+import { ContactForm } from "@/components/ContactForm";
 import Icon from "@/components/Icon";
-import { ProfileForm } from "@/components/ProfileForm";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
 
@@ -52,7 +52,7 @@ export default function KontaktPage() {
           Pošaljite nam email za općenite upite
         </h2>
 
-        <ProfileForm />
+        <ContactForm />
       </Section>
     </main>
   );
