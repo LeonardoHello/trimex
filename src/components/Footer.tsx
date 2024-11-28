@@ -1,19 +1,18 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
-
-import * as si from "simple-icons";
 
 import LogoHorizontal from "./LogoHorizontal";
 
-type Icon = Exclude<keyof typeof si, "default">;
+type Icon = { name: string; url: string };
 
-const icons: { name: Icon; url: string }[] = [
+const icons: Icon[] = [
   {
-    name: "siFacebook",
+    name: "facebook",
     url: "https://www.facebook.com/profile.php?id=61550282615915",
   },
   {
-    name: "siWhatsapp",
+    name: "whatsapp",
     url: "https://api.whatsapp.com/send?phone=919541432",
   },
 ];
@@ -56,21 +55,18 @@ export function Footer() {
   );
 }
 
-export default function Icon({ name, url }: { name: Icon; url: string }) {
+export default function Icon({ name, url }: Icon) {
   return (
     <Link
       href={url}
-      className="flex h-5 w-5 items-center justify-center transition-opacity ease-linear hover:opacity-60"
+      className="flex items-center justify-center rounded-full bg-white p-1 transition-opacity ease-linear hover:opacity-60"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        role="img"
-        className="fill-white"
-      >
-        <title>{si[name]["title"]}</title>
-        <path d={si[name]["path"]} />
-      </svg>
+      <Image
+        height="16"
+        width="16"
+        src={`https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${name}.svg`}
+        alt={`${name} icon`}
+      />
     </Link>
   );
 }
