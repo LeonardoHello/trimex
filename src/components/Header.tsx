@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,12 +9,15 @@ import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 
 import { cn } from "@/utils/cn";
-import LogoHorizontal from "./LogoHorizontal";
 import MenuSheet from "./MenuSheet";
 import { ModeToggle } from "./ModeToggle";
 import { Button } from "./ui/button";
 import { RainbowButton } from "./ui/rainbow-button";
 
+// Client Components:
+const LogoHorizontal = dynamic(() => import("@/components/LogoHorizontal"), {
+  ssr: false,
+});
 interface NavItem {
   name: string;
   href: string;
