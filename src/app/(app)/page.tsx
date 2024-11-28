@@ -2,12 +2,16 @@ import Link from "next/link";
 
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
+import services from "@/api/services.json";
 import Icon from "@/components/Icon";
 import GallerySlider from "@/components/SliderGallery";
 import ReviewSlider from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
+import { MagicCard } from "@/components/ui/magic-card";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { cn } from "@/utils/cn";
+
+type IconNames = keyof typeof dynamicIconImports;
 
 export default async function HomePage() {
   return (
@@ -51,42 +55,14 @@ export default async function HomePage() {
           Istražite našu sveobuhvatnu ponudu profesionalnih usluga.
         </h2>
         <div className="grid place-items-center gap-4 self-stretch md:grid-cols-2 xl:grid-cols-3">
-          <GridItem
-            iconName="sprout"
-            title="uređenje vrtova"
-            paragraph="Naša usluga uređenja vrtova obuhvaća sve što je potrebno kako bi
-              vaš vanjski prostor bio pravi raj."
-          />
-          <GridItem
-            iconName="scissors"
-            title="košenje"
-            paragraph="Osigurajte da vaša travnata površina uvijek izgleda uredno i
-              zdravo uz našu profesionalnu uslugu košenja."
-          />
-          <GridItem
-            iconName="brush"
-            title="čišćenje vanjskih površina"
-            paragraph="Nudimo temeljito čišćenje vanjskih površina kao što su terase,
-              staze, prilazi i dvorišta."
-          />
-          <GridItem
-            iconName="wrench"
-            title="montaža i demontaža namještaja"
-            paragraph="Montaža namještaja može biti izazovna, ali mi smo ovdje da
-              preuzmemo sav stres na sebe."
-          />
-          <GridItem
-            iconName="droplet"
-            title="pressure-washing"
-            paragraph="Naša usluga pranja pod pritiskom uklanja prljavštinu, mrlje,
-              plijesan i druge nečistoće s tvrdih površina poput betona,
-              pločnika i zidova."
-          />
-          <GridItem
-            iconName="axe"
-            title="rušenje manjih drveća, pomoćnih objekata"
-            paragraph="Naša usluga rušenja obuhvaća sigurno uklanjanje manjih stabala i pomoćnih objekata u vašem dvorištu ili vrtu s posebnom pažnjom prema okolini."
-          />
+          {services.map((service) => (
+            <GridItem
+              key={service.title}
+              title={service.title}
+              description={service.description}
+              iconName={service.iconName as IconNames}
+            />
+          ))}
         </div>
       </Section>
 
@@ -140,15 +116,13 @@ function Section({
   );
 }
 
-type IconNames = keyof typeof dynamicIconImports;
-
 function GridItem({
   title,
-  paragraph,
+  description,
   iconName,
 }: {
   title: string;
-  paragraph: string;
+  description: string;
   iconName: IconNames;
 }) {
   return (
@@ -158,18 +132,24 @@ function GridItem({
         query: { usluga: title.replaceAll(" ", "_") },
         hash: "tablica",
       }}
-      className="group flex flex-col items-center justify-start gap-4 self-stretch rounded-lg p-8 text-center ring-1 ring-background transition duration-300 hover:ring-ring/60"
+      className="self-stretch rounded-lg border border-[hsl(120_15%_25%/0.4)] bg-[hsl(120_25%_10%)] transition duration-300 hover:border-primary/40"
     >
-      <Icon
-        name={iconName}
-        className="size-10 transition-colors duration-300 group-hover:text-primary md:size-12"
-      />
+      <MagicCard
+        className="flex flex-col items-center gap-4 p-8 text-center"
+        gradientColor="hsl(var(--primary))"
+        gradientOpacity={0.2}
+      >
+        <Icon
+          name={iconName}
+          className="size-10 transition-colors duration-300 md:size-12"
+        />
 
-      <h3 className="scroll-m-20 text-2xl font-semibold capitalize tracking-tight">
-        {title}
-      </h3>
+        <h3 className="scroll-m-20 text-2xl font-semibold capitalize tracking-tight">
+          {title}
+        </h3>
 
-      <p className="text-sm font-light leading-7">{paragraph}</p>
+        <p className="text-sm font-light leading-7">{description}</p>
+      </MagicCard>
     </Link>
   );
 }

@@ -1,32 +1,32 @@
 [
   {
-    "service": "uređenje vrtova",
+    "title": "uređenje vrtova",
     "description": "Naša usluga uređenja vrtova obuhvaća sve što je potrebno kako bi vaš vanjski prostor bio pravi raj.",
-    "price": "€99.99"
+    "iconName": "sprout"
   },
   {
-    "service": "košenje",
+    "title": "košenje",
     "description": "Osigurajte da vaša travnata površina uvijek izgleda uredno i zdravo uz našu profesionalnu uslugu košenja.",
-    "price": "€199.99"
+    "iconName": "scissors"
   },
   {
-    "service": "čišćenje vanjskih površina",
+    "title": "čišćenje vanjskih površina",
     "description": "Nudimo temeljito čišćenje vanjskih površina kao što su terase, staze, prilazi i dvorišta.",
-    "price": "€499.99"
+    "iconName": "brush"
   },
   {
-    "service": "montaža i demontaža namještaja",
+    "title": "montaža i demontaža namještaja",
     "description": "Montaža namještaja može biti izazovna, ali mi smo ovdje da preuzmemo sav stres na sebe.",
-    "price": "€49.99"
+    "iconName": "wrench"
   },
   {
-    "service": "pressure-washing",
+    "title": "pressure-washing",
     "description": "Naša usluga pranja pod pritiskom uklanja prljavštinu, mrlje, plijesan i druge nečistoće s tvrdih površina poput betona, pločnika i zidova.",
-    "price": "€149.99"
+    "iconName": "droplet"
   },
   {
-    "service": "rušenje manjih drveća, pomoćnih objekata",
+    "title": "rušenje manjih drveća, pomoćnih objekata",
     "description": "Naša usluga rušenja obuhvaća sigurno uklanjanje manjih stabala i pomoćnih objekata u vašem dvorištu ili vrtu s posebnom pažnjom prema okolini.",
-    "price": "€149.99"
+    "iconName": "axe"
   }
 ]
