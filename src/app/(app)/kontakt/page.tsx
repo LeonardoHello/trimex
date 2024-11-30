@@ -6,39 +6,56 @@ import { ContactForm } from "@/components/ContactForm";
 import Icon from "@/components/Icon";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
+import { payload } from "@/utils/payload";
 
-export default function KontaktPage() {
+export default async function KontaktPage() {
+  const contactPage = await payload.findGlobal({
+    slug: "contact-page",
+  });
+
   return (
     <main>
       <div className="bg-[url('/bank-note.svg')]">
         <Section className="min-h-[60vh] items-center bg-gradient-to-b from-accent/5 from-60% to-background !pt-20 text-center lg:min-h-[75vh]">
-          <Badge className="-mb-2 bg-accent/30 text-accent">kontakt</Badge>
+          <Badge className="-mb-2 bg-accent/30 text-accent">
+            {contactPage.contactIntroductionSection.introductionBadge}
+          </Badge>
           <h1 className="max-w-[15ch] scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-            Naše kontakt informacije
+            {contactPage.contactIntroductionSection.introductionTitle}
           </h1>
           <p className="max-w-[50ch] leading-7 text-accent">
-            Za sva pitanja i upite oko usluga možete nas kontaktirati na
-            navedeni broj, odgovaramo odmah!
+            {contactPage.contactIntroductionSection.introductionParagraph}
           </p>
         </Section>
       </div>
 
       <Section className="!pt-0">
         <div className="flex flex-col items-center justify-center gap-x-8 gap-y-12 self-stretch md:flex-row">
-          <GridItem iconName="mail" title="Emailajte nas:">
+          <GridItem
+            iconName="mail"
+            title={contactPage.informationSection.addressInformation.title}
+          >
             <Link
-              href={"mailto:studiorevive.os@gmail.com"}
-              className="font-medium text-primary hover:underline"
+              href={`mailto:${contactPage.informationSection.addressInformation.address}`}
+              className="font-medium text-accent hover:underline"
             >
-              studiorevive.os@gmail.com
+              {contactPage.informationSection.addressInformation.address}
             </Link>
           </GridItem>
-          <GridItem iconName="phone" title="Nazovite nas:">
-            <p className="font-medium text-primary">+(385) 91 954 1432</p>
+          <GridItem
+            iconName="phone"
+            title={contactPage.informationSection.phoneInformation.title}
+          >
+            <p className="font-medium text-accent">
+              {contactPage.informationSection.phoneInformation.phone}
+            </p>
           </GridItem>
-          <GridItem iconName="map-pin" title="Adresa:">
-            <p className="font-medium text-primary">
-              Ilirska 25, Osijek, Hrvatska
+          <GridItem
+            iconName="map-pin"
+            title={contactPage.informationSection.addressInformation.title}
+          >
+            <p className="font-medium text-accent">
+              {contactPage.informationSection.addressInformation.address}
             </p>
           </GridItem>
         </div>
@@ -48,11 +65,14 @@ export default function KontaktPage() {
         id="upit"
         className="mt-14 min-h-screen items-center bg-background !pt-0 text-center md:mt-16 lg:mt-20"
       >
+        <Badge className="-mb-2 bg-accent/30 text-accent">
+          {contactPage.formSection.badge}
+        </Badge>
         <h2 className="mb-12 max-w-[20ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
-          Pošaljite nam email za općenite upite
+          {contactPage.formSection.title}
         </h2>
 
-        <ContactForm />
+        <ContactForm formSection={contactPage.formSection} />
       </Section>
     </main>
   );

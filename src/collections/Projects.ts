@@ -22,5 +22,16 @@ export const Projects: CollectionConfig = {
       relationTo: "media",
       required: true,
     },
+    {
+      name: "span",
+      type: "radio",
+      options: [
+        { label: "One", value: "one" },
+        { label: "Two", value: "two" },
+        { label: "Three", value: "three" },
+      ],
+      defaultValue: "one",
+      required: true,
+    },
   ],
 };

@@ -3,26 +3,40 @@ import { Suspense } from "react";
 import PriceTable from "@/components/PriceTable";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
+import { payload } from "@/utils/payload";
 
-export default function CjenikPage() {
+export default async function pricesPage() {
+  const pricesPagePromise = payload.findGlobal({
+    slug: "price-list-page",
+  });
+  const servicesPromise = payload.find({
+    collection: "services",
+  });
+
+  const [pricesPage, services] = await Promise.all([
+    pricesPagePromise,
+    servicesPromise,
+  ]);
+
   return (
     <main>
       <div className="bg-[url('/leaf.svg')]">
         <Section className="min-h-[60vh] items-center bg-gradient-to-b from-primary/5 from-60% to-background !pt-20 text-center lg:min-h-[75vh]">
-          <Badge className="-mb-2 bg-primary/30 text-primary">cjenik</Badge>
+          <Badge className="-mb-2 bg-primary/30 text-primary">
+            {pricesPage.badge}
+          </Badge>
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-            Cjenik naših usluga
+            {pricesPage.title}
           </h1>
           <p className="max-w-[50ch] leading-7 text-primary">
-            Istražite naše pristupačne cijene za sve usluge kojima ćemo vašu
-            okućnicu učiniti lijepim i urednim.
+            {pricesPage.paragraph}
           </p>
         </Section>
       </div>
 
       <Section id="tablica" className="!pt-0">
         <Suspense fallback={<p>Loading...</p>}>
-          <PriceTable />
+          <PriceTable services={services.docs} />
         </Suspense>
       </Section>
     </main>

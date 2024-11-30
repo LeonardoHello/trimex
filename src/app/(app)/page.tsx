@@ -10,14 +10,25 @@ import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { cn } from "@/utils/cn";
+import { payload } from "@/utils/payload";
 
 type IconNames = keyof typeof dynamicIconImports;
 
 export default async function HomePage() {
+  const homePage = await payload.findGlobal({
+    slug: "home-page",
+  });
+
+  const url =
+    typeof homePage.heroSection.heroVideo !== "number" &&
+    homePage.heroSection.heroVideo.url;
+
   return (
     <main>
-      <Section badge="dobrodošli" className="relative !pt-20 text-white">
-        {/* Hero section video */}
+      <Section
+        badge={homePage.heroSection.heroBadge}
+        className="relative !pt-20 text-white"
+      >
         <video
           preload="none"
           autoPlay
@@ -25,34 +36,35 @@ export default async function HomePage() {
           loop
           playsInline
           className="pointer-events-none absolute inset-0 -z-10 h-full w-screen object-cover object-bottom brightness-[0.65]"
-          aria-label="guy mowing the lawn"
+          aria-label="Video player"
         >
-          <source src="/video_only.mp4" type="video/mp4" />
+          {typeof homePage.heroSection.heroVideo !== "number" && (
+            <source src={url || "/video_only.mp4"} type="video/mp4" />
+          )}
           Your browser does not support the video tag.
         </video>
 
         <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">
-          Vaš partner za uređenje okućnice
+          {homePage.heroSection.heroTitle}
         </h1>
 
         <p className="max-w-[50ch] leading-7">
-          Od košnje trave do montaže namještaja, pružam profesionalne usluge za
-          vaš dom i vrt.
+          {homePage.heroSection.heroParagraph}
         </p>
 
         <Link href={"/kontakt#upit"}>
           <PulsatingButton className="px-8 active:scale-95">
-            Pošaljite upit
+            {homePage.heroSection.heroCallToAction}
           </PulsatingButton>
         </Link>
       </Section>
 
       <Section
-        badge="usluge"
+        badge={homePage.projectsSection.projectsBadge}
         className="min-h-[80vh] bg-[hsl(120_25%_10%)] bg-[url('/texture.svg')] text-white md:items-center md:text-center"
       >
         <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
-          Istražite našu sveobuhvatnu ponudu profesionalnih usluga.
+          {homePage.projectsSection.projectsTitle}
         </h2>
         <div className="grid place-items-center gap-4 self-stretch md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => (
@@ -67,22 +79,22 @@ export default async function HomePage() {
       </Section>
 
       <Section
-        badge="radovi"
+        badge={homePage.servicesSection.ServicesBadge}
         className="min-h-[80vh] overflow-hidden bg-white bg-[url('/texture.svg')] text-[hsl(120_25%_10%)] md:items-center md:text-center"
       >
         <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
-          Pogledajte naše prethodne projekte.
+          {homePage.servicesSection.servicesTitle}
         </h2>
         <SliderProject />
       </Section>
 
       <div className="bg-white">
         <Section
-          badge="recenzije"
+          badge={homePage.reviewSection.reviewBadge}
           className="min-h-[80vh] overflow-hidden bg-primary/40 bg-[url('/texture.svg')] text-white"
         >
           <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
-            Poslušajte što imaju za reći o našim uslugama.
+            {homePage.reviewSection.reviewTitle}
           </h2>
           <ReviewSlider />
         </Section>

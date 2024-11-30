@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import { Axe, House, Phone, Tag } from "lucide-react";
+import { Header } from "payload-types";
 
 import {
   Sheet,
@@ -22,9 +23,11 @@ import { RainbowButton } from "./ui/rainbow-button";
 export default function MenuSheet({
   children,
   pathname,
+  header,
 }: {
   children: React.ReactNode;
   pathname: string;
+  header: Header;
 }) {
   return (
     <Sheet>
@@ -42,89 +45,32 @@ export default function MenuSheet({
         <Logo className="max-h-32 min-h-32 w-auto fill-foreground" />
 
         <nav className="flex flex-col gap-1 self-stretch">
-          <li className="flex list-none">
-            <SheetClose asChild>
-              <Button
-                asChild
-                variant={"ghost"}
-                size={"lg"}
-                className={cn(
-                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                  {
-                    "bg-primary/30 text-foreground hover:bg-primary/30":
-                      pathname === "/",
-                  },
-                )}
-              >
-                <Link href={"/"}>
-                  <House /> Home
-                </Link>
-              </Button>
-            </SheetClose>
-          </li>
-
-          <li className="flex list-none">
-            <SheetClose asChild>
-              <Button
-                asChild
-                variant={"ghost"}
-                size={"lg"}
-                className={cn(
-                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                  {
-                    "bg-primary/30 text-foreground hover:bg-primary/30":
-                      pathname === "/cjenik",
-                  },
-                )}
-              >
-                <Link href={"/cjenik"}>
-                  <Tag /> Cjenik
-                </Link>
-              </Button>
-            </SheetClose>
-          </li>
-
-          <li className="flex list-none">
-            <SheetClose asChild>
-              <Button
-                asChild
-                variant={"ghost"}
-                size={"lg"}
-                className={cn(
-                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                  {
-                    "bg-primary/30 text-foreground hover:bg-primary/30":
-                      pathname === "/radovi",
-                  },
-                )}
-              >
-                <Link href={"/radovi"}>
-                  <Axe /> Radovi
-                </Link>
-              </Button>
-            </SheetClose>
-          </li>
-
-          <li className="flex list-none">
-            <SheetClose asChild>
-              <Button
-                asChild
-                variant={"ghost"}
-                size={"lg"}
-                className={cn(
-                  "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
-                  {
-                    "bg-primary/30 text-foreground hover:bg-primary/30":
-                      pathname === "/kontakt",
-                  },
-                )}
-              >
-                <Link href={"/kontakt"}>
-                  <Phone /> Kontakt
-                </Link>
-              </Button>
-            </SheetClose>
-          </li>
+          {header.navigation.map((navigation) => (
+            <li key={navigation.id} className="flex list-none">
+              <SheetClose asChild>
+                <Button
+                  asChild
+                  variant={"ghost"}
+                  size={"lg"}
+                  className={cn(
+                    "grow justify-start gap-4 self-center bg-background px-4 hover:bg-background hover:text-muted-foreground",
+                    {
+                      "bg-primary/30 text-foreground hover:bg-primary/30":
+                        pathname === navigation.href,
+                    },
+                  )}
+                >
+                  <Link href={navigation.href}>
+                    {navigation.route === "Home" && <House />}
+                    {navigation.route === "Cjenik" && <Tag />}
+                    {navigation.route === "Radovi" && <Axe />}
+                    {navigation.route === "Kontakt" && <Phone />}
+                    {navigation.route}
+                  </Link>
+                </Button>
+              </SheetClose>
+            </li>
+          ))}
         </nav>
 
         <SheetFooter className="mt-auto flex-row items-center">
@@ -132,7 +78,7 @@ export default function MenuSheet({
           <SheetClose asChild>
             <Link href={"/kontakt#upit"} className="grow">
               <RainbowButton className="w-full bg-foreground text-background active:scale-95">
-                Pošaljite upit
+                {header.callToAction}
               </RainbowButton>
             </Link>
           </SheetClose>

@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
+import { ContactPage } from "payload-types";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -22,14 +23,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Molimo da upišete ime." }),
-  email: z.string().email({ message: "Molimo da upišete ispravni email." }),
-  message: z.string().min(2, { message: "Molimo da upišete poruku." }),
+  name: z.string().min(2),
+  email: z.string().email(),
+  message: z.string().min(2),
 });
 
 export type FormSchemaType = z.infer<typeof formSchema>;
 
-export function ContactForm() {
+export function ContactForm({
+  formSection,
+}: {
+  formSection: ContactPage["formSection"];
+}) {
   const [isLoading, setIsLoading] = useState(false);
 
   // 1. Define your form.
@@ -78,12 +83,13 @@ export function ContactForm() {
             render={({ field }) => (
               <FormItem className="col-span-2 lg:col-span-1">
                 <FormLabel className="capitalize">
-                  ime <span className="text-destructive">*</span>
+                  {formSection.nameInput.label}{" "}
+                  <span className="text-destructive">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage>{formSection.nameInput.error}</FormMessage>
               </FormItem>
             )}
           />
@@ -94,12 +100,13 @@ export function ContactForm() {
             render={({ field }) => (
               <FormItem className="col-span-2 lg:col-span-1">
                 <FormLabel className="capitalize">
-                  email <span className="text-destructive">*</span>
+                  {formSection.emailInput.label}{" "}
+                  <span className="text-destructive">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage>{formSection.emailInput.error}</FormMessage>
               </FormItem>
             )}
           />
@@ -110,12 +117,13 @@ export function ContactForm() {
             render={({ field }) => (
               <FormItem className="col-span-2">
                 <FormLabel className="capitalize">
-                  poruka <span className="text-destructive">*</span>
+                  {formSection.messageInput.label}{" "}
+                  <span className="text-destructive">*</span>
                 </FormLabel>
                 <FormControl>
                   <Textarea className="h-[150px]" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage>{formSection.messageInput.error}</FormMessage>
               </FormItem>
             )}
           />

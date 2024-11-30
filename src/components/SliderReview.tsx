@@ -1,14 +1,18 @@
-import reviews from "@/api/reviews.json";
 import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { payload } from "@/utils/payload";
 import Icon from "./Icon";
 import Slider from "./Slider";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-export default function SliderReview() {
+export default async function SliderReview() {
+  const reviews = await payload.find({
+    collection: "reviews",
+  });
+
   return (
     <Slider>
       <CarouselContent>
-        {reviews.map((review, index) => (
+        {reviews.docs.map((review, index) => (
           <CarouselItem
             key={index}
             className="relative mx-4 flex flex-col items-center justify-between gap-8 rounded-lg bg-white p-6 text-black opacity-35 transition-opacity duration-500 sm:px-12 sm:py-8 lg:basis-4/5 lg:gap-10 xl:basis-2/3"
@@ -24,15 +28,19 @@ export default function SliderReview() {
 
             <div className="flex items-center justify-center gap-2">
               <Avatar>
-                <AvatarImage src={review.avatar} />
+                {typeof review.avatar !== "number" && (
+                  // @ts-expect-error
+                  <AvatarImage src={review.avatar.url} />
+                )}
+
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <div className="flex flex-col items-start text-left text-sm lg:text-base">
                 <div className="line-clamp-2">
-                  {review.first_name} {review.last_name}
+                  {review.firstName} {review.lastName}
                 </div>
                 <div className="line-clamp-2 text-muted-foreground">
-                  {review.job_title}, {review.company_name}
+                  {review.jobTitle}, {review.companyName}
                 </div>
               </div>
             </div>

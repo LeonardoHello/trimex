@@ -136,6 +136,7 @@ export interface Project {
   title: string;
   description: string;
   image: number | Media;
+  span: 'one' | 'two' | 'three';
   updatedAt: string;
   createdAt: string;
 }
@@ -277,6 +278,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   image?: T;
+  span?: T;
   updatedAt?: T;
   createdAt?: T;
 }

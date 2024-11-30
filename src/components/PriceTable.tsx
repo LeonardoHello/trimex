@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 import { Info } from "lucide-react";
+import { Service } from "payload-types";
 
-import table from "@/api/table.json";
 import {
   Popover,
   PopoverContent,
@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/utils/cn";
 
-export default function PriceTable() {
+export default function PriceTable({ services }: { services: Service[] }) {
   const searchParams = useSearchParams();
 
   return (
@@ -40,29 +40,29 @@ export default function PriceTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {table.map((tableData) => (
+        {services.map((service) => (
           <TableRow
-            key={tableData.service}
+            key={service.name}
             className={cn({
               "group bg-primary/30":
-                tableData.service.replaceAll(" ", "_") ===
+                service.name.replaceAll(" ", "_") ===
                 searchParams.get("usluga"),
             })}
           >
             <TableCell className="font-medium text-foreground">
-              {tableData.service}
+              {service.name}
             </TableCell>
             <TableCell className="hidden md:table-cell">
-              <p className="max-w-prose">{tableData.description}</p>
+              <p className="max-w-prose">{service.description}</p>
             </TableCell>
-            <TableCell className="text-right">{tableData.price}</TableCell>
+            <TableCell className="text-right">{service.price}</TableCell>
             <TableCell className="w-[50px] md:hidden">
               <Popover>
                 <PopoverTrigger asChild>
                   <Info className="text-muted-foreground" />
                 </PopoverTrigger>
                 <PopoverContent>
-                  <p className="max-w-prose">{tableData.description}</p>
+                  <p className="max-w-prose">{service.description}</p>
                 </PopoverContent>
               </Popover>
             </TableCell>
