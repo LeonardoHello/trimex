@@ -12,6 +12,7 @@ import sharp from "sharp";
 
 import { Media } from "@/collections/Media";
 import { Projects } from "@/collections/Projects";
+import { Reviews } from "@/collections/Reviews";
 import { Services } from "@/collections/Services";
 import { Users } from "@/collections/Users";
 import { ContactPage } from "@/globals/ContactPage";
@@ -32,7 +33,7 @@ export default buildConfig({
     },
   },
   globals: [HomePage, PriceListPage, ProjectsPage, ContactPage, Header, Footer],
-  collections: [Users, Media, Services, Projects],
+  collections: [Users, Media, Services, Projects, Reviews],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
