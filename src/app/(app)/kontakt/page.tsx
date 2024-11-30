@@ -72,7 +72,10 @@ export default async function KontaktPage() {
           {contactPage.formSection.title}
         </h2>
 
-        <ContactForm formSection={contactPage.formSection} />
+        <ContactForm
+          formSection={contactPage.formSection}
+          email={contactPage.informationSection.addressInformation.address}
+        />
       </Section>
     </main>
   );

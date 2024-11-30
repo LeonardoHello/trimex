@@ -32,8 +32,10 @@ export type FormSchemaType = z.infer<typeof formSchema>;
 
 export function ContactForm({
   formSection,
+  email,
 }: {
   formSection: ContactPage["formSection"];
+  email: string;
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -53,7 +55,7 @@ export function ContactForm({
     setIsLoading(true);
 
     try {
-      await create(values);
+      await create({ ...values, to: email });
       toast.success("USPIJEH!", {
         description:
           "Zahvaljujemo na upitu, javiti ćemo vam se u što kraćem roku.",

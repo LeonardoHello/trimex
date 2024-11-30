@@ -3,10 +3,10 @@
 import type { FormSchemaType } from "@/components/ContactForm";
 import { payload } from "@/utils/payload";
 
-export async function create(data: FormSchemaType) {
+export async function create(data: FormSchemaType & { to: string }) {
   return payload.sendEmail({
     from: `${data.email} <onboarding@resend.dev>`,
-    to: "leonardo.yakub@gmail.com",
+    to: data.to,
     subject: "TRIMEX - UPIT",
     reply_to: data.email,
     text: data.message,
