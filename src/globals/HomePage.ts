@@ -1,13 +1,14 @@
 import type { GlobalConfig } from "payload";
 
-export const Home: GlobalConfig = {
-  slug: "home",
+export const HomePage: GlobalConfig = {
+  slug: "home-page",
   fields: [
     {
       type: "tabs",
+      required: true,
       tabs: [
         {
-          label: "Hero",
+          name: "heroSection",
           fields: [
             {
               name: "heroBadge",
@@ -46,7 +47,7 @@ export const Home: GlobalConfig = {
           ],
         },
         {
-          label: "Services Section",
+          name: "servicesSection",
           fields: [
             {
               name: "ServicesBadge",
@@ -63,7 +64,7 @@ export const Home: GlobalConfig = {
           ],
         },
         {
-          label: "Projects Section",
+          name: "projectsSection",
           fields: [
             {
               name: "projectsBadge",
@@ -80,7 +81,7 @@ export const Home: GlobalConfig = {
           ],
         },
         {
-          label: "Review Section",
+          name: "reviewSection",
           fields: [
             {
               name: "reviewBadge",

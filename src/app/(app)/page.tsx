@@ -4,7 +4,7 @@ import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
 import services from "@/api/services.json";
 import Icon from "@/components/Icon";
-import GallerySlider from "@/components/SliderGallery";
+import SliderProject from "@/components/SliderProject";
 import ReviewSlider from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
@@ -73,7 +73,7 @@ export default async function HomePage() {
         <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           Pogledajte naše prethodne projekte.
         </h2>
-        <GallerySlider />
+        <SliderProject />
       </Section>
 
       <div className="bg-white">

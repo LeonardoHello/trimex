@@ -11,7 +11,15 @@ import { buildConfig } from "payload";
 import sharp from "sharp";
 
 import { Media } from "@/collections/Media";
+import { Projects } from "@/collections/Projects";
+import { Services } from "@/collections/Services";
 import { Users } from "@/collections/Users";
+import { ContactPage } from "@/globals/ContactPage";
+import { Footer } from "@/globals/Footer";
+import { Header } from "@/globals/Header";
+import { HomePage } from "@/globals/HomePage";
+import { PriceListPage } from "@/globals/PriceListPage";
+import { ProjectsPage } from "@/globals/ProjectsPage";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -23,7 +31,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  globals: [HomePage, PriceListPage, ProjectsPage, ContactPage, Header, Footer],
+  collections: [Users, Media, Services, Projects],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
