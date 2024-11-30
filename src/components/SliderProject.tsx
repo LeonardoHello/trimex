@@ -8,7 +8,7 @@ import pic2 from "public/imageTwo.jpg";
 import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Slider from "./Slider";
 
-export default function SliderGallery() {
+export default function SliderProject() {
   const pics = [pic1, pic2, pic3, pic4];
 
   return (
