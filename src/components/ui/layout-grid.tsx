@@ -37,9 +37,9 @@ export const LayoutGrid = ({ projects }: { projects: Project[] }) => {
           key={i}
           className={cn(
             {
-              "col-span-1": project.span === "one",
-              "md:col-span-2": project.span === "two",
-              "md:col-span-3": project.span === "three",
+              "col-span-1": project.colSpan === "one",
+              "md:col-span-2": project.colSpan === "two",
+              "md:col-span-3": project.colSpan === "three",
             },
             "h-32 md:h-48",
           )}
@@ -59,9 +59,9 @@ export const LayoutGrid = ({ projects }: { projects: Project[] }) => {
               }}
               className={cn(
                 {
-                  "col-span-1": project.span === "one",
-                  "md:col-span-2": project.span === "two",
-                  "md:col-span-3": project.span === "three",
+                  "col-span-1": project.colSpan === "one",
+                  "md:col-span-2": project.colSpan === "two",
+                  "md:col-span-3": project.colSpan === "three",
                 },
                 "relative size-full cursor-pointer overflow-hidden rounded-xl",
                 selected?.id === project.id
