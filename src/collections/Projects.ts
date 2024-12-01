@@ -23,7 +23,7 @@ export const Projects: CollectionConfig = {
       required: true,
     },
     {
-      name: "span",
+      name: "colSpan",
       type: "radio",
       options: [
         { label: "One", value: "one" },
