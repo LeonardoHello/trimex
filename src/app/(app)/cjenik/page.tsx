@@ -1,20 +1,17 @@
 import { Suspense } from "react";
 
+import { getServices } from "@/api/getCollection";
+import { getPriceListPage } from "@/api/getGlobal";
 import PriceTable from "@/components/PriceTable";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
-import { payload } from "@/utils/payload";
 
 export default async function pricesPage() {
-  const pricesPagePromise = payload.findGlobal({
-    slug: "price-list-page",
-  });
-  const servicesPromise = payload.find({
-    collection: "services",
-  });
+  const priceListPagePromise = getPriceListPage();
+  const servicesPromise = getServices();
 
   const [pricesPage, services] = await Promise.all([
-    pricesPagePromise,
+    priceListPagePromise,
     servicesPromise,
   ]);
 

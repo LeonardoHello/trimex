@@ -2,7 +2,8 @@ import Link from "next/link";
 
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
-import services from "@/api/services.json";
+import { getProjects, getReviews, getServices } from "@/api/getCollection";
+import { getHomePage } from "@/api/getGlobal";
 import Icon from "@/components/Icon";
 import SliderProject from "@/components/SliderProject";
 import ReviewSlider from "@/components/SliderReview";
@@ -15,9 +16,17 @@ import { payload } from "@/utils/payload";
 type IconNames = keyof typeof dynamicIconImports;
 
 export default async function HomePage() {
-  const homePage = await payload.findGlobal({
-    slug: "home-page",
-  });
+  const homePagePromise = getHomePage();
+  const servicesPromise = getServices();
+  const projectsPromise = getProjects();
+  const reviewsPromise = getReviews();
+
+  const [homePage, services, projects, reviews] = await Promise.all([
+    homePagePromise,
+    servicesPromise,
+    projectsPromise,
+    reviewsPromise,
+  ]);
 
   const url =
     typeof homePage.heroSection.heroVideo !== "number" &&
@@ -67,12 +76,12 @@ export default async function HomePage() {
           {homePage.projectsSection.projectsTitle}
         </h2>
         <div className="grid place-items-center gap-4 self-stretch md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
+          {services.docs.map((service) => (
             <GridItem
-              key={service.title}
-              title={service.title}
+              key={service.name}
+              title={service.name}
               description={service.description}
-              iconName={service.iconName as IconNames}
+              iconName={service.lucideIcon as IconNames}
             />
           ))}
         </div>
@@ -85,7 +94,7 @@ export default async function HomePage() {
         <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
           {homePage.servicesSection.servicesTitle}
         </h2>
-        <SliderProject />
+        <SliderProject projects={projects.docs} />
       </Section>
 
       <div className="bg-white">
@@ -96,7 +105,7 @@ export default async function HomePage() {
           <h2 className="mb-12 max-w-[24ch] scroll-m-20 text-4xl font-semibold tracking-tight md:text-5xl">
             {homePage.reviewSection.reviewTitle}
           </h2>
-          <ReviewSlider />
+          <ReviewSlider reviews={reviews.docs} />
         </Section>
       </div>
     </main>

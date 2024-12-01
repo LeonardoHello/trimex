@@ -1,15 +1,12 @@
+import { getProjects } from "@/api/getCollection";
+import { getProjectsPage } from "@/api/getGlobal";
 import { Badge } from "@/components/ui/badge";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { cn } from "@/utils/cn";
-import { payload } from "@/utils/payload";
 
 export default async function RadoviPage() {
-  const projectsPagePromise = payload.findGlobal({
-    slug: "projects-page",
-  });
-  const projectsPromise = payload.find({
-    collection: "projects",
-  });
+  const projectsPagePromise = getProjectsPage();
+  const projectsPromise = getProjects();
 
   const [projectsPage, projects] = await Promise.all([
     projectsPagePromise,

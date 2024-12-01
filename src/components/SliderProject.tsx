@@ -1,18 +1,15 @@
 import Image from "next/image";
 
+import { Project } from "payload-types";
+
 import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { payload } from "@/utils/payload";
 import Slider from "./Slider";
 
-export default async function SliderProject() {
-  const projects = await payload.find({
-    collection: "projects",
-  });
-
+export default function SliderProject({ projects }: { projects: Project[] }) {
   return (
     <Slider>
       <CarouselContent>
-        {projects.docs.map((project, index) => (
+        {projects.map((project, index) => (
           <CarouselItem
             key={index}
             className="relative mx-4 aspect-square max-h-96 opacity-35 transition-opacity duration-500 md:aspect-video md:basis-2/3 xl:basis-1/2"

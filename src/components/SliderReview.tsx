@@ -1,18 +1,15 @@
+import { Review } from "payload-types";
+
 import { CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { payload } from "@/utils/payload";
 import Icon from "./Icon";
 import Slider from "./Slider";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-export default async function SliderReview() {
-  const reviews = await payload.find({
-    collection: "reviews",
-  });
-
+export default function SliderReview({ reviews }: { reviews: Review[] }) {
   return (
     <Slider>
       <CarouselContent>
-        {reviews.docs.map((review, index) => (
+        {reviews.map((review, index) => (
           <CarouselItem
             key={index}
             className="relative mx-4 flex flex-col items-center justify-between gap-8 rounded-lg bg-white p-6 text-black opacity-35 transition-opacity duration-500 sm:px-12 sm:py-8 lg:basis-4/5 lg:gap-10 xl:basis-2/3"

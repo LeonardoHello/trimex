@@ -2,14 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { payload } from "@/utils/payload";
+import { getFooter } from "@/api/getGlobal";
 import LogoHorizontal from "./LogoHorizontal";
 
 export async function Footer() {
-  const footer = await payload.findGlobal({
-    slug: "footer",
-    select: { navigation: true, socials: true, copyrightNotice: true },
-  });
+  const footer = await getFooter();
 
   return (
     <footer className="flex flex-col gap-y-5 bg-black px-7 py-5 md:px-10">

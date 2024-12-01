@@ -2,16 +2,14 @@ import Link from "next/link";
 
 import dynamicIconImports from "lucide-react/dynamicIconImports";
 
+import { getContactPage } from "@/api/getGlobal";
 import { ContactForm } from "@/components/ContactForm";
 import Icon from "@/components/Icon";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/cn";
-import { payload } from "@/utils/payload";
 
 export default async function KontaktPage() {
-  const contactPage = await payload.findGlobal({
-    slug: "contact-page",
-  });
+  const contactPage = await getContactPage();
 
   return (
     <main>
