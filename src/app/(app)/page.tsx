@@ -4,6 +4,7 @@ import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
 import { getProjects, getReviews, getServices } from "@/api/getCollection";
 import { getHomePage } from "@/api/getGlobal";
+import { BackgroundVideo } from "@/components/BackgroundVideo";
 import Icon from "@/components/Icon";
 import SliderProject from "@/components/SliderProject";
 import ReviewSlider from "@/components/SliderReview";
@@ -11,7 +12,6 @@ import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
 import PulsatingButton from "@/components/ui/pulsating-button";
 import { cn } from "@/utils/cn";
-import { payload } from "@/utils/payload";
 
 type IconNames = keyof typeof dynamicIconImports;
 
@@ -28,30 +28,13 @@ export default async function HomePage() {
     reviewsPromise,
   ]);
 
-  const url =
-    typeof homePage.heroSection.heroVideo !== "number" &&
-    homePage.heroSection.heroVideo.url;
-
   return (
     <main>
       <Section
         badge={homePage.heroSection.heroBadge}
         className="relative !pt-20 text-white"
       >
-        <video
-          preload="none"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="pointer-events-none absolute inset-0 -z-10 h-full w-screen object-cover object-bottom brightness-[0.65]"
-          aria-label="Video player"
-        >
-          {typeof homePage.heroSection.heroVideo !== "number" && (
-            <source src={url || "/video_only.mp4"} type="video/mp4" />
-          )}
-          Your browser does not support the video tag.
-        </video>
+        <BackgroundVideo video={homePage.heroSection.heroVideo} />
 
         <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">
           {homePage.heroSection.heroTitle}
