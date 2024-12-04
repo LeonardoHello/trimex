@@ -29,16 +29,6 @@ export const HomePage: GlobalConfig = {
               required: true,
             },
             {
-              name: "heroVideo",
-              label: "Video",
-              type: "upload",
-              relationTo: "media",
-              filterOptions: {
-                mimeType: { contains: "video" },
-              },
-              required: true,
-            },
-            {
               name: "heroCallToAction",
               label: "CTA",
               type: "text",

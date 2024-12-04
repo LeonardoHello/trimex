@@ -364,7 +364,6 @@ export interface HomePage {
     heroBadge: string;
     heroTitle: string;
     heroParagraph: string;
-    heroVideo: number | Media;
     heroCallToAction: string;
   };
   servicesSection: {
@@ -496,7 +495,6 @@ export interface HomePageSelect<T extends boolean = true> {
         heroBadge?: T;
         heroTitle?: T;
         heroParagraph?: T;
-        heroVideo?: T;
         heroCallToAction?: T;
       };
   servicesSection?:

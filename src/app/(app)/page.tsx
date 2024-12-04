@@ -4,7 +4,6 @@ import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
 import { getProjects, getReviews, getServices } from "@/api/getCollection";
 import { getHomePage } from "@/api/getGlobal";
-import { BackgroundVideo } from "@/components/BackgroundVideo";
 import Icon from "@/components/Icon";
 import SliderProject from "@/components/SliderProject";
 import ReviewSlider from "@/components/SliderReview";
@@ -34,7 +33,18 @@ export default async function HomePage() {
         badge={homePage.heroSection.heroBadge}
         className="relative !pt-20 text-white"
       >
-        <BackgroundVideo video={homePage.heroSection.heroVideo} />
+        <video
+          preload="none"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="pointer-events-none absolute inset-0 -z-10 h-full w-screen object-cover object-bottom brightness-[0.65]"
+          aria-label="Video player"
+        >
+          <source src={"/background-video.webm"} type={"video/webm"} />
+          Your browser does not support the video tag.
+        </video>
 
         <h1 className="mb-4 max-w-[15ch] scroll-m-20 text-5xl font-extrabold tracking-tight md:text-6xl">
           {homePage.heroSection.heroTitle}
