@@ -26,8 +26,10 @@ export default function SliderReview({ reviews }: { reviews: Review[] }) {
             <div className="flex items-center justify-center gap-2">
               <Avatar>
                 {typeof review.avatar !== "number" && (
-                  // @ts-expect-error
-                  <AvatarImage src={review.avatar.url} />
+                  <AvatarImage
+                    src={review.avatar.url || ""}
+                    alt={review.avatar.alt || ""}
+                  />
                 )}
 
                 <AvatarFallback>CN</AvatarFallback>
