@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getFooter } from "@/api/getGlobal";
+import { trpc } from "@/trpc/server";
 import LogoHorizontal from "./LogoHorizontal";
 
 export async function Footer() {
-  const footer = await getFooter();
+  const footer = await trpc.global.footer();
 
   return (
     <footer className="flex flex-col gap-y-5 bg-black px-7 py-5 md:px-10">

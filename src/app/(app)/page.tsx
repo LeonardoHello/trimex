@@ -2,29 +2,23 @@ import Link from "next/link";
 
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
 
-import { getProjects, getReviews, getServices } from "@/api/getCollection";
-import { getHomePage } from "@/api/getGlobal";
 import Icon from "@/components/Icon";
 import SliderProject from "@/components/SliderProject";
 import ReviewSlider from "@/components/SliderReview";
 import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
 import PulsatingButton from "@/components/ui/pulsating-button";
+import { trpc } from "@/trpc/server";
 import { cn } from "@/utils/cn";
 
 type IconNames = keyof typeof dynamicIconImports;
 
 export default async function HomePage() {
-  const homePagePromise = getHomePage();
-  const servicesPromise = getServices();
-  const projectsPromise = getProjects();
-  const reviewsPromise = getReviews();
-
   const [homePage, services, projects, reviews] = await Promise.all([
-    homePagePromise,
-    servicesPromise,
-    projectsPromise,
-    reviewsPromise,
+    trpc.global.page.home(),
+    trpc.collection.services(),
+    trpc.collection.projects(),
+    trpc.collection.reviews(),
   ]);
 
   return (

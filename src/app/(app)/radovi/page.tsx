@@ -1,16 +1,12 @@
-import { getProjects } from "@/api/getCollection";
-import { getProjectsPage } from "@/api/getGlobal";
 import { Badge } from "@/components/ui/badge";
 import { LayoutGrid } from "@/components/ui/layout-grid";
+import { trpc } from "@/trpc/server";
 import { cn } from "@/utils/cn";
 
 export default async function RadoviPage() {
-  const projectsPagePromise = getProjectsPage();
-  const projectsPromise = getProjects();
-
   const [projectsPage, projects] = await Promise.all([
-    projectsPagePromise,
-    projectsPromise,
+    trpc.global.page.projects(),
+    trpc.collection.projects(),
   ]);
 
   return (

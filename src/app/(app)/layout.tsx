@@ -8,6 +8,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 import "./global.css";
 
+export const revalidate = 30;
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

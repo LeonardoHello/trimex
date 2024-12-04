@@ -1,18 +1,14 @@
 import { Suspense } from "react";
 
-import { getServices } from "@/api/getCollection";
-import { getPriceListPage } from "@/api/getGlobal";
 import PriceTable from "@/components/PriceTable";
 import { Badge } from "@/components/ui/badge";
+import { trpc } from "@/trpc/server";
 import { cn } from "@/utils/cn";
 
 export default async function pricesPage() {
-  const priceListPagePromise = getPriceListPage();
-  const servicesPromise = getServices();
-
   const [pricesPage, services] = await Promise.all([
-    priceListPagePromise,
-    servicesPromise,
+    trpc.global.page.priceList(),
+    trpc.collection.services(),
   ]);
 
   return (

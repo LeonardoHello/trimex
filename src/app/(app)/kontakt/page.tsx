@@ -2,14 +2,14 @@ import Link from "next/link";
 
 import dynamicIconImports from "lucide-react/dynamicIconImports";
 
-import { getContactPage } from "@/api/getGlobal";
 import { ContactForm } from "@/components/ContactForm";
 import Icon from "@/components/Icon";
 import { Badge } from "@/components/ui/badge";
+import { trpc } from "@/trpc/server";
 import { cn } from "@/utils/cn";
 
 export default async function KontaktPage() {
-  const contactPage = await getContactPage();
+  const contactPage = await trpc.global.page.contact();
 
   return (
     <main>
