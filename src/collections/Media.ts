@@ -9,11 +9,18 @@ export const Media: CollectionConfig = {
     {
       name: "alt",
       type: "text",
-      required: true,
     },
   ],
   upload: {
     disableLocalStorage: true,
-    adminThumbnail: ({ doc }) => `https://utfs.io/f/${doc._key}`,
+    adminThumbnail: ({ doc }) =>
+      //@ts-expect-error
+      `https://utfs.io/f/${doc.sizes.thumbnail._key}`,
+    imageSizes: [
+      {
+        name: "thumbnail",
+        width: 300,
+      },
+    ],
   },
 };
