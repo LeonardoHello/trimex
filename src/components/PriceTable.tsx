@@ -44,9 +44,7 @@ export default function PriceTable({ services }: { services: Service[] }) {
           <TableRow
             key={service.name}
             className={cn({
-              "group bg-primary/30":
-                service.name.replaceAll(" ", "_") ===
-                searchParams.get("usluga"),
+              "group bg-primary/30": service.id + "" === searchParams.get("id"),
             })}
           >
             <TableCell className="font-medium text-foreground">

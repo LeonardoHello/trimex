@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
+import { Service } from "payload-types";
 
 import Icon from "@/components/Icon";
 import SliderProject from "@/components/SliderProject";
@@ -11,7 +12,7 @@ import PulsatingButton from "@/components/ui/pulsating-button";
 import { trpc } from "@/trpc/server";
 import { cn } from "@/utils/cn";
 
-type IconNames = keyof typeof dynamicIconImports;
+type IconName = keyof typeof dynamicIconImports;
 
 export default async function HomePage() {
   const [homePage, services, projects, reviews] = await Promise.all([
@@ -64,12 +65,7 @@ export default async function HomePage() {
         </h2>
         <div className="grid place-items-center gap-4 self-stretch md:grid-cols-2 xl:grid-cols-3">
           {services.docs.map((service) => (
-            <GridItem
-              key={service.name}
-              title={service.name}
-              description={service.description}
-              iconName={service.lucideIcon as IconNames}
-            />
+            <GridItem key={service.id} service={service} />
           ))}
         </div>
       </Section>
@@ -124,20 +120,12 @@ function Section({
   );
 }
 
-function GridItem({
-  title,
-  description,
-  iconName,
-}: {
-  title: string;
-  description: string;
-  iconName: IconNames;
-}) {
+function GridItem({ service }: { service: Service }) {
   return (
     <Link
       href={{
         pathname: "/cjenik",
-        query: { usluga: title.replaceAll(" ", "_") },
+        query: { id: service.id },
         hash: "tablica",
       }}
       className="self-stretch rounded-lg border border-[hsl(120_15%_25%/0.4)] bg-[hsl(120_25%_10%)] transition duration-300 hover:border-primary/40"
@@ -148,15 +136,15 @@ function GridItem({
         gradientOpacity={0.2}
       >
         <Icon
-          name={iconName}
+          name={service.lucideIcon as IconName}
           className="size-10 transition-colors duration-300 md:size-12"
         />
 
         <h3 className="scroll-m-20 text-2xl font-semibold capitalize tracking-tight">
-          {title}
+          {service.name}
         </h3>
 
-        <p className="text-sm font-light leading-7">{description}</p>
+        <p className="text-sm font-light leading-7">{service.description}</p>
       </MagicCard>
     </Link>
   );
