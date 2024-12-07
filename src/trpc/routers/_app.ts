@@ -5,16 +5,19 @@ export const appRouter = createTRPCRouter({
     services: baseProcedure.query((opts) => {
       return opts.ctx.payload.find({
         collection: "services",
+        sort: "createdAt",
       });
     }),
     projects: baseProcedure.query((opts) => {
       return opts.ctx.payload.find({
         collection: "projects",
+        sort: "createdAt",
       });
     }),
     reviews: baseProcedure.query((opts) => {
       return opts.ctx.payload.find({
         collection: "reviews",
+        sort: "createdAt",
       });
     }),
   }),
