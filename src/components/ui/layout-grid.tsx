@@ -138,7 +138,7 @@ const SelectedCard = ({ selected }: { selected: Project | null }) => {
           ease: "easeInOut",
         }}
         // @ts-expect-error
-        className="relative z-[70] px-8 pb-4"
+        className="relative z-[70] my-4 overflow-y-scroll px-8"
       >
         <div>
           <p className="text-2xl font-bold text-white md:text-4xl">
