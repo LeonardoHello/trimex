@@ -31,13 +31,13 @@ export default async function KontaktPage() {
         <div className="flex flex-col items-center justify-center gap-x-8 gap-y-12 self-stretch md:flex-row">
           <GridItem
             iconName="mail"
-            title={contactPage.informationSection.addressInformation.title}
+            title={contactPage.informationSection.emailInformation.title}
           >
             <Link
-              href={`mailto:${contactPage.informationSection.addressInformation.address}`}
+              href={`mailto:${contactPage.informationSection.emailInformation.email}`}
               className="font-medium text-accent hover:underline"
             >
-              {contactPage.informationSection.addressInformation.address}
+              {contactPage.informationSection.emailInformation.email}
             </Link>
           </GridItem>
           <GridItem
