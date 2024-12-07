@@ -53,7 +53,7 @@ export default function PriceTable({ services }: { services: Service[] }) {
             <TableCell className="hidden md:table-cell">
               <p className="max-w-prose">{service.description}</p>
             </TableCell>
-            <TableCell className="text-right">{service.price}</TableCell>
+            <TableCell className="text-right">{service.price}€</TableCell>
             <TableCell className="w-[50px] md:hidden">
               <Popover>
                 <PopoverTrigger asChild>
