@@ -2,6 +2,7 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
 export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   await payload.db.drizzle.execute(sql`
+   CREATE TYPE "public"."enum_projects_col_span" AS ENUM('one', 'two', 'three');
   CREATE TABLE IF NOT EXISTS "users" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -17,7 +18,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE IF NOT EXISTS "media" (
   	"id" serial PRIMARY KEY NOT NULL,
-  	"alt" varchar NOT NULL,
+  	"alt" varchar,
   	"_key" varchar,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -29,7 +30,14 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   	"width" numeric,
   	"height" numeric,
   	"focal_x" numeric,
-  	"focal_y" numeric
+  	"focal_y" numeric,
+  	"sizes_thumbnail__key" varchar,
+  	"sizes_thumbnail_url" varchar,
+  	"sizes_thumbnail_width" numeric,
+  	"sizes_thumbnail_height" numeric,
+  	"sizes_thumbnail_mime_type" varchar,
+  	"sizes_thumbnail_filesize" numeric,
+  	"sizes_thumbnail_filename" varchar
   );
   
   CREATE TABLE IF NOT EXISTS "services" (
@@ -112,7 +120,6 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   	"hero_section_hero_badge" varchar NOT NULL,
   	"hero_section_hero_title" varchar NOT NULL,
   	"hero_section_hero_paragraph" varchar NOT NULL,
-  	"hero_section_hero_video_id" integer NOT NULL,
   	"hero_section_hero_call_to_action" varchar NOT NULL,
   	"services_section_services_badge" varchar NOT NULL,
   	"services_section_services_title" varchar NOT NULL,
@@ -264,12 +271,6 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   END $$;
   
   DO $$ BEGIN
-   ALTER TABLE "home_page" ADD CONSTRAINT "home_page_hero_section_hero_video_id_media_id_fk" FOREIGN KEY ("hero_section_hero_video_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
-  EXCEPTION
-   WHEN duplicate_object THEN null;
-  END $$;
-  
-  DO $$ BEGIN
    ALTER TABLE "header_navigation" ADD CONSTRAINT "header_navigation_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."header"("id") ON DELETE cascade ON UPDATE no action;
   EXCEPTION
    WHEN duplicate_object THEN null;
@@ -293,6 +294,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "media_updated_at_idx" ON "media" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "media_created_at_idx" ON "media" USING btree ("created_at");
   CREATE UNIQUE INDEX IF NOT EXISTS "media_filename_idx" ON "media" USING btree ("filename");
+  CREATE INDEX IF NOT EXISTS "media_sizes_thumbnail_sizes_thumbnail_filename_idx" ON "media" USING btree ("sizes_thumbnail_filename");
   CREATE INDEX IF NOT EXISTS "services_updated_at_idx" ON "services" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "services_created_at_idx" ON "services" USING btree ("created_at");
   CREATE INDEX IF NOT EXISTS "projects_image_idx" ON "projects" USING btree ("image_id");
@@ -321,7 +323,6 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "payload_preferences_rels_users_id_idx" ON "payload_preferences_rels" USING btree ("users_id");
   CREATE INDEX IF NOT EXISTS "payload_migrations_updated_at_idx" ON "payload_migrations" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");
-  CREATE INDEX IF NOT EXISTS "home_page_hero_section_hero_section_hero_video_idx" ON "home_page" USING btree ("hero_section_hero_video_id");
   CREATE INDEX IF NOT EXISTS "header_navigation_order_idx" ON "header_navigation" USING btree ("_order");
   CREATE INDEX IF NOT EXISTS "header_navigation_parent_id_idx" ON "header_navigation" USING btree ("_parent_id");
   CREATE INDEX IF NOT EXISTS "footer_navigation_order_idx" ON "footer_navigation" USING btree ("_order");

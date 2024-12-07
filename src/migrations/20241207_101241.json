@@ -1,5 +1,5 @@
 {
-  "id": "0460ed76-d92c-43bf-aed8-56079ab19639",
+  "id": "28952e4e-5b74-4fef-be3d-c04a5e6348a9",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -140,7 +140,7 @@
           "name": "alt",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "_key": {
           "name": "_key",
@@ -215,6 +215,48 @@
           "type": "numeric",
           "primaryKey": false,
           "notNull": false
+        },
+        "sizes_thumbnail__key": {
+          "name": "sizes_thumbnail__key",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_thumbnail_url": {
+          "name": "sizes_thumbnail_url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_thumbnail_width": {
+          "name": "sizes_thumbnail_width",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_thumbnail_height": {
+          "name": "sizes_thumbnail_height",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_thumbnail_mime_type": {
+          "name": "sizes_thumbnail_mime_type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_thumbnail_filesize": {
+          "name": "sizes_thumbnail_filesize",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_thumbnail_filename": {
+          "name": "sizes_thumbnail_filename",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {
@@ -259,6 +301,21 @@
             }
           ],
           "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "media_sizes_thumbnail_sizes_thumbnail_filename_idx": {
+          "name": "media_sizes_thumbnail_sizes_thumbnail_filename_idx",
+          "columns": [
+            {
+              "expression": "sizes_thumbnail_filename",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
           "concurrently": false,
           "method": "btree",
           "with": {}
@@ -1285,12 +1342,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "hero_section_hero_video_id": {
-          "name": "hero_section_hero_video_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
         "hero_section_hero_call_to_action": {
           "name": "hero_section_hero_call_to_action",
           "type": "varchar",
@@ -1346,38 +1397,8 @@
           "notNull": false
         }
       },
-      "indexes": {
-        "home_page_hero_section_hero_section_hero_video_idx": {
-          "name": "home_page_hero_section_hero_section_hero_video_idx",
-          "columns": [
-            {
-              "expression": "hero_section_hero_video_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {
-        "home_page_hero_section_hero_video_id_media_id_fk": {
-          "name": "home_page_hero_section_hero_video_id_media_id_fk",
-          "tableFrom": "home_page",
-          "tableTo": "media",
-          "columnsFrom": [
-            "hero_section_hero_video_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "set null",
-          "onUpdate": "no action"
-        }
-      },
+      "indexes": {},
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
